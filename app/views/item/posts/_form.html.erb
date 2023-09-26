@@ -1,0 +1,18 @@
+<%= form_with model: model, local: true do |f| %>
+  <div class="form-group mb-3">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 8, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-3">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <%= f.submit nil, class: 'btn btn-primary' %>
+<% end %>
