@@ -13,3 +13,11 @@
     password: 'password',
   )
 end
+
+30.times do |n|
+  Item::Post.create!(
+    user: User.offset(rand(User.count)).first,
+    name: "sample_name-#{n}",
+    description: "sample_description-#{n}"
+  )
+end

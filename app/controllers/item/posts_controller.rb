@@ -7,6 +7,8 @@ class Item::PostsController < ApplicationController
 
   def show
     @post = Item::Post.find(params[:id])
+    @comments = @post.item_comments.includes(:user)
+    @comment = current_user.item_comments.new
   end
 
   def new
