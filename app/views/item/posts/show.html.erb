@@ -20,7 +20,10 @@
           <hr>
           <h4>説明</h4>
           <p class="card-text"><%= simple_format @post.description %></p>
-          <p class="card-text">
+          <% if @tags.present? %>
+            <%= render 'item/posts/tag_list', tag_list: @post.tag_list %>
+          <% end %>
+          <p class="card-text mt-3">
             <small class="text-muted">最終更新日：<%= @post.updated_at.strftime("%Y / %m / %d") %></small>
           </p>
           <hr>

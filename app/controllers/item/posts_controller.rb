@@ -3,12 +3,16 @@ class Item::PostsController < ApplicationController
 
   def index
     @posts = Item::Post.includes(:user).order(created_at: :desc)
+    if params[:tag_name]
+      @posts = Item::Post.tagged_with("#{params[:tag_name]}")
+    end
   end
 
   def show
     @post = Item::Post.find(params[:id])
     @comments = @post.item_comments.includes(:user)
     @comment = current_user.item_comments.new
+    @tags = @post.tag_counts_on(:tags)
   end
 
   def new
@@ -43,7 +47,7 @@ class Item::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:item_post).permit(:name, :description)
+    params.require(:item_post).permit(:name, :description, :tag_list)
   end
 
   def set_post

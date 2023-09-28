@@ -1,0 +1,5 @@
+<% tag_list.each do |tag| %>
+  <div class="btn btn-info">
+    <%= link_to tag, item_posts_path(tag_name: tag), class: 'text-white' %>
+  </div>
+<% end %>
