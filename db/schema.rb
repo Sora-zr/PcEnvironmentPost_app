@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_054218) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_130601) do
+  create_table "desk_posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description", null: false
+    t.string "image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_desk_posts_on_user_id"
+  end
+
   create_table "item_bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_post_id", null: false
@@ -68,7 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_054218) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "taggings_count", default: 0
-    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -84,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_054218) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "desk_posts", "users"
   add_foreign_key "item_bookmarks", "item_posts"
   add_foreign_key "item_bookmarks", "users"
   add_foreign_key "item_comments", "item_posts"

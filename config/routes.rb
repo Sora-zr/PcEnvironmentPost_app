@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  namespace :desk do
+    resources :posts
+  end
+
   namespace :item do
     resources :posts do
       resources :comments, only: %i[create destroy]
