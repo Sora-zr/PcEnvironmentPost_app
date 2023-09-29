@@ -1,0 +1,3 @@
+<%= link_to desk_bookmark_path(current_user.desk_bookmarks.find_by(desk_post_id: desk_post.id)), data: { turbo_method: :delete } do %>
+  UnBookmark
+<% end %>

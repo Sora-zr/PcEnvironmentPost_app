@@ -9,12 +9,12 @@
             <% if current_user.own?(@post) %>
               <%= link_to '編集', edit_desk_post_path(@post), class: 'btn btn-success me-2' %>
               <%= link_to '削除', desk_post_path(@post), class: 'btn btn-danger', data: { turbo_method: :delete } %>
-            <%# else %>
-              <%# if current_user.bookmark?(@post) %>
-                <%#= render 'item/bookmarks/unbookmark', item_post: @post %>
-              <%# else %>
-                <%#= render 'item/bookmarks/bookmark', item_post: @post %>
-              <%# end %>
+            <% else %>
+              <% if current_user.bookmark?(@post) %>
+                <%= render 'desk/bookmarks/unbookmark', desk_post: @post %>
+              <% else %>
+                <%= render 'desk/bookmarks/bookmark', desk_post: @post %>
+              <% end %>
             <% end %>
           </div>
           <hr>
