@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
 
   namespace :desk do
-    resources :posts
+    resources :posts do
+      resources :comments, only: %i[create destroy]
+    end
   end
 
   namespace :item do

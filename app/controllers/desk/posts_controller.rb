@@ -7,6 +7,8 @@ class Desk::PostsController < ApplicationController
 
   def show
     @post = Desk::Post.find(params[:id])
+    @comments = @post.desk_comments.includes(:user)
+    @comment = current_user.desk_comments.new
   end
 
   def new

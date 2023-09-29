@@ -23,25 +23,25 @@
           <p class="card-text mt-3">
             <small class="text-muted">最終更新日：<%= @post.updated_at.strftime("%Y / %m / %d") %></small>
           </p>
-<!--          <hr>-->
-<!--          <h4>コメント作成</h4>-->
-          <%#= form_with model: @comment, url: item_post_comments_path(@post, @comment), local: true do |f| %>
-<!--            <div class="form-group">-->
-              <%#= f.label :content %>
-              <%#= f.text_area :content, class: 'form-control mb-3', rows: 2 %>
-<!--            </div>-->
-            <%#= f.hidden_field :item_post_id, value: @post.id %>
-            <%#= f.submit nil, class: 'btn btn-primary' %>
-          <%# end %>
-<!--          <hr>-->
-<!--          <h4>コメント一覧</h4>-->
-          <%# @comments.each do |comment| %>
-<!--            <div class="mb-2 mt-3">-->
-<!--              <h6>ユーザーネーム： <%#= comment.user.user_name %></h6>-->
-              <%#= comment.content %>
-<!--              <hr>-->
-<!--            </div>-->
-          <%# end %>
+          <hr>
+          <h4>コメント作成</h4>
+          <%= form_with model: @comment, url: desk_post_comments_path(@post, @comment), local: true do |f| %>
+            <div class="form-group">
+              <%= f.label :content %>
+              <%= f.text_area :content, class: 'form-control mb-3', rows: 2 %>
+            </div>
+            <%= f.hidden_field :desk_post_id, value: @post.id %>
+            <%= f.submit nil, class: 'btn btn-primary' %>
+          <% end %>
+          <hr>
+          <h4>コメント一覧</h4>
+          <% @comments.each do |comment| %>
+            <div class="mb-2 mt-3">
+              <h6>ユーザーネーム： <%= comment.user.user_name %></h6>
+              <%= comment.content %>
+              <hr>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
