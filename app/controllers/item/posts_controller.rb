@@ -23,8 +23,9 @@ class Item::PostsController < ApplicationController
     @post = current_user.item_posts.new(post_params)
 
     if @post.save
-      redirect_to item_posts_url
+      redirect_to item_posts_url, success: '投稿が完了しました'
     else
+      flash.now[:danger] = '投稿に失敗しました'
       render :new
     end
   end
@@ -33,15 +34,16 @@ class Item::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to item_post_url(@post)
+      redirect_to item_post_url(@post), success: '更新が完了しました'
     else
+      flash.now[:notice] = '更新に失敗しました'
       render :edit
     end
   end
 
   def destroy
     @post.destroy!
-    redirect_to item_posts_url
+    redirect_to item_posts_url, success: '投稿を削除しました'
   end
 
   private

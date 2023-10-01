@@ -19,8 +19,9 @@ class Desk::PostsController < ApplicationController
     @post = current_user.build_desk_post(post_params)
 
     if @post.save
-      redirect_to desk_posts_url
+      redirect_to desk_posts_url, success: '投稿が完了しました'
     else
+      flash.now[:danger] = '投稿できませんでした'
       render :new
     end
   end
@@ -28,9 +29,10 @@ class Desk::PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.save
-      redirect_to desk_post_url(@post)
+    if @post.update(post_params)
+      redirect_to desk_post_url(@post), success: '更新が完了しました'
     else
+      flash.now[:danger] = '更新できませんでした'
       render :edit
     end
   end
