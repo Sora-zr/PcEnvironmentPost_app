@@ -20,5 +20,6 @@
       </ul>
     </div>
     <%= link_to 'ログイン', user_session_path, method: :delete, class: 'nav-link text-info fw-bold' %>
+    <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } %></li>
   </div>
 </nav>
