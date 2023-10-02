@@ -22,7 +22,7 @@ class Desk::PostsController < ApplicationController
       redirect_to desk_posts_url, success: '投稿が完了しました'
     else
       flash.now[:danger] = '投稿できませんでした'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -33,7 +33,7 @@ class Desk::PostsController < ApplicationController
       redirect_to desk_post_url(@post), success: '更新が完了しました'
     else
       flash.now[:danger] = '更新できませんでした'
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

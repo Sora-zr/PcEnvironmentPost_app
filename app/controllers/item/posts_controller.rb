@@ -26,7 +26,7 @@ class Item::PostsController < ApplicationController
       redirect_to item_posts_url, success: '投稿が完了しました'
     else
       flash.now[:danger] = '投稿に失敗しました'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,7 +37,7 @@ class Item::PostsController < ApplicationController
       redirect_to item_post_url(@post), success: '更新が完了しました'
     else
       flash.now[:notice] = '更新に失敗しました'
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
