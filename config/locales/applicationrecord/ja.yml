@@ -1,1 +1,14 @@
 ja:
+  activerecord:
+    models:
+
+    attributes:
+      user:
+        user_name: 'ユーザーネーム'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'メールアドレス（確認）'
+
+      item_post:
+        description: '説明'
+        image: '画像'

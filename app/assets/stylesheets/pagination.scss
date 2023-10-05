@@ -1,0 +1,15 @@
+.pagination {
+  justify-content: center;
+}
+
+.pagination > li > a {
+  border: none;
+  color: #696969;
+}
+
+.pagination > .active > a {
+  background: #93c9ff;
+}
+
+.pagination > li > a:hover {
+}

@@ -2,7 +2,7 @@ class Item::PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Item::Post.includes(:user).order(created_at: :desc)
+    @posts = Item::Post.includes(:user).order(created_at: :desc).page(params[:page])
     if params[:tag_name]
       @posts = Item::Post.tagged_with("#{params[:tag_name]}")
     end

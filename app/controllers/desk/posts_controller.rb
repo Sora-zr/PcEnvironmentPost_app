@@ -2,7 +2,7 @@ class Desk::PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Desk::Post.includes(:user).order(created_at: :desc)
+    @posts = Desk::Post.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show
