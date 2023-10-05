@@ -21,6 +21,7 @@ class Item::PostsController < ApplicationController
 
   def create
     @post = current_user.item_posts.new(post_params)
+    @post.image.attach(params[:item_post][:image])
 
     if @post.save
       redirect_to item_posts_url, success: '投稿が完了しました'
@@ -33,6 +34,8 @@ class Item::PostsController < ApplicationController
   def edit; end
 
   def update
+    @post.image.attach(params[:item_post][:image]) if @post.image.blank?
+
     if @post.update(post_params)
       redirect_to item_post_url(@post), success: '更新が完了しました'
     else
@@ -49,7 +52,7 @@ class Item::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:item_post).permit(:name, :description, :tag_list)
+    params.require(:item_post).permit(:name, :description, :image, :tag_list)
   end
 
   def set_post

@@ -46,6 +46,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.4)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.0.8)
       activesupport (= 7.0.8)
       globalid (>= 0.3.6)
@@ -144,6 +149,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
     msgpack (1.7.2)
@@ -275,6 +281,7 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
+  active_storage_validations
   acts-as-taggable-on (~> 9.0)
   bootsnap
   bootstrap
@@ -286,6 +293,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
+  mini_magick
   mysql2 (~> 0.5)
   pry-byebug
   puma (~> 5.0)

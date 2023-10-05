@@ -18,6 +18,10 @@
             <% end %>
           </div>
           <hr>
+          <% if @post.image.present? %>
+            <%= image_tag @post.image %>
+          <% end %>
+          <hr>
           <h4>説明</h4>
           <p class="card-text"><%= simple_format @post.description %></p>
           <p class="card-text mt-3">

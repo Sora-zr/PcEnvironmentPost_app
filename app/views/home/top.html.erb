@@ -22,12 +22,6 @@
             <td><%= link_to post.title, desk_post_path(post) %></td>
             <td><%= post.description %></td>
             <td><%= post.user.user_name %></td>
-            <td>
-              <% if current_user.own?(post) %>
-                <%= link_to '編集', edit_desk_post_path(post), class: 'btn btn-success' %>
-                <%= link_to '削除', desk_post_path(post), class: 'btn btn-danger', data: { turbo_method: :delete } %>
-              <% end %>
-            </td>
           </tr>
         <% end %>
         </tbody>
@@ -54,12 +48,6 @@
             <td><%= link_to post.name, item_post_path(post) %></td>
             <td><%= post.description %></td>
             <td><%= post.user.user_name %></td>
-            <td>
-              <% if current_user.own?(post) %>
-                <%= link_to '編集', edit_item_post_path(post), class: 'btn btn-success' %>
-                <%= link_to '削除', item_post_path(post), class: 'btn btn-danger', data: { turbo_method: :delete } %>
-              <% end %>
-            </td>
           </tr>
         <% end %>
         </tbody>
