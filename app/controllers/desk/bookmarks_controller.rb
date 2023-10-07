@@ -7,7 +7,7 @@ class Desk::BookmarksController < ApplicationController
 
   def destroy
     @post = current_user.desk_bookmarks.find(params[:id]).desk_post
-    current_user.desk_unbookmark(@post)
+    current_user.unbookmark(@post)
     redirect_back fallback_location: root_url
   end
 end

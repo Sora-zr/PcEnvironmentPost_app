@@ -42,7 +42,7 @@ class Desk::PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to desk_posts_url
+    redirect_to desk_posts_url, status: :see_other
   end
 
   private

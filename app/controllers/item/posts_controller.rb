@@ -46,7 +46,7 @@ class Item::PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to item_posts_url, success: '投稿を削除しました'
+    redirect_to item_posts_url, success: '投稿を削除しました', status: :see_other
   end
 
   private
