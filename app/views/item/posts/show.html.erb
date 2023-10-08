@@ -19,7 +19,7 @@
           </div>
           <hr>
           <% if @post.image.present? %>
-            <%= image_tag @post.image %>
+            <%= image_tag @post.image.variant(resize: "600x300^", gravity: "center") %>
           <% end %>
           <hr>
           <h4>説明</h4>
