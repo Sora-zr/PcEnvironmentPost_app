@@ -13,17 +13,19 @@
     password: 'password',
   )
 
-  Desk::Post.create!(
+  post = Desk::Post.create!(
     user: user,
     title: "sample_title-#{n}",
     description: "sample_description-#{n}"
   )
+  post.image.attach(io: File.open(Rails.root.join('app/assets/images/sample.jpg')), filename: 'sample.jpg')
 end
 
 100.times do |n|
-  Item::Post.create!(
+  post = Item::Post.create!(
     user: User.offset(rand(User.count)).first,
     name: "sample_name-#{n}",
     description: "sample_description-#{n}"
   )
+  post.image.attach(io: File.open(Rails.root.join('app/assets/images/sample.jpg')), filename: 'sample.jpg')
 end
