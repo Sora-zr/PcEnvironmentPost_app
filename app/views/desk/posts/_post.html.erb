@@ -1,0 +1,12 @@
+<div class="col-lg-4 mb-5 px-3">
+  <div id="board-id-<%= post.id %>">
+    <div class="card">
+      <%= image_tag post.image, class: 'card-img-top' %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to post.title, desk_post_path(post) %>
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
