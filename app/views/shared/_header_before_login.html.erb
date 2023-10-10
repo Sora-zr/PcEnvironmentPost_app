@@ -1,25 +1,5 @@
 <nav class="navbar navbar-dark bg-dark p-2">
   <div class="container-fluid">
     <h2><%= link_to 'Title', root_path, class: 'navbar-brand' %></h2>
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        デスク環境
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><%= link_to 'デスク環境投稿一覧', desk_posts_path, class: 'dropdown-item' %></li>
-        <li><%= link_to 'デスク環境新規投稿', new_desk_post_path, class: 'dropdown-item' %></li>
-      </ul>
-    </div>
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        アイテム
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><%= link_to 'アイテム投稿一覧', item_posts_path, class: 'dropdown-item' %></li>
-        <li><%= link_to 'アイテム新規投稿', new_item_post_path, class: 'dropdown-item' %></li>
-      </ul>
-    </div>
-    <%= link_to 'ログイン', user_session_path, method: :delete, class: 'nav-link text-info fw-bold' %>
-    <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } %></li>
   </div>
 </nav>
