@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   has_one :desk_post, class_name: 'Desk::Post', dependent: :destroy
   has_many :desk_comments, class_name: 'Desk::Comment', dependent: :destroy
-  has_many :desk_bookmarks, class_name: 'Desk::Bookmark', dependent: :destroy
-  has_many :desk_post_bookmarks, through: :desk_bookmarks, source: :desk_post
+  has_many :desk_likes, class_name: 'Desk::Like', dependent: :destroy
+  has_many :desk_post_likes, through: :desk_likes, source: :desk_post
   has_many :item_posts, class_name: 'Item::Post', dependent: :destroy
   has_many :item_comments, class_name: 'Item::Comment', dependent: :destroy
-  has_many :item_bookmarks, class_name: 'Item::Bookmark', dependent: :destroy
-  has_many :item_post_bookmarks, through: :item_bookmarks, source: :item_post
+  has_many :item_likes, class_name: 'Item::Like', dependent: :destroy
+  has_many :item_post_likes, through: :item_likes, source: :item_post
 
   validates_presence_of :user_name, :email
 
@@ -27,27 +27,27 @@ class User < ApplicationRecord
     end
   end
 
-  def bookmark?(post)
+  def like?(post)
     if post.class == Desk::Post
-      desk_post_bookmarks.include?(post)
+      desk_post_likes.include?(post)
     elsif post.class == Item::Post
-      item_post_bookmarks.include?(post)
+      item_post_likes.include?(post)
     end
   end
 
-  def bookmark(post)
+  def like(post)
     if post.class == Desk::Post
-      desk_post_bookmarks << post
+      desk_post_likes << post
     elsif post.class == Item::Post
-      item_post_bookmarks << post
+      item_post_likes << post
     end
   end
 
-  def unbookmark(post)
+  def unlike(post)
     if post.class == Desk::Post
-      desk_post_bookmarks.destroy(post)
+      desk_post_likes.destroy(post)
     elsif post.class == Item::Post
-      item_post_bookmarks.destroy(post)
+      item_post_likes.destroy(post)
     end
   end
 end

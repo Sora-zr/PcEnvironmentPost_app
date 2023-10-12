@@ -1,7 +1,7 @@
 class Item::Post < ApplicationRecord
   belongs_to :user
   has_many :item_comments, class_name: 'Item::Comment', foreign_key: 'item_post_id', dependent: :destroy
-  has_many :item_bookmarks, class_name: 'Item::Bookmark', foreign_key: 'item_post_id', dependent: :destroy
+  has_many :item_likes, class_name: 'Item::Like', foreign_key: 'item_post_id', dependent: :destroy
   has_one_attached :image
 
   acts_as_taggable_on :tags

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_05_154624) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_12_163450) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,16 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_154624) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "desk_bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "desk_post_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["desk_post_id"], name: "index_desk_bookmarks_on_desk_post_id"
-    t.index ["user_id", "desk_post_id"], name: "index_desk_bookmarks_on_user_id_and_desk_post_id", unique: true
-    t.index ["user_id"], name: "index_desk_bookmarks_on_user_id"
-  end
-
   create_table "desk_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content", null: false
     t.bigint "user_id", null: false
@@ -57,6 +47,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_154624) do
     t.datetime "updated_at", null: false
     t.index ["desk_post_id"], name: "index_desk_comments_on_desk_post_id"
     t.index ["user_id"], name: "index_desk_comments_on_user_id"
+  end
+
+  create_table "desk_likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "desk_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["desk_post_id"], name: "index_desk_likes_on_desk_post_id"
+    t.index ["user_id", "desk_post_id"], name: "index_desk_likes_on_user_id_and_desk_post_id", unique: true
+    t.index ["user_id"], name: "index_desk_likes_on_user_id"
   end
 
   create_table "desk_posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -68,16 +68,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_154624) do
     t.index ["user_id"], name: "index_desk_posts_on_user_id"
   end
 
-  create_table "item_bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "item_post_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_post_id"], name: "index_item_bookmarks_on_item_post_id"
-    t.index ["user_id", "item_post_id"], name: "index_item_bookmarks_on_user_id_and_item_post_id", unique: true
-    t.index ["user_id"], name: "index_item_bookmarks_on_user_id"
-  end
-
   create_table "item_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "content", null: false
     t.bigint "user_id", null: false
@@ -86,6 +76,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_154624) do
     t.datetime "updated_at", null: false
     t.index ["item_post_id"], name: "index_item_comments_on_item_post_id"
     t.index ["user_id"], name: "index_item_comments_on_user_id"
+  end
+
+  create_table "item_likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_post_id"], name: "index_item_likes_on_item_post_id"
+    t.index ["user_id", "item_post_id"], name: "index_item_likes_on_user_id_and_item_post_id", unique: true
+    t.index ["user_id"], name: "index_item_likes_on_user_id"
   end
 
   create_table "item_posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -141,15 +141,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_05_154624) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "desk_bookmarks", "desk_posts"
-  add_foreign_key "desk_bookmarks", "users"
   add_foreign_key "desk_comments", "desk_posts"
   add_foreign_key "desk_comments", "users"
+  add_foreign_key "desk_likes", "desk_posts"
+  add_foreign_key "desk_likes", "users"
   add_foreign_key "desk_posts", "users"
-  add_foreign_key "item_bookmarks", "item_posts"
-  add_foreign_key "item_bookmarks", "users"
   add_foreign_key "item_comments", "item_posts"
   add_foreign_key "item_comments", "users"
+  add_foreign_key "item_likes", "item_posts"
+  add_foreign_key "item_likes", "users"
   add_foreign_key "item_posts", "users"
   add_foreign_key "taggings", "tags"
 end

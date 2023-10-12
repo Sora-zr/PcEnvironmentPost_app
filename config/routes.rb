@@ -11,17 +11,17 @@ Rails.application.routes.draw do
   namespace :desk do
     resources :posts do
       resources :comments, only: %i[create destroy]
-      get :bookmarks, on: :collection
+      get :likes, on: :collection
     end
-    resources :bookmarks, only: %i[create destroy]
+    resources :likes, only: %i[create destroy]
   end
 
   namespace :item do
     resources :posts do
       resources :comments, only: %i[create destroy]
-      get :bookmarks, on: :collection
+      get :likes, on: :collection
     end
-    resources :bookmarks, only: %i[create destroy]
+    resources :likes, only: %i[create destroy]
   end
 
 end

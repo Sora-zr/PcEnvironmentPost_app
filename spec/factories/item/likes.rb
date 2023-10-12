@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :item_bookmark, class: 'Item::Bookmark' do
+  factory :item_like, class: 'Item::Like' do
     user { nil }
     item_post { nil }
   end

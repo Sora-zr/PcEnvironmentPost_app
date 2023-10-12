@@ -1,4 +1,4 @@
-class Desk::Bookmark < ApplicationRecord
+class Desk::Like < ApplicationRecord
   belongs_to :user
   belongs_to :desk_post, class_name: 'Desk::Post'
 
