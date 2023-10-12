@@ -30,27 +30,20 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <%= link_to '自身の投稿一覧', '', class: 'nav-link' %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <%= link_to '自身がいいねした投稿一覧', '', class: 'nav-link' %>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-            <hr>
+          <li class="nav-item">
+            <%= link_to 'アカウント設定', '', class: 'nav-link' %>
           </li>
-          <li class="nav-item  mx-auto">
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link text-danger fw-bold' %>
+          <hr>
+          <li class="nav-item  mx-auto fs-5">
+            <%= link_to 'ログアウト',
+                        destroy_user_session_path,
+                        data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' },
+                        class: 'nav-link text-danger fw-bold' %>
           </li>
         </ul>
       </div>
