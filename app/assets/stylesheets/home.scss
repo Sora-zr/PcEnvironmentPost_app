@@ -26,18 +26,33 @@
 .session-button {
   position: absolute;
   top: 60%;
-  right: 55%;
+  right: 62%;
+
+  .btn {
+    font-size: 20px;
+    padding: 15px 23px;
+  }
 }
 
 .registration-button {
   position: absolute;
   top: 60%;
-  left: 55%;
+  left: 62%;
+
+  .btn {
+    font-size: 20px;
+    padding: 15px 23px;
+  }
 }
 
 .guest-login-button {
   position: absolute;
-  top: 70%;
+  top: 75%;
   width: 100%;
   text-align: center;
+
+  .btn {
+    font-size: 20px;
+    padding: 15px 23px;
+  }
 }
