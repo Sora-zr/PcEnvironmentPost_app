@@ -2,7 +2,7 @@ class Desk::PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Desk::Post.includes(:user).order(created_at: :desc).page(params[:page]).per(15)
+    @posts = Desk::Post.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -43,6 +43,10 @@ class Desk::PostsController < ApplicationController
   def destroy
     @post.destroy!
     redirect_to desk_posts_url, status: :see_other
+  end
+
+  def likes
+    @like_posts = current_user.desk_post_likes.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   private

@@ -2,7 +2,7 @@ class Item::PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy]
 
   def index
-    @posts = Item::Post.includes(:user).order(created_at: :desc).page(params[:page]).per(15)
+    @posts = Item::Post.includes(:user).order(created_at: :desc).page(params[:page])
     if params[:tag_name]
       @posts = Item::Post.tagged_with("#{params[:tag_name]}")
     end
@@ -47,6 +47,10 @@ class Item::PostsController < ApplicationController
   def destroy
     @post.destroy!
     redirect_to item_posts_url, success: '投稿を削除しました', status: :see_other
+  end
+
+  def likes
+    @like_posts = current_user.item_post_likes.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   private

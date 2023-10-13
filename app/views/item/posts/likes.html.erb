@@ -1,0 +1,25 @@
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs head">
+      <li class="nav-item">
+        <%= link_to 'デスク環境投稿一覧', likes_desk_posts_path, class: 'nav-link', 'aria-current': true %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'アイテム投稿一覧', likes_item_posts_path, class: 'nav-link active', 'aria-current': true %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+
+        <div class="container pt-5">
+          <div class="col-12">
+            <div class="row">
+              <%= render @like_posts %>
+            </div>
+          </div>
+
+          <%= paginate @like_posts %>
+        </div>
+
+  </div>
+</div>
