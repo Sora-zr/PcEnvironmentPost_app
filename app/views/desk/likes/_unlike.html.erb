@@ -1,3 +1,3 @@
 <%= link_to desk_like_path(current_user.desk_likes.find_by(desk_post_id: desk_post.id)), data: { turbo_method: :delete } do %>
-  UnLike
+  <i class="fa-solid fa-heart like-icon me-1"></i>
 <% end %>
