@@ -8,7 +8,7 @@
           <div class="nav justify-content-end">
             <% if current_user.own?(@post) %>
               <%= link_to '編集', edit_desk_post_path(@post), class: 'btn btn-success me-2' %>
-              <%= link_to '削除', desk_post_path(@post), class: 'btn btn-danger', data: { turbo_method: :delete } %>
+              <%= link_to '削除', desk_post_path(@post), class: 'btn btn-danger', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %>
             <% else %>
               <% if current_user.like?(@post) %>
                 <%= render 'desk/likes/unlike', desk_post: @post %>
@@ -18,8 +18,10 @@
             <% end %>
           </div>
           <hr>
-          <% if @post.image.present? %>
-            <%= image_tag @post.image.variant(resize: "600x300^", gravity: "center") %>
+          <% if @post.images.present? %>
+            <% @post.images.each do |image| %>
+              <%= image_tag image, class: 'card-img-top', size: '600x300', style: "object-fit: cover;" %>
+            <% end %>
           <% end %>
           <hr>
           <h4>説明</h4>
@@ -28,16 +30,18 @@
             <small class="text-muted">最終更新日：<%= @post.updated_at.strftime("%Y / %m / %d") %></small>
           </p>
           <hr>
-          <h4>コメント作成</h4>
-          <%= form_with model: @comment, url: desk_post_comments_path(@post, @comment), local: true do |f| %>
-            <div class="form-group">
-              <%= f.label :content %>
-              <%= f.text_area :content, class: 'form-control mb-3', rows: 2 %>
-            </div>
-            <%= f.hidden_field :desk_post_id, value: @post.id %>
-            <%= f.submit nil, class: 'btn btn-primary' %>
+          <% unless current_user.own?(@post) %>
+            <h4>コメント作成</h4>
+            <%= form_with model: @comment, url: desk_post_comments_path(@post, @comment), local: true do |f| %>
+              <div class="form-group">
+                <%= f.label :content %>
+                <%= f.text_area :content, class: 'form-control mb-3', rows: 2 %>
+              </div>
+              <%= f.hidden_field :desk_post_id, value: @post.id %>
+              <%= f.submit nil, class: 'btn btn-primary' %>
+            <% end %>
+            <hr>
           <% end %>
-          <hr>
           <h4>コメント一覧</h4>
           <% @comments.each do |comment| %>
             <div class="mb-2 mt-3">

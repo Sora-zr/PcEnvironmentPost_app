@@ -3,3 +3,10 @@
 @import "post";
 @import "icon";
 @import "pagination";
+
+.flash-message {
+  margin: 0 auto;
+  position: absolute;
+  z-index: 10;
+  opacity: 0.7;
+}

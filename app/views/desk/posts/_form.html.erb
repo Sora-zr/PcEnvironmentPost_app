@@ -12,17 +12,19 @@
   </div>
 
   <div class="form-group mb-3">
-    <%= f.label :image, class: "form-label" %>
-    <%= f.file_field :image, onchange: "imageImage(this);", accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+    <%= f.label :images, class: "form-label" %>
+    <%= f.file_field :images, multiple: true, onchange: "imageImage(this);", accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
   </div>
 
   <div id="image">
     <img id="image_preview" class="mb-3" width="100">
   </div>
 
-  <% if @post.image.present? %>
+  <% if @post.images.present? %>
     <span><b>[現在登録されている画像]</b></span>
-    <%= image_tag @post.image, width: 200, class: "mb-2" %>
+    <% @post.images.each do |image| %>
+      <%= image_tag image, class: 'card-img-top', size: '600x400', style: "object-fit: cover;" %>
+    <% end %>
   <% end %>
 
   <%= f.submit nil, class: 'btn btn-primary' %>

@@ -18,7 +18,10 @@
     title: "sample_title-#{n}",
     description: "sample_description-#{n}"
   )
-  post.image.attach(io: File.open(Rails.root.join('app/assets/images/sample.jpg')), filename: 'sample.jpg')
+
+  3.times do |i|
+    post.images.attach(io: File.open(Rails.root.join("app/assets/images/sample#{i + 1}.jpg")), filename: "sample#{i + 1}.jpg")
+  end
 end
 
 100.times do |n|
@@ -27,5 +30,5 @@ end
     name: "sample_name-#{n}",
     description: "sample_description-#{n}"
   )
-  post.image.attach(io: File.open(Rails.root.join('app/assets/images/sample.jpg')), filename: 'sample.jpg')
+  post.image.attach(io: File.open(Rails.root.join('app/assets/images/sample1.jpg')), filename: 'sample1.jpg')
 end

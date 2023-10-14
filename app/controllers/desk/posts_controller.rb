@@ -17,7 +17,6 @@ class Desk::PostsController < ApplicationController
 
   def create
     @post = current_user.build_desk_post(post_params)
-    @post.image.attach(params[:desk_post][:image])
 
     if @post.save
       redirect_to desk_posts_url, success: '投稿が完了しました'
@@ -29,9 +28,7 @@ class Desk::PostsController < ApplicationController
 
   def edit; end
 
-  def update
-    @post.image.attach(params[:desk_post][:image]) if @post.image.blank?
-
+  def update # 空更新される（要改善）
     if @post.update(post_params)
       redirect_to desk_post_url(@post), success: '更新が完了しました'
     else
@@ -52,7 +49,7 @@ class Desk::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:desk_post).permit(:title, :description, :image)
+    params.require(:desk_post).permit(:title, :description, images: [])
   end
 
   def set_post

@@ -2,7 +2,7 @@
   <div id="board-id-<%= post.id %>">
     <div class="card">
       <%= link_to desk_post_path(post) do %>
-        <%= image_tag post.image, class: 'card-img-top', size: '400x330', style: "object-fit: cover;" %>
+        <%= image_tag post.images[0], class: 'card-img-top', size: '400x330', style: "object-fit: cover;" %>
       <% end %>
       <div class="card-body">
         <h5 class="card-title post-name float-start">
