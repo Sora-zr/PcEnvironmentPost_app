@@ -18,11 +18,18 @@
             <% end %>
           </div>
           <hr>
-          <% if @post.images.present? %>
-            <% @post.images.each do |image| %>
-              <%= image_tag image, class: 'card-img-top', size: '600x300', style: "object-fit: cover;" %>
-            <% end %>
-          <% end %>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <% @post.images.each do |image| %>
+                <div class="swiper-slide">
+                  <%= image_tag image, class: 'card-img-top', size: '600x300', style: "object-fit: cover;" %>
+                </div>
+              <% end %>
+            </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-pagination"></div>
+          </div>
           <hr>
           <h4>説明</h4>
           <p class="card-text"><%= simple_format @post.description %></p>
