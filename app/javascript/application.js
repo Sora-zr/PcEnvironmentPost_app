@@ -6,8 +6,6 @@
 //= require swiper/swiper-bundle.min.js
 //= require swiper.js
 
-// import "@hotwired/turbo-rails"
-import { Turbo } from "@hotwired/turbo-rails"
-Turbo.session.drive = false
+import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
