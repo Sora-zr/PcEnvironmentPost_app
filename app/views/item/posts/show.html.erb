@@ -35,24 +35,13 @@
           <hr>
           <% unless current_user.own?(@post) %>
             <h4>コメント作成</h4>
-              <%= form_with model: @comment, url: item_post_comments_path(@post, @comment), local: true do |f| %>
-                <div class="form-group">
-                  <%= f.label :content %>
-                  <%= f.text_area :content, class: 'form-control mb-3', rows: 2 %>
-                </div>
-                <%= f.hidden_field :item_post_id, value: @post.id %>
-                <%= f.submit nil, class: 'btn btn-primary' %>
-              <% end %>
+            <%= render 'item/comments/form', comment: @comment, post: @post %>
             <hr>
           <% end %>
           <h4>コメント一覧</h4>
-          <% @comments.each do |comment| %>
-            <div class="mb-2 mt-3">
-              <h6>ユーザーネーム： <%= comment.user.user_name %></h6>
-              <%= comment.content %>
-              <hr>
-            </div>
-          <% end %>
+          <div id="js_comment_index">
+            <%= render @comments %>
+          </div>
         </div>
       </div>
     </div>

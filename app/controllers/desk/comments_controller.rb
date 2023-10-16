@@ -1,12 +1,7 @@
 class Desk::CommentsController < ApplicationController
   def create
     @comment = current_user.desk_comments.build(comment_params)
-
-    if @comment.save
-      redirect_back fallback_location: root_url
-    else
-      redirect_back fallback_location: root_url
-    end
+    @comment.save
   end
 
   def destroy
