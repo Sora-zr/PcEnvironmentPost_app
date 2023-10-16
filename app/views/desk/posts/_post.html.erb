@@ -17,11 +17,13 @@
               <i class="fa-regular fa-trash-can trash-icon me-1"></i>
             <% end %>
           <% else %>
-            <% if current_user.like?(post) %>
-              <%= render 'desk/likes/unlike', desk_post: post %>
-            <% else %>
-              <%= render 'desk/likes/like', desk_post: post %>
-            <% end %>
+            <div id="like_buttons_<%= post.id %>">
+              <% if current_user.like?(post) %>
+                <%= render 'desk/likes/unlike', desk_post: post %>
+              <% else %>
+                <%= render 'desk/likes/like', desk_post: post %>
+              <% end %>
+            </div>
           <% end %>
         </div>
       </div>

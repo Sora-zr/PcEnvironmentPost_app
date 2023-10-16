@@ -1,3 +1,6 @@
-<%= link_to item_likes_path(item_post_id: item_post.id), data: { turbo_method: :post } do %>
+<%= link_to item_likes_path(item_post_id: item_post.id),
+            method: :post,
+            data: { turbo: false },
+            remote: true do %>
   <i class="fa-regular fa-heart like-icon me-1"></i>
 <% end %>
