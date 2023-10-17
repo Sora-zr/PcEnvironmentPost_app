@@ -1,0 +1,45 @@
+.flash-window  {
+  z-index: 100;
+
+  // 窓の形、色、文字の形、色
+  background: green;
+  height: 60px;
+  padding: 10px;
+  border-radius: 10px;
+  opacity: 0.8;
+
+  // 中のp要素(メッセージ)を上下左右中央揃え
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  // 表示・非表示にかける時間
+  transition: 1s 0s ease;
+
+  // 窓の位置調整
+  position: fixed;
+  top: 10%;
+  left: 25%;
+  right: 25%;
+  margin: auto;
+
+  p {
+    color: white;
+    margin: 0 auto;
+  }
+
+  //div {
+  //  margin: 0 10px;
+  //  color: white;
+  //
+  //  &:hover {
+  //    cursor: pointer;
+  //  }
+  //}
+
+  // 窓が非表示の時の状態
+  &.hidden {
+    opacity: 0;
+    top: -70px;
+  }
+}

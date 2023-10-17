@@ -19,7 +19,7 @@ class Desk::PostsController < ApplicationController
     @post = current_user.build_desk_post(post_params)
 
     if @post.save
-      redirect_to desk_posts_url, success: '投稿が完了しました'
+      redirect_to desk_posts_url, notice: '投稿が完了しました'
     else
       flash.now[:danger] = '投稿できませんでした'
       render :new, status: :unprocessable_entity
@@ -30,7 +30,7 @@ class Desk::PostsController < ApplicationController
 
   def update # 空更新される（要改善）
     if @post.update(post_params)
-      redirect_to desk_post_url(@post), success: '更新が完了しました'
+      redirect_to desk_post_url(@post), notice: '更新が完了しました'
     else
       flash.now[:danger] = '更新できませんでした'
       render :edit, status: :unprocessable_entity

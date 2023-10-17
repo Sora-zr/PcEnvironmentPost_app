@@ -24,7 +24,7 @@ class Item::PostsController < ApplicationController
     @post.image.attach(params[:item_post][:image])
 
     if @post.save
-      redirect_to item_posts_url, success: '投稿が完了しました'
+      redirect_to item_posts_url, notice: '投稿が完了しました'
     else
       flash.now[:danger] = '投稿に失敗しました'
       render :new, status: :unprocessable_entity
@@ -37,7 +37,7 @@ class Item::PostsController < ApplicationController
     @post.image.attach(params[:item_post][:image]) if @post.image.blank?
 
     if @post.update(post_params)
-      redirect_to item_post_url(@post), success: '更新が完了しました'
+      redirect_to item_post_url(@post), notice: '更新が完了しました'
     else
       flash.now[:notice] = '更新に失敗しました'
       render :edit, status: :unprocessable_entity
@@ -46,7 +46,7 @@ class Item::PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to item_posts_url, success: '投稿を削除しました', status: :see_other
+    redirect_to item_posts_url, notice: '投稿を削除しました', status: :see_other
   end
 
   def likes

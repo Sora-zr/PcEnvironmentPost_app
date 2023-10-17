@@ -21,7 +21,7 @@
           </div>
           <hr>
           <% if @post.image.present? %>
-            <%= image_tag @post.image.variant(resize: "600x300^", gravity: "center") %>
+            <%= image_tag @post.image, class: 'card-img-top', size: '600x300', style: "object-fit: cover;" %>
           <% end %>
           <hr>
           <h4>説明</h4>
