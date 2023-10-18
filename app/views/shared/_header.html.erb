@@ -1,52 +1,53 @@
-<nav class="navbar navbar-dark bg-dark p-2">
-  <div class="container-fluid">
-    <h2><%= link_to 'Title', root_path, class: 'navbar-brand' %></h2>
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        デスク環境
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><%= link_to 'デスク環境投稿一覧', desk_posts_path, class: 'dropdown-item' %></li>
-        <li><%= link_to 'デスク環境新規投稿', new_desk_post_path, class: 'dropdown-item' %></li>
-      </ul>
-    </div>
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        アイテム
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><%= link_to 'アイテム投稿一覧', item_posts_path, class: 'dropdown-item' %></li>
-        <li><%= link_to 'アイテム新規投稿', new_item_post_path, class: 'dropdown-item' %></li>
-      </ul>
-    </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">メニュー</h5>
-        <button type="button" class="btn-close btn-close-white me-1" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<header class="header">
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <h2><%= link_to 'Title', root_path, class: 'navbar-brand' %></h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">メニュー</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <%= link_to root_path, class: 'nav-link ms-2' do %>
+                <i class="fa-solid fa-house"></i>　ホームページ
+              <% end %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-paste post-btn"></i>　投稿
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <%= link_to '#', class: 'nav-link ms-2' do %>
+                <i class="fa-solid fa-bookmark bookmark-btn"></i>　ブックマーク
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '#', class: 'nav-link ms-2' do %>
+                <i class="fa-solid fa-user mypage-btn"></i>　マイページ
+              <% end %>
+            </li>
+            <hr>
+            <li class="nav-item">
+              <%= link_to destroy_user_session_path,
+                          data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' },
+                          class: 'nav-link text-danger ms-2' do %>
+                <i class="fa-solid fa-right-from-bracket logout-btn"></i>　ログアウト
+              <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <%= link_to '自身の投稿一覧', '', class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'いいねした投稿一覧', likes_desk_posts_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'マイページ', '', class: 'nav-link' %>
-          </li>
-          <hr>
-          <li class="nav-item  mx-auto fs-5">
-            <%= link_to 'ログアウト',
-                        destroy_user_session_path,
-                        data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' },
-                        class: 'nav-link text-danger fw-bold' %>
-          </li>
-        </ul>
-      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
