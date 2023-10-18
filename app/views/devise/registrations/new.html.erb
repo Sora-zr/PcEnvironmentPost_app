@@ -7,28 +7,53 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="form-group mb-3">
-          <%= f.label :user_name %>
-          <%= f.text_field :user_name, autofocus: true, class: 'form-control' %>
+        <div class="input-group mb-4">
+          <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+          <%= f.text_field :user_name,
+                            autofocus: true,
+                            autocomplete: 'user_name',
+                            class: 'form-control',
+                            placeholder: User.human_attribute_name(:user_name),
+                            required: true %>
         </div>
 
-        <div class="form-group mb-3">
-          <%= f.label :email %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        <div class="input-group mb-4">
+          <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
+          <%= f.email_field :email,
+                            autofocus: true,
+                            autocomplete: 'email',
+                            class: 'form-control',
+                            placeholder: User.human_attribute_name(:email),
+                            required: true %>
         </div>
 
-        <div class="form-group mb-3">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %>
-          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+        <div class="input-group mb-4">
+          <div class="input-group-text"><i class="fa-solid fa-lock"></i></div>
+          <%= f.email_field :password,
+                            autofocus: true,
+                            autocomplete: 'new-password',
+                            class: 'form-control',
+                            placeholder: User.human_attribute_name(:password),
+                            required: true %>
         </div>
 
-        <div class="form-group mb-3">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+        <div class="input-group mb-4">
+          <div class="input-group-text"><i class="fa-solid fa-unlock"></i></div>
+          <%= f.email_field :password_confirmation,
+                            autofocus: true,
+                            autocomplete: 'new-password',
+                            class: 'form-control',
+                            placeholder: User.human_attribute_name(:password_confirmation),
+                            required: true %>
         </div>
+
+<!--        <div class="form-group mb-3">-->
+          <%#= f.label :password %>
+          <%# if @minimum_password_length %>
+<!--          <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
+          <%# end %>
+          <%#= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+<!--        </div>-->
 
         <%= f.submit 'Sign up', class: 'btn btn-primary' %>
       <% end %>
