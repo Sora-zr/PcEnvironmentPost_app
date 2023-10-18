@@ -2,5 +2,8 @@
             method: :delete,
             data: { turbo: false },
             remote: true do %>
-  <i class="fa-solid fa-heart like-icon me-1"></i>
+  <i class="fa-solid fa-heart like-btn me-2"></i>
 <% end %>
+<div class="like-count">
+  <%= desk_post.desk_likes.count %>
+</div>

@@ -2,5 +2,8 @@
             method: :post,
             data: { turbo: false },
             remote: true do %>
-  <i class="fa-regular fa-heart like-icon me-1"></i>
+  <i class="fa-regular fa-heart like-btn me-2"></i>
 <% end %>
+<div class="like-count">
+  <%= item_post.item_likes.count %>
+</div>
