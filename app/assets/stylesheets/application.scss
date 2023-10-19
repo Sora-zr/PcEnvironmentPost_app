@@ -2,9 +2,21 @@
 @import "home";
 @import "post";
 @import "icon";
+@import "login-page";
 @import "flash-window";
 @import "pagination";
 @import 'swiper/swiper-bundle.min.css';
+
+main {
+  margin-top: 57.43px;
+  color: white;
+  background-color: #1a1a1a;
+}
+
+.nav-color {
+  color: white;
+  background-color: #3d454d;
+}
 
 .flash-message {
   margin: 0 auto;
