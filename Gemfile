@@ -49,6 +49,7 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 
 gem "rails-i18n"
+gem "devise-i18n"
 gem "bootstrap"
 gem "jquery-rails"
 gem "devise"
