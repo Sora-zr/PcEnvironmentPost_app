@@ -13,11 +13,20 @@
     password: 'password',
   )
 
-  post = Desk::Post.create!(
+  desk_post = Desk::Post.create!(
     user: user,
     title: "sample_title-#{n}",
     description: "sample_description-#{n}"
   )
+
+  post = Post.create!(
+    user: user,
+    description: "sample_description-#{n}"
+  )
+
+  3.times do |i|
+    desk_post.images.attach(io: File.open(Rails.root.join("app/assets/images/sample#{i + 1}.jpg")), filename: "sample#{i + 1}.jpg")
+  end
 
   3.times do |i|
     post.images.attach(io: File.open(Rails.root.join("app/assets/images/sample#{i + 1}.jpg")), filename: "sample#{i + 1}.jpg")

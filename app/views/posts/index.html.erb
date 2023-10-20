@@ -1,0 +1,19 @@
+<div class="card text-center">
+  <div class="card-header pt-5">
+    <ul class="nav nav-tabs card-header-tabs head">
+      <li class="nav-item">
+        <%= link_to '環境投稿一覧', posts_path, class: 'nav-link active', 'aria-current': true %>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="container pt-5">
+      <div class="col-12">
+        <div class="row">
+          <%= render @posts %>
+        </div>
+      </div>
+      <%= paginate @posts %>
+    </div>
+  </div>
+</div>

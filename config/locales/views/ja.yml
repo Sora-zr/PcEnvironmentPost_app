@@ -1,4 +1,14 @@
 ja:
+  posts:
+    create:
+      success: 投稿が完了しました。
+      failure: 投稿に失敗しました。
+    update:
+      success: 更新が完了しました。
+      failure: 更新に失敗しました。
+    destroy:
+      success: 投稿を削除しました。
+
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

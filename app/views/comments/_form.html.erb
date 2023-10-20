@@ -1,0 +1,10 @@
+<%= form_with model: comment, url: post_comments_path(post, comment), local: false do |f| %>
+  <div class="form-group">
+    <%= f.text_area :content,
+                    class: 'form-control mb-3',
+                    id: 'js_comment_textarea',
+                    rows: 2 %>
+  </div>
+  <%= f.hidden_field :post_id, value: post.id %>
+  <%= f.submit nil, class: 'btn btn-primary' %>
+<% end %>

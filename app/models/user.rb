@@ -4,10 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one :post, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :post_likes, through: :likes, source: :post
+
   has_one :desk_post, class_name: 'Desk::Post', dependent: :destroy
   has_many :desk_comments, class_name: 'Desk::Comment', dependent: :destroy
   has_many :desk_likes, class_name: 'Desk::Like', dependent: :destroy
   has_many :desk_post_likes, through: :desk_likes, source: :desk_post
+
   has_many :item_posts, class_name: 'Item::Post', dependent: :destroy
   has_many :item_comments, class_name: 'Item::Comment', dependent: :destroy
   has_many :item_likes, class_name: 'Item::Like', dependent: :destroy
@@ -28,6 +34,7 @@ class User < ApplicationRecord
   end
 
   def like?(post)
+    post_likes.include?(post)
     if post.class == Desk::Post
       desk_post_likes.include?(post)
     elsif post.class == Item::Post
@@ -36,6 +43,7 @@ class User < ApplicationRecord
   end
 
   def like(post)
+    post_likes << post
     if post.class == Desk::Post
       desk_post_likes << post
     elsif post.class == Item::Post
@@ -44,6 +52,7 @@ class User < ApplicationRecord
   end
 
   def unlike(post)
+    post_likes.destroy(post)
     if post.class == Desk::Post
       desk_post_likes.destroy(post)
     elsif post.class == Item::Post

@@ -1,0 +1,32 @@
+<div class="col-lg-4 mb-5 px-3">
+  <div id="board-id-<%= post.id %>">
+    <div class="card post-color">
+      <%= link_to post_path(post), data: { turbo: false } do %>
+        <%= image_tag post.images[0], class: 'card-img-top', size: '400x330', style: "object-fit: cover;" %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title post-name float-start">
+          <%= post.user.user_name %>
+        </h5>
+        <div class="float-end">
+          <% if current_user.own?(post) %>
+            <%= link_to edit_post_path(post), style: 'text-decoration: none;' do %>
+              <i class="fa-regular fa-pen-to-square edit-icon me-3"></i>
+            <% end %>
+            <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
+              <i class="fa-regular fa-trash-can trash-icon me-1"></i>
+            <% end %>
+          <% else %>
+            <div id="like_buttons_<%= post.id %>">
+              <% if current_user.like?(post) %>
+                <%= render 'likes/unlike', post: post %>
+              <% else %>
+                <%= render 'likes/like', post: post %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<div class="container mt-5">
+  <div class="card bg-secondary text-white mb-5">
+    <div class="card-header">
+      <h3>
+        <%= @post.user.user_name %>
+      </h3>
+    </div>
+    <div class="card-body">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <% @post.images.each do |image| %>
+            <div class="swiper-slide">
+              <%= image_tag image, size: '600x700', class: 'card-img-top' %>
+            </div>
+          <% end %>
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="mb-5">
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-sm-9">
+        <div class="mb-5">
+          <div class="card bg-secondary text-white">
+            <div class="card-body">
+              <h4 class="card-title">説明</h4>
+              <hr>
+              <%= simple_format @post.description %>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-5">
+          <div class="card bg-secondary text-white">
+            <div class="card-body">
+              <h4 class="card-title">使用アイテム一覧</h4>
+              <hr>
+              <div class="card" style="width: 18rem;">
+                <%= image_tag 'sample1.jpg', class: 'card-img-top' %>
+                <div class="card-body">
+                  <p class="card-text">Test</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="mb-5">
+          <div class="card bg-secondary text-white">
+            <div class="card-body">
+              <h4 class="card-title">コメント一覧</h4>
+              <hr>
+              <div id="js_comment_index">
+                <% if @comments.present? %>
+                  <%= render @comments %>
+                <% else %>
+                  <p>コメントはありません。</p>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="card bg-secondary text-white">
+            <div class="card-body">
+              <% unless current_user.own?(@post) %>
+                <h4 class="card-title">コメント作成</h4>
+                <hr>
+                <%= render 'comments/form', comment: @comment, post: @post %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

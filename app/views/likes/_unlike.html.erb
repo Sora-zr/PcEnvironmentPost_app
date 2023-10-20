@@ -1,0 +1,9 @@
+<%= link_to like_path(current_user.likes.find_by(post_id: post.id)),
+            method: :delete,
+            data: { turbo: false },
+            remote: true do %>
+  <i class="fa-solid fa-heart like-btn me-2"></i>
+<% end %>
+<div class="like-count">
+  <%= post.likes.count %>
+</div>
