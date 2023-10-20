@@ -1,6 +1,7 @@
 <div class="container content">
   <div class="row">
     <div class="col-5 mx-auto">
+      <%= render "devise/shared/error_messages", resource: resource %>
       <div class="card nav-color">
         <h2 class="card-header text-center p-3">ログイン</h2>
         <div class="card-body">
@@ -26,7 +27,7 @@
                                      required: true %>
               </div>
               <div class="mt-1 mb-4">
-                <%= link_to 'パスワードをお忘れですか？', '#' %>
+                <%= link_to 'パスワードをお忘れですか？', new_user_password_path %>
               </div>
 
               <div class="mb-4">
@@ -47,7 +48,7 @@
             <% end %>
 
             <%= link_to users_guest_sign_in_path,
-                        class: 'btn guest-login-button mb-4',
+                        class: 'btn gray-button mb-4',
                         data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } do %>
               <i class="fa-solid fa-user-check"></i>
               <span>　ゲストユーザーとしてログイン</span>
