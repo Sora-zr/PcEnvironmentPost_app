@@ -17,15 +17,10 @@
                 <i class="fa-solid fa-house"></i>　ホームページ
               <% end %>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <li class="nav-item">
+              <%= link_to posts_path, class: 'nav-link ms-2' do %>
                 <i class="fa-solid fa-paste post-btn"></i>　投稿
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+              <% end %>
             </li>
             <li class="nav-item">
               <%= link_to '#', class: 'nav-link ms-2' do %>

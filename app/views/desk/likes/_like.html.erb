@@ -1,9 +1,0 @@
-<%= link_to desk_likes_path(desk_post_id: desk_post.id),
-            method: :post,
-            data: { turbo: false },
-            remote: true do %>
-  <i class="fa-regular fa-heart like-btn me-2"></i>
-<% end %>
-<div class="like-count">
-  <%= desk_post.desk_likes.count %>
-</div>

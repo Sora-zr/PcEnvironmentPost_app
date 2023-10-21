@@ -1,9 +1,0 @@
-<%= link_to desk_like_path(current_user.desk_likes.find_by(desk_post_id: desk_post.id)),
-            method: :delete,
-            data: { turbo: false },
-            remote: true do %>
-  <i class="fa-solid fa-heart like-btn me-2"></i>
-<% end %>
-<div class="like-count">
-  <%= desk_post.desk_likes.count %>
-</div>
