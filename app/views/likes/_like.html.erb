@@ -1,9 +1,13 @@
-<%= link_to likes_path(post_id: post.id),
-            method: :post,
-            data: { turbo: false },
-            remote: true do %>
-  <i class="fa-regular fa-heart like-btn me-2"></i>
-<% end %>
-<div class="like-count">
-  <%= post.likes.count %>
+<div class="row">
+  <div class="col" style="padding-right: 0;">
+    <%= link_to likes_path(post_id: post.id),
+                method: :post,
+                data: { turbo: false },
+                remote: true do %>
+      <i class="fa-regular fa-heart like-btn"></i>
+    <% end %>
+  </div>
+  <div class="col like-btn" style="padding-left: 0;">
+    <%= post.likes.count %>
+  </div>
 </div>

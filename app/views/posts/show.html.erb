@@ -1,11 +1,15 @@
-<div class="container mt-5">
-  <div class="card bg-secondary text-white mb-5">
-    <div class="card-header">
-      <h3>
-        <%= @post.user.user_name %>
-      </h3>
-    </div>
+<div class="container mt-5 content">
+  <div class="card bg-dark text-white border-white mb-4">
     <div class="card-body">
+      <div class="row">
+        <div class="col text-center">
+          <h4 style="margin: 0;"><%= @post.user.user_name %></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card bg-dark text-white border-white mb-5">
+    <div class="card-body" style="padding: 10px">
       <div class="swiper">
         <div class="swiper-wrapper">
           <% @post.images.each do |image| %>
@@ -23,29 +27,29 @@
 
   <hr class="mb-5">
 
-  <div class="container text-center">
+  <div class="container">
     <div class="row">
       <div class="col-sm-9">
-        <div class="mb-5">
-          <div class="card bg-secondary text-white">
+        <div class="mb-4">
+          <div class="card bg-dark border-white text-white">
             <div class="card-body">
-              <h4 class="card-title">説明</h4>
+              <h4 class="card-title text-center">説明</h4>
               <hr>
-              <%= simple_format @post.description %>
+              <div class="card-text">
+                <%= simple_format @post.description %>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="mb-5">
-          <div class="card bg-secondary text-white">
-            <div class="card-body">
-              <h4 class="card-title">使用アイテム一覧</h4>
-              <hr>
-              <div class="card" style="width: 18rem;">
-                <%= image_tag 'sample1.jpg', class: 'card-img-top' %>
-                <div class="card-body">
-                  <p class="card-text">Test</p>
-                </div>
+        <div class="card bg-dark border-white text-white">
+          <div class="card-body">
+            <h4 class="card-title text-center">使用アイテム一覧</h4>
+            <hr>
+            <div class="card" style="width: 18rem;">
+              <%= image_tag 'sample1.jpg', class: 'card-img-top' %>
+              <div class="card-body">
+                <p class="card-text">Test</p>
               </div>
             </div>
           </div>
@@ -53,9 +57,21 @@
       </div>
       <div class="col-sm-3">
         <div class="mb-5">
-          <div class="card bg-secondary text-white">
+          <div class="card bg-dark border-white text-white mb-4">
             <div class="card-body">
-              <h4 class="card-title">コメント一覧</h4>
+              <div class="row">
+                <% if current_user.own?(@post) %>
+                  <%= render 'shared/crud_menu', post: @post %>
+                <% else %>
+                  <%= render 'shared/like_bookmark_menu', post: @post %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-dark border-white text-white">
+            <div class="card-body">
+              <h4 class="card-title text-center">コメント一覧</h4>
               <hr>
               <div id="js_comment_index">
                 <% if @comments.present? %>
@@ -63,19 +79,11 @@
                 <% else %>
                   <p>コメントはありません。</p>
                 <% end %>
+                <% unless current_user.own?(@post) %>
+                  <hr>
+                  <%= render 'comments/form', comment: @comment, post: @post %>
+                <% end %>
               </div>
-
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="card bg-secondary text-white">
-            <div class="card-body">
-              <% unless current_user.own?(@post) %>
-                <h4 class="card-title">コメント作成</h4>
-                <hr>
-                <%= render 'comments/form', comment: @comment, post: @post %>
-              <% end %>
             </div>
           </div>
         </div>

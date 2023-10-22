@@ -1,0 +1,15 @@
+<div class="col text-center" style="padding: 0;">
+  <% if current_user.own?(post) %>
+    <%= link_to edit_post_path(post) do %>
+      <i class="fa-regular fa-pen-to-square edit-btn"></i>
+    <% end %>
+  <% end %>
+</div>
+|
+<div class="col text-center" style="padding: 0;">
+  <% if current_user.own?(post) %>
+    <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
+      <i class="fa-regular fa-trash-can trash-btn"></i>
+    <% end %>
+  <% end %>
+</div>
