@@ -1,0 +1,16 @@
+<div class="card index">
+  <div class="card-body">
+    <div class="container pt-5">
+      <div class="col-12">
+        <div class="row">
+          <% if @post_bookmarks.present? %>
+            <%= render @post_bookmarks %>
+          <% else %>
+            <p class="text-white">ブックマークした投稿はありません。</p>
+          <% end %>
+        </div>
+      </div>
+      <%= paginate @post_bookmarks %>
+    </div>
+  </div>
+</div>

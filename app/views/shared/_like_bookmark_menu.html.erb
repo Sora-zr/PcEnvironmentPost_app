@@ -7,9 +7,12 @@
     <% end %>
   </div>
 </div>
-|
 <div class="col text-center">
-  <%= link_to '#' do %>
-    <i class="fa-regular fa-bookmark bookmark-btn"></i>
-  <% end %>
+  <div id="bookmark_buttons_<%= post.id %>">
+    <% if current_user.bookmark?(post) %>
+      <%= render 'bookmarks/unbookmark', post: post %>
+    <% else %>
+      <%= render 'bookmarks/bookmark', post: post %>
+    <% end %>
+  </div>
 </div>

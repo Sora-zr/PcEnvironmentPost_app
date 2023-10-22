@@ -10,9 +10,8 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments, only: %i[create destroy]
-    get :likes, on: :collection
+    get :bookmarks, on: :collection
   end
   resources :likes, only: %i[create destroy]
-
-
+  resources :bookmarks, only: %i[create destroy]
 end

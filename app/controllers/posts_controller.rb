@@ -42,6 +42,10 @@ class PostsController < ApplicationController
     redirect_to post_url, notice: t('.success')
   end
 
+  def bookmarks
+    @post_bookmarks = current_user.post_bookmarks.includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
   private
 
   def post_params
