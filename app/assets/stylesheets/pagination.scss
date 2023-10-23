@@ -3,13 +3,17 @@
 }
 
 .pagination > li > a {
+  background-color: #1a1a1a;
   border: none;
-  color: #696969;
+  color: white;
+  margin: 0 20px;
 }
 
 .pagination > .active > a {
   background: #93c9ff;
+  border-radius: 50%;
 }
 
 .pagination > li > a:hover {
+  border-radius: 50%;
 }
