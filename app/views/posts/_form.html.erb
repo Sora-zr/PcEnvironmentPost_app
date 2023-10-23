@@ -1,36 +1,84 @@
 <%= form_with model: post, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <div class="form-group mb-3">
-    <%= f.label :description %>
-    <%= f.text_area :description, rows: 8, class: 'form-control' %>
-  </div>
+  <p>対応しているフォーマットはjpeg、png、gifです。<br>8枚まで選択できます。<br>先頭の画像がサムネイルとなります。</p>
 
-  <div class="form-group mb-3">
-    <%= f.label :images, class: "form-label" %>
-    <%= f.file_field :images, multiple: true, onchange: "postImage(this);", accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
-  </div>
+  <div class="mb-5 text-center">
+    <!-- 画像投稿フォーム -->
+    <%= image_tag 'sample1.jpg',
+                  size: '400x300',
+                  onClick: "$('#up_images').click()",
+                  style: 'cursor: pointer; border-radius: 2%; object-fit: cover;' %>
+    <%= f.file_field :images,
+                     id: 'up_images',
+                     style: 'display: none;',
+                     multiple: true,
+                     accept: "image/jpeg, image/gif, image/png" %>
 
-  <div id="image">
-    <img id="image_preview" class="mb-3" width="100">
-  </div>
+    <!-- プレビュー -->
+    <div class="card bg-secondary text-white mt-5">
+      <h4 style="margin: 0; padding-top: 15px;">現在追加した画像</h4>
+      <hr>
+      <div class="row">
+        <div class="col-3" style="padding: 5px;">
+          <div id="preview-container">
+            <%= image_tag '', id: 'preview', style: 'border-radius: 2%; object-fit: cover;' %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <% if @post.images.present? %>
-    <span><b>[現在登録されている画像]</b></span>
-    <% @post.images.each do |image| %>
-      <%= image_tag image, class: 'card-img-top', size: '600x400', style: "object-fit: cover;" %>
+
+    <!-- 編集を行う前に登録されていた画像を表示する -->
+    <% if post.images.attached? %>
+      <div class="card bg-secondary text-white mt-5">
+        <h4 style="margin: 0; padding-top: 15px;">現在登録されている画像</h4>
+        <hr>
+        <div class="row">
+          <% post.images.each do |image| %>
+              <div class="col-3" style="padding: 5px;">
+                <%= image_tag image,
+                              style: 'border-radius: 2%; object-fit: cover;',
+                              size: '250x150' %>
+              </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
 
-  <%= f.submit nil, class: 'btn btn-primary' %>
+  </div>
+
+
+  <div class="row">
+    <div class="col-8">
+      <h4>説明</h4>
+      <hr>
+      <div class="form-group mb-3">
+        <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: 'こだわりのポイントなど' %>
+      </div>
+    </div>
+    <div class="col-4">
+      <h4>タグ登録</h4>
+      <hr>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <%= f.submit nil, class: 'btn new-post-btn' %>
+  </div>
 <% end %>
 
-<script>
-    function postImage(obj) {
-        var fileReader = new FileReader();
-        fileReader.onload = (function() {
-            document.getElementById('image_preview').src = fileReader.result;
-        });
-        fileReader.readAsDataURL(obj.files[0]);
-    }
-</script>
+<!--  <div class="form-group mb-3">-->
+<%#= f.label :images, class: "form-label" %>
+<%#= f.file_field :images, multiple: true, onchange: "postImage(this);", accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+<!--  </div>-->
+
+<!--<script>-->
+<!--    function postImage(obj) {-->
+<!--        var fileReader = new FileReader();-->
+<!--        fileReader.onload = (function() {-->
+<!--            document.getElementById('preview').src = fileReader.result;-->
+<!--        });-->
+<!--        fileReader.readAsDataURL(obj.files[0]);-->
+<!--    }-->
+<!--</script>-->
