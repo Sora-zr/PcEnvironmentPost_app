@@ -60,7 +60,50 @@ main {
 //  object-fit: cover;
 //}
 
-#preview {
-  width: 250px;
-  height: 150px;
+//.preview-image {
+//  width: 250px;
+//  height: 150px;
+//  border-radius: 2%;
+//  object-fit: cover;
+//}
+
+//#file-preview-wrapper {
+//  display: flex;
+//  flex-direction: row;
+//}
+
+/* CSSファイルまたはstyleタグ内に追加 */
+#file-preview-list {
+  display: flex; /* フレキシブルボックスとして表示 */
+  list-style: none; /* リストのデフォルトのマーカーを削除 */
+}
+
+ul#file-preview-list {
+  margin: 0;
+  padding: 0;
+}
+
+#file-preview-list li {
+  margin-right: 10px; /* プレビュー間の間隔を調整 */
+}
+
+#file-preview-list img {
+  width: 250px; /* 幅を固定 */
+  height: 150px; /* 高さを固定 */
+  object-fit: cover;
+  border-radius: 2%;
+}
+
+.upload-container {
+  position: relative;
+  width: 400px; /* 必要に応じて幅を調整 */
+  height: 300px; /* 必要に応じて高さを調整 */
+  border: 2px dashed #ccc;
+  border-radius: 2%;
+  cursor: pointer;
+  text-align: center;
+}
+
+#upload-text {
+  padding-top: 100px; /* テキストを中央に配置するために調整 */
 }
