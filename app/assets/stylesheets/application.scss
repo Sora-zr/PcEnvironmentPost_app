@@ -107,3 +107,29 @@ ul#file-preview-list {
 #upload-text {
   padding-top: 100px; /* テキストを中央に配置するために調整 */
 }
+
+
+#image-upload-container {
+  position: relative;
+  width: 400px; /* 必要な幅に合わせて調整 */
+  height: 300px; /* 必要な高さに合わせて調整 */
+  border: 2px dashed #ccc;
+  border-radius: 2%;
+  text-align: center;
+  cursor: pointer;
+  background-color: gray;
+}
+
+#image-upload-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #333;
+}
+
+#up_images {
+  /* ファイルフィールドのスタイル（非表示） */
+}
+

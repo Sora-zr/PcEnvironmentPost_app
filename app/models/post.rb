@@ -6,15 +6,28 @@ class Post < ApplicationRecord
   has_many_attached :images
 
   validates_presence_of :description
+  # validates_presence_of :images
   validates :images, content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: "有効なフォーマットではありません。" },
             size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
   validate :validate_image_count
 
-  validates_presence_of :images
+  scope :likes_sort, -> { left_joins(:likes).group('posts.id').order('count(likes.id) desc') }
+
+  def self.sort_posts(sort_option, page)
+    posts = includes(:user)
+    case sort_option
+    when 'old'
+      posts.order(created_at: :asc).page(page)
+    when 'like'
+      posts.likes_sort.page(page)
+    else
+      posts.order(created_at: :desc).page(page)
+    end
+  end
 
   private
 
-  # imagesの枚数制限のためのバリデーション
+  # 枚数制限のためのバリデーション
   def validate_image_count
     if images.attached? && images.count > 4
       errors.add(:images, "は最大4枚までです。")

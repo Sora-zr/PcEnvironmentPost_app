@@ -1,6 +1,6 @@
 <div class="col text-center" style="padding: 0;">
   <% if current_user.own?(post) %>
-    <%= link_to edit_post_path(post) do %>
+    <%= link_to edit_post_path(post), data: { turbo: false } do %>
       <i class="fa-regular fa-pen-to-square edit-btn"></i>
     <% end %>
   <% end %>

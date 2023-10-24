@@ -5,15 +5,14 @@
 
   <div class="mb-5 text-center">
     <!-- 画像投稿フォーム -->
-    <div id="upload-container" class="upload-container" onClick="$('#up_images' ).click()">
-      <p id="upload-text">この空間をクリックして画像を追加してください</p>
-      <%= f.file_field :images,
-                       id: 'up_images',
-                       style: 'display: none;',
-                       multiple: true,
-                       accept: "image/jpeg, image/gif, image/png" %>
+    <div id="image-upload-container" onClick="$('#up_images').click()">
+      <p class="text-white" id="image-upload-text">この空間をクリックして画像を追加してください</p>
     </div>
-
+    <%= f.file_field :images,
+                     id: 'up_images',
+                     style: 'display: none;',
+                     multiple: true,
+                     accept: "image/jpeg, image/gif, image/png" %>
 
     <!-- プレビュー -->
     <div class="card bg-secondary text-white mt-5">

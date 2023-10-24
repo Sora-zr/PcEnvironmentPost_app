@@ -5,6 +5,11 @@
         <div class="row">
           <h1 class="text-center mb-4">投稿一覧</h1>
           <hr class="mb-5">
+          <%= form_tag(posts_path, method: 'get') do %>
+            <label for="sort">ソート：</label>
+            <%= select_tag(:sort, options_for_select([['新しい順', 'new'], ['古い順', 'old'], ['いいねの件数順', 'like']], params[:sort])) %>
+            <%= submit_tag('ソート') %>
+          <% end %>
           <%= render @posts %>
         </div>
       </div>
