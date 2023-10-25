@@ -8,7 +8,7 @@
 
 50.times do |n|
   user = User.create!(
-    user_name: Faker::Name.unique.name,
+    name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,
     password: 'password',
   )

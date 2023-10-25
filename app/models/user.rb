@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :post_bookmarks, through: :bookmarks, source: :post
 
-  validates_presence_of :user_name, :email
+  validates_presence_of :name, :email
 
   def own?(object)
     id == object.user_id
@@ -21,7 +21,7 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
-      user.user_name = 'ゲストユーザー'
+      user.name = 'ゲストユーザー'
     end
   end
 

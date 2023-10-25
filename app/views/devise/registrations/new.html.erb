@@ -7,13 +7,13 @@
         <div class="text-center">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
             <div class="input-group mt-2 mb-5">
-              <label class="input-group-text" for="user_name"><i class="fa-solid fa-user"></i></label>
-              <%= f.text_field :user_name,
+              <label class="input-group-text" for="name"><i class="fa-solid fa-user"></i></label>
+              <%= f.text_field :name,
                                autofocus: true,
-                               autocomplete: 'user_name',
+                               autocomplete: 'name',
                                class: 'form-control p-2',
-                               id: 'user_name',
-                               placeholder: User.human_attribute_name(:user_name),
+                               id: 'name',
+                               placeholder: User.human_attribute_name(:name),
                                required: true %>
             </div>
 
