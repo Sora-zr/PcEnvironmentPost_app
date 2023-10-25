@@ -7,7 +7,7 @@ ja:
         user_name: ユーザーネーム
         email: メールアドレス
         password: パスワード
-        password_confirmation: メールアドレス（確認）
+        password_confirmation: パスワード確認
 
       item_post:
         description: 説明

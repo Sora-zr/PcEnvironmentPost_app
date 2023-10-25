@@ -16,9 +16,9 @@ ja:
         last_sign_in_ip: 最終ログインIPアドレス
         locked_at: ロック時刻
         password: パスワード
-        password_confirmation: パスワード（確認用）
+        password_confirmation: パスワード確認
         remember_created_at: ログイン記憶時刻
-        remember_me: ログインを記憶する
+        remember_me: ログイン状態を維持する
         reset_password_sent_at: パスワードリセット送信時刻
         reset_password_token: パスワードリセット用トークン
         sign_in_count: ログイン回数

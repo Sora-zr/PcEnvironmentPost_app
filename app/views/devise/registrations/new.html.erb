@@ -1,77 +1,70 @@
-<div class="container content">
-  <div class="row">
-    <div class="col-5 mx-auto">
-      <div class="card nav-color">
-        <h2 class="card-header text-center p-3">ユーザー登録</h2>
-        <div class="card-body">
-          <div class="text-center">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <div class="input-group mt-3 mb-5">
-                <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
-                <%= f.text_field :user_name,
-                                 autofocus: true,
-                                 autocomplete: 'user_name',
-                                 class: 'form-control p-2',
-                                 placeholder: User.human_attribute_name(:user_name),
-                                 required: true %>
-              </div>
-
-              <div class="input-group mb-5">
-                <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
-                <%= f.email_field :email,
-                                  autofocus: true,
-                                  autocomplete: 'email',
-                                  class: 'form-control p-2',
-                                  placeholder: User.human_attribute_name(:email),
-                                  required: true %>
-              </div>
-
-              <div class="input-group mb-5">
-                <div class="input-group-text"><i class="fa-solid fa-lock"></i></div>
-                <%= f.password_field :password,
-                                     autofocus: true,
-                                     autocomplete: 'new-password',
-                                     class: 'form-control p-2',
-                                     placeholder: User.human_attribute_name(:password),
-                                     required: true %>
-              </div>
-
-              <div class="input-group mb-5">
-                <div class="input-group-text"><i class="fa-solid fa-lock"></i></div>
-                <%= f.password_field :password_confirmation,
-                                     autofocus: true,
-                                     autocomplete: 'new-password',
-                                     class: 'form-control p-2',
-                                     placeholder: User.human_attribute_name(:password_confirmation),
-                                     required: true %>
-              </div>
-
-              <div class="mb-4">
-                <%= button_tag type: 'submit', class: 'btn login-btn' do %>
-                  <i class="fa-solid fa-user-plus"></i>
-                  <span>　ユーザー登録をする</span>
-                <% end %>
-              </div>
-            <% end %>
-
-            <hr>
-
-            <div class="mt-4 mb-3">
-              <%= link_to 'ログインページへ', user_session_path %>
+<div class="container devise-page-content">
+  <div class="mx-auto">
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="card nav-color">
+      <h2 class="card-header text-center p-4">ユーザー登録</h2>
+      <div class="card-body devise-body">
+        <div class="text-center">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="input-group mt-2 mb-5">
+              <label class="input-group-text" for="user_name"><i class="fa-solid fa-user"></i></label>
+              <%= f.text_field :user_name,
+                               autofocus: true,
+                               autocomplete: 'user_name',
+                               class: 'form-control p-2',
+                               id: 'user_name',
+                               placeholder: User.human_attribute_name(:user_name),
+                               required: true %>
             </div>
+
+            <div class="input-group mb-5">
+              <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
+              <%= f.email_field :email,
+                                autofocus: true,
+                                autocomplete: 'email',
+                                class: 'form-control p-2',
+                                id: 'email',
+                                placeholder: User.human_attribute_name(:email),
+                                required: true %>
+            </div>
+
+            <div class="input-group mb-5">
+              <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
+              <%= f.password_field :password,
+                                   autofocus: true,
+                                   autocomplete: 'new-password',
+                                   class: 'form-control p-2',
+                                   id: 'password',
+                                   placeholder: User.human_attribute_name(:password),
+                                   required: true %>
+            </div>
+
+            <div class="input-group mb-5">
+              <label class="input-group-text" for="password-confirmation"><i class="fa-solid fa-lock"></i></label>
+              <%= f.password_field :password_confirmation,
+                                   autofocus: true,
+                                   autocomplete: 'new-password',
+                                   class: 'form-control p-2',
+                                   id: 'password-confirmation',
+                                   placeholder: User.human_attribute_name(:password_confirmation),
+                                   required: true %>
+            </div>
+
+            <div class="mb-4">
+              <%= button_tag type: 'submit', class: 'btn green-btn' do %>
+                <i class="fa-solid fa-user-plus"></i>
+                <span>　ユーザー登録をする</span>
+              <% end %>
+            </div>
+          <% end %>
+
+          <hr>
+
+          <div class="mt-4">
+            <%= link_to 'ログインページへ', user_session_path %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
-        <!--        <div class="form-group mb-3">-->
-        <%#= f.label :password %>
-        <%# if @minimum_password_length %>
-        <!--          <em>(<%#= @minimum_password_length %> characters minimum)</em>-->
-        <%# end %>
-        <%#= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-        <!--        </div>-->
-        <%#= render "devise/shared/links" %>

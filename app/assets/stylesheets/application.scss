@@ -1,11 +1,14 @@
 @import "bootstrap";
+@import "devise-page";
+
 @import "home";
 @import "post";
 @import "icon";
-@import "login-page";
+
 @import "flash-window";
 @import "pagination";
-@import 'swiper/swiper-bundle.min.css';
+@import "swiper/swiper-bundle.min.css";
+
 
 main {
   margin-top: 57.43px;
@@ -132,4 +135,3 @@ ul#file-preview-list {
 #up_images {
   /* ファイルフィールドのスタイル（非表示） */
 }
-

@@ -1,0 +1,79 @@
+.devise-page-content {
+  width: 50%;
+  padding: 80px;
+
+  .devise-body {
+    padding: 30px 50px;
+  }
+
+  .green-btn {
+    color: white;
+    background-color: #00b300;
+    padding: 15px 60px;
+  }
+  .green-btn:hover {
+    background-color: #008000;
+  }
+
+  .google-btn {
+    color: white;
+    background-color: #ea4335;
+    padding: 15px 60px;
+  }
+  .google-btn:hover {
+    background-color: #b33529;
+  }
+
+  .gray-btn {
+    color: white;
+    background-color: #7d7d7d;
+    padding: 15px 60px;
+  }
+  .gray-btn:hover {
+    background-color: #666666;
+  }
+}
+
+/* タブレット向けスタイル */
+@media (max-width: 820px) {
+  .devise-page-content {
+    width: 70%;
+    padding: 40px;
+
+    .green-btn {
+      padding: 10px 40px;
+    }
+
+    .google-btn {
+      padding: 10px 40px;
+    }
+
+    .gray-btn {
+      padding: 10px 40px;
+    }
+  }
+}
+
+/* スマートフォン向けスタイル */
+@media (max-width: 480px) {
+  .devise-page-content {
+    width: 90%;
+    padding: 20px;
+
+    .devise-body {
+      padding: 10px 10px 20px 10px;
+    }
+
+    .green-btn {
+      padding: 8px 20px;
+    }
+
+    .google-btn {
+      padding: 8px 20px;
+    }
+
+    .gray-btn {
+      padding: 8px 20px;
+    }
+  }
+}

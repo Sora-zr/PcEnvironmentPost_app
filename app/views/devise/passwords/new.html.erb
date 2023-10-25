@@ -1,33 +1,34 @@
-<div class="container content">
-  <div class="row">
-    <div class="col-5 mx-auto new-password-page">
-      <%= render "devise/shared/error_messages", resource: resource %>
-      <div class="card nav-color">
-        <h2 class="card-header text-center p-3">パスワードの再設定</h2>
-        <div class="card-body">
-          <div class="text-center">
-            <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-              <p>ご登録しているメールアドレスを入力してください。</p>
-              <div class="input-group mt-3 mb-5">
-                <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
-                <%= f.email_field :email,
-                                  autofocus: true,
-                                  autocomplete: 'email',
-                                  class: 'form-control p-2',
-                                  placeholder: 'sample@example.com',
-                                  required: true %>
-              </div>
-
-              <div class="pb-4">
-                <%= f.submit 'パスワード再設定用のリンクを送信', class: 'btn gray-button' %>
-              </div>
-            <% end %>
-
-            <hr>
-
-            <div class="pt-3 pb-3">
-              <%= link_to 'ログイン画面へ戻る', user_session_path %>
+<div class="container devise-page-content">
+  <div class="mx-auto">
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="card nav-color">
+      <h2 class="card-header text-center p-4">パスワードの再設定</h2>
+      <div class="card-body devise-body">
+        <div class="text-center">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+            <p>ご登録しているメールアドレスを入力してください。</p>
+            <div class="input-group mt-3 mb-5">
+              <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
+              <%= f.email_field :email,
+                                autofocus: true,
+                                autocomplete: 'email',
+                                class: 'form-control p-2',
+                                id: 'email',
+                                placeholder: 'sample@example.com',
+                                required: true %>
             </div>
+
+            <div class="mb-4">
+              <%= button_tag type: 'submit', class: 'btn gray-btn' do %>
+                <span>パスワード再設定用のリンクを送信</span>
+              <% end %>
+            </div>
+          <% end %>
+
+          <hr>
+
+          <div class="pt-3 pb-3">
+            <%= link_to 'ログイン画面へ戻る', user_session_path %>
           </div>
         </div>
       </div>
