@@ -49,9 +49,13 @@
           <hr>
           <h6 class="text-center mt-4 mb-4">または</h6>
 
-          <%= link_to '#', class: 'btn google-btn mb-4' do %>
-            <i class="fa-brands fa-google"></i>
-            <span>　Googleアカウントでログイン　</span>
+          <% if devise_mapping.omniauthable? %>
+            <% resource_class.omniauth_providers.each do |provider| %>
+              <%= button_to omniauth_authorize_path(resource_name, provider), class: 'btn google-btn mb-4', data: { turbo: false } do %>
+                <i class="fa-brands fa-google"></i>
+                <span>　Googleアカウントでログイン　</span>
+              <% end %>
+            <% end %>
           <% end %>
 
           <%= link_to users_guest_sign_in_path,

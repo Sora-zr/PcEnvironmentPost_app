@@ -58,6 +58,10 @@ gem "acts-as-taggable-on", "~> 9.0"
 gem "kaminari"
 gem "active_storage_validations"
 gem "mini_magick"
+gem "dotenv-rails"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
