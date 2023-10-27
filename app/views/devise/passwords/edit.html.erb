@@ -72,24 +72,26 @@
               <%# if @minimum_password_length %>
 <!--                (<%#= @minimum_password_length %> 文字以上)-->
               <%# end %>
-            <div class="input-group mt-3 mb-5">
+            <span>新しいパスワード（6文字以上）</span>
+            <div class="input-group mt-2 mb-5">
               <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
               <%= f.password_field :password,
                                    autofocus: true,
                                    class: 'form-control w-25',
                                    id: 'password',
-                                   placeholder: 'sample@example.com' %>
+                                   placeholder: 'password' %>
             </div>
 
-            <div class="input-group mt-3">
+            <span>新しいパスワード（確認）</span>
+            <div class="input-group mt-2">
               <%#= f.label :新しいパスワード（確認用）, class: "translatable-text" %>
-              <div class="input-group mt-3 mb-5">
+              <div class="input-group mb-5">
                 <label class="input-group-text" for="password_confirmation"><i class="fa-solid fa-lock"></i></label>
                 <%= f.password_field :password_confirmation,
                                      autofocus: true,
                                      class: 'form-control w-25',
                                      id: 'password_confirmation',
-                                     placeholder: 'sample@example.com' %>
+                                     placeholder: 'password' %>
               </div>
             </div>
 

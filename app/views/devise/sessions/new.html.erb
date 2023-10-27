@@ -6,7 +6,8 @@
       <div class="card-body devise-body">
         <div class="text-center">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="input-group mt-3 mb-5">
+            <span>メールアドレス</span>
+            <div class="input-group mt-2 mb-5">
               <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
               <%= f.email_field :email,
                                 autofocus: true,
@@ -17,7 +18,8 @@
                                 required: true %>
             </div>
 
-            <div class="input-group">
+            <span>パスワード</span>
+            <div class="input-group mt-2">
               <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
               <%= f.password_field :password,
                                    autofocus: true,

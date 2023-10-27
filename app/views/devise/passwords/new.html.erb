@@ -7,7 +7,7 @@
         <div class="text-center">
           <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
             <p>ご登録しているメールアドレスを入力してください。</p>
-            <div class="input-group mt-3 mb-5">
+            <div class="input-group mt-2 mb-5">
               <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
               <%= f.email_field :email,
                                 autofocus: true,
