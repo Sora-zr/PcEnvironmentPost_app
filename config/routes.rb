@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
+    passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
@@ -16,4 +17,6 @@ Rails.application.routes.draw do
   end
   resources :likes, only: %i[create destroy]
   resources :bookmarks, only: %i[create destroy]
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

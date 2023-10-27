@@ -1,59 +1,106 @@
-<h2>Change your password</h2>
+<!--<h2>Change your password</h2>-->
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
+<%#= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%#= render "devise/shared/error_messages", resource: resource %>
+  <%#= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%#= f.label :password, "New password" %><br />-->
+    <%# if @minimum_password_length %>
+<!--      <em>(<%#= @minimum_password_length %> characters minimum)</em><br />-->
+    <%# end %>
+    <%#= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+<!--  </div>-->
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+<!--  <div class="field">-->
+<!--    <%#= f.label :password_confirmation, "Confirm new password" %><br />-->
+    <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>
+<!--  </div>-->
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+<!--  <div class="actions">-->
+    <%#= f.submit "Change my password" %>
+<!--  </div>-->
+<%# end %>
 
-<%= render "devise/shared/links" %>
+<%#= render "devise/shared/links" %>
 
-<div class="container p-5">
-  <div class="row">
-    <div class="col-md-12">
+<!--<div class="container p-5">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-12">-->
 
-      <h5>パスワード再設定</h5>
+<!--      <h5>パスワード再設定</h5>-->
 
-      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
-        <%= f.hidden_field :reset_password_token %>
+      <%#= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+        <%#= render "devise/shared/error_messages", resource: resource %>
+        <%#= f.hidden_field :reset_password_token %>
 
-        <div class="field mt-3">
-          <%= f.label :新しいパスワード, class: "translatable-text" %>
-          <% if @minimum_password_length %>
-            (<%= @minimum_password_length %> 文字以上)
+<!--        <div class="field mt-3">-->
+          <%#= f.label :新しいパスワード, class: "translatable-text" %>
+          <%# if @minimum_password_length %>
+<!--            (<%#= @minimum_password_length %> 文字以上)-->
+          <%# end %>
+          <%#= f.password_field :password, autofocus: true, class: "form-control w-25" %>
+<!--        </div>-->
+
+<!--        <div class="field mt-3">-->
+          <%#= f.label :新しいパスワード（確認用）, class: "translatable-text" %>
+          <%#= f.password_field :password_confirmation, class: "form-control w-25" %>
+<!--        </div>-->
+
+<!--        <div class="actions mt-3">-->
+          <%#= button_tag(type: 'submit', class: "btn btn-success translatable-text") do %>
+<!--            パスワード変更-->
+          <%# end %>
+<!--        </div>-->
+
+      <%# end %>
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<div class="container devise-page-content">
+  <div class="mx-auto">
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="card nav-color">
+      <h2 class="card-header text-center p-4">パスワード再設定</h2>
+      <div class="card-body devise-body">
+        <div class="text-center">
+          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <%= f.hidden_field :reset_password_token %>
+              <%# if @minimum_password_length %>
+<!--                (<%#= @minimum_password_length %> 文字以上)-->
+              <%# end %>
+            <div class="input-group mt-3 mb-5">
+              <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
+              <%= f.password_field :password,
+                                   autofocus: true,
+                                   class: 'form-control w-25',
+                                   id: 'password',
+                                   placeholder: 'sample@example.com' %>
+            </div>
+
+            <div class="input-group mt-3">
+              <%#= f.label :新しいパスワード（確認用）, class: "translatable-text" %>
+              <div class="input-group mt-3 mb-5">
+                <label class="input-group-text" for="password_confirmation"><i class="fa-solid fa-lock"></i></label>
+                <%= f.password_field :password_confirmation,
+                                     autofocus: true,
+                                     class: 'form-control w-25',
+                                     id: 'password_confirmation',
+                                     placeholder: 'sample@example.com' %>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <%= button_tag type: 'submit', class: 'btn green-btn' do %>
+                <span>パスワードを変更</span>
+              <% end %>
+            </div>
           <% end %>
-          <%= f.password_field :password, autofocus: true, class: "form-control w-25" %>
         </div>
-
-        <div class="field mt-3">
-          <%= f.label :新しいパスワード（確認用）, class: "translatable-text" %>
-          <%= f.password_field :password_confirmation, class: "form-control w-25" %>
-        </div>
-
-        <div class="actions mt-3">
-          <%= button_tag(type: 'submit', class: "btn btn-success translatable-text") do %>
-            パスワード変更
-          <% end %>
-        </div>
-      <% end %>
-
+      </div>
     </div>
   </div>
 </div>

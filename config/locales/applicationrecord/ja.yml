@@ -4,7 +4,7 @@ ja:
 
     attributes:
       user:
-        user_name: ユーザーネーム
+        name: ユーザーネーム
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
