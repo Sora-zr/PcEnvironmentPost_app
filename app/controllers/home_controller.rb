@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   skip_before_action :authenticate_user!
 
-  def top; end
+  def top
+    @user = current_user
+  end
 end

@@ -1,72 +1,70 @@
 <div class="container devise-page-content">
   <div class="mx-auto">
-    <%= render "devise/shared/error_messages", resource: resource %>
     <div class="card nav-color">
       <h2 class="card-header text-center p-4">ユーザー登録</h2>
       <div class="card-body devise-body">
-        <div class="text-center">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <span>ユーザネーム</span>
-            <div class="input-group mt-2 mb-5">
-              <label class="input-group-text" for="name"><i class="fa-solid fa-user"></i></label>
-              <%= f.text_field :name,
-                               autofocus: true,
-                               autocomplete: 'name',
-                               class: 'form-control p-2',
-                               id: 'name',
-                               placeholder: User.human_attribute_name(:name),
-                               required: true %>
-            </div>
-
-            <span>メールアドレス</span>
-            <div class="input-group mt-2 mb-5">
-              <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
-              <%= f.email_field :email,
-                                autofocus: true,
-                                autocomplete: 'email',
-                                class: 'form-control p-2',
-                                id: 'email',
-                                placeholder: User.human_attribute_name(:email),
-                                required: true %>
-            </div>
-
-            <span>パスワード（6文字以上）</span>
-            <div class="input-group mt-2 mb-5">
-              <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
-              <%= f.password_field :password,
-                                   autofocus: true,
-                                   autocomplete: 'new-password',
-                                   class: 'form-control p-2',
-                                   id: 'password',
-                                   placeholder: User.human_attribute_name(:password),
-                                   required: true %>
-            </div>
-
-            <span>パスワード確認</span>
-            <div class="input-group mt-2 mb-5">
-              <label class="input-group-text" for="password-confirmation"><i class="fa-solid fa-lock"></i></label>
-              <%= f.password_field :password_confirmation,
-                                   autofocus: true,
-                                   autocomplete: 'new-password',
-                                   class: 'form-control p-2',
-                                   id: 'password-confirmation',
-                                   placeholder: User.human_attribute_name(:password_confirmation),
-                                   required: true %>
-            </div>
-
-            <div class="mb-4">
-              <%= button_tag type: 'submit', class: 'btn green-btn' do %>
-                <i class="fa-solid fa-user-plus"></i>
-                <span>　ユーザー登録をする</span>
-              <% end %>
-            </div>
-          <% end %>
-
-          <hr>
-
-          <div class="mt-4">
-            <%= link_to 'ログインページへ', user_session_path %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div>ユーザネーム</div>
+          <div class="input-group mb-5">
+            <label class="input-group-text" for="name"><i class="fa-solid fa-user"></i></label>
+            <%= f.text_field :name,
+                             autofocus: true,
+                             autocomplete: 'name',
+                             class: 'form-control p-2',
+                             id: 'name',
+                             placeholder: User.human_attribute_name(:name),
+                             required: true %>
           </div>
+
+          <div>メールアドレス</div>
+          <div class="input-group mb-5">
+            <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
+            <%= f.email_field :email,
+                              autofocus: true,
+                              autocomplete: 'email',
+                              class: 'form-control p-2',
+                              id: 'email',
+                              placeholder: User.human_attribute_name(:email),
+                              required: true %>
+          </div>
+
+          <div>パスワード（6文字以上）</div>
+          <div class="input-group mb-5">
+            <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
+            <%= f.password_field :password,
+                                 autofocus: true,
+                                 autocomplete: 'new-password',
+                                 class: 'form-control p-2',
+                                 id: 'password',
+                                 placeholder: User.human_attribute_name(:password),
+                                 required: true %>
+          </div>
+
+          <div>パスワード確認</div>
+          <div class="input-group mb-5">
+            <label class="input-group-text" for="password-confirmation"><i class="fa-solid fa-lock"></i></label>
+            <%= f.password_field :password_confirmation,
+                                 autofocus: true,
+                                 autocomplete: 'new-password',
+                                 class: 'form-control p-2',
+                                 id: 'password-confirmation',
+                                 placeholder: User.human_attribute_name(:password_confirmation),
+                                 required: true %>
+          </div>
+
+          <div class="mb-4 text-center">
+            <%= button_tag type: 'submit', class: 'btn green-btn' do %>
+              <i class="fa-solid fa-user-plus"></i>
+              <span>　ユーザー登録をする</span>
+            <% end %>
+          </div>
+        <% end %>
+
+        <hr>
+
+        <div class="mt-4 text-center">
+          <%= link_to 'ログインページへ', user_session_path %>
         </div>
       </div>
     </div>

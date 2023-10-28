@@ -4,31 +4,33 @@
     <div class="card nav-color">
       <h2 class="card-header text-center p-4">ログイン</h2>
       <div class="card-body devise-body">
-        <div class="text-center">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <span>メールアドレス</span>
-            <div class="input-group mt-2 mb-5">
-              <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
-              <%= f.email_field :email,
-                                autofocus: true,
-                                autocomplete: 'email',
-                                class: 'form-control p-2',
-                                id: 'email',
-                                placeholder: User.human_attribute_name(:email),
-                                required: true %>
-            </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-            <span>パスワード</span>
-            <div class="input-group mt-2">
-              <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
-              <%= f.password_field :password,
-                                   autofocus: true,
-                                   autocomplete: 'password',
-                                   class: 'form-control p-2',
-                                   id: 'password',
-                                   placeholder: User.human_attribute_name(:password),
-                                   required: true %>
-            </div>
+          <span>メールアドレス</span>
+          <div class="input-group mb-4">
+            <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
+            <%= f.email_field :email,
+                              autofocus: true,
+                              autocomplete: 'email',
+                              class: 'form-control p-2',
+                              id: 'email',
+                              placeholder: User.human_attribute_name(:email),
+                              required: true %>
+          </div>
+
+          <span>パスワード</span>
+          <div class="input-group">
+            <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
+            <%= f.password_field :password,
+                                 autofocus: true,
+                                 autocomplete: 'password',
+                                 class: 'form-control p-2',
+                                 id: 'password',
+                                 placeholder: User.human_attribute_name(:password),
+                                 required: true %>
+          </div>
+          <div class="text-center">
             <div class="mt-1 mb-4">
               <%= link_to 'パスワードをお忘れですか？', new_user_password_path %>
             </div>
@@ -46,10 +48,12 @@
                 <span>　ログイン</span>
               <% end %>
             </div>
-          <% end %>
+          </div>
+        <% end %>
 
-          <hr>
-          <h6 class="text-center mt-4 mb-4">または</h6>
+        <hr>
+        <div class="text-center">
+          <h6 class="mt-4 mb-4">または</h6>
 
           <% if devise_mapping.omniauthable? %>
             <% resource_class.omniauth_providers.each do |provider| %>
@@ -67,9 +71,15 @@
             <span>　ゲストユーザーとしてログイン</span>
           <% end %>
 
-          <div class="mb-3">
-            <%= link_to 'アカウントを新規作成する', new_user_registration_path %>
-          </div>
+          <%= link_to new_user_registration_path, class: 'btn blue-btn mb-4' do %>
+            <i class="fa-solid fa-user-plus"></i>
+            <span>　アカウントを新規作成する</span>
+          <% end %>
+        </div>
+
+        <hr>
+        <div class="text-center">
+          <%= link_to "戻る", :back, class: 'text-center' %>
         </div>
       </div>
     </div>
