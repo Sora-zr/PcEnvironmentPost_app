@@ -6,18 +6,6 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-          <span>ユーザーネーム</span>
-          <div class="input-group mb-4">
-            <label class="input-group-text" for="name"><i class="fa-solid fa-user"></i></label>
-            <%= f.text_field :name,
-                              autofocus: true,
-                              autocomplete: 'name',
-                              class: 'form-control p-2',
-                              id: 'name',
-                              placeholder: User.human_attribute_name(:name),
-                              required: true %>
-          </div>
-
           <span>メールアドレス</span>
           <div class="input-group mb-5">
             <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
