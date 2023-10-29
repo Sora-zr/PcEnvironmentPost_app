@@ -6,14 +6,15 @@
           <%= image_tag post.images[0], class: 'card-img-top', size: '400x330', style: "object-fit: cover;" %>
         <% end %>
       </div>
-      <div class="card-body">
+      <div class="card-body post-body">
         <div class="row">
-          <div class="col-sm-8">
-            <h5 style="margin: 0;"><%= post.user.name %></h5>
+          <div class="col-sm-8 d-flex">
+            <%= image_tag post.user.avatar, class: 'rounded-circle', size: 45 %>
+            <h5 style="margin: auto 10px;"><%= post.user.name %></h5>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-4" style="margin: auto 0;">
             <% if current_user.own?(post) %>
-              <div class="row">
+              <div class="row" style="">
                 <%= render 'shared/crud_menu', post: post %>
               </div>
             <% else %>

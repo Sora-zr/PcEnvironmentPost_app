@@ -11,8 +11,11 @@ class User < ApplicationRecord
   has_many :post_likes, through: :likes, source: :post
   has_many :bookmarks, dependent: :destroy
   has_many :post_bookmarks, through: :bookmarks, source: :post
+  has_one_attached :avatar
 
   validates_presence_of :name, :email
+  validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: "有効なフォーマットではありません。" },
+            size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -26,6 +29,9 @@ class User < ApplicationRecord
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.password_confirmation = user.password
+      user.avatar.attach( io: File.open( Rails.root.join('app', 'assets', 'images', 'guest_avatar.png')),
+                          filename: 'guest_avatar.png',
+                          content_type: 'image/png' )
       user.name = 'ゲストユーザー'
     end
   end

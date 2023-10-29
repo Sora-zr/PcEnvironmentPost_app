@@ -2,8 +2,9 @@
   <div class="card bg-dark text-white border-white mb-4">
     <div class="card-body">
       <div class="row">
-        <div class="col text-center">
-          <h4 style="margin: 0;"><%= @post.user.name %></h4>
+        <div class="col text-center d-flex">
+          <%= image_tag @post.user.avatar, class: 'rounded-circle', size: 45 %>
+          <h4 style="margin: auto 20px;"><%= @post.user.name %></h4>
         </div>
       </div>
     </div>

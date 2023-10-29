@@ -5,6 +5,7 @@
       <div class="card-body devise-body">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
+
           <div>ユーザネーム</div>
           <div class="input-group mb-5">
             <label class="input-group-text" for="name"><i class="fa-solid fa-user"></i></label>

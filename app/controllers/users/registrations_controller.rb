@@ -12,7 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
+    super do |resource|
+      resource.avatar.attach( io: File.open(Rails.root.join('app', 'assets', 'images', 'default_avatar.png')),
+                              filename: 'default_avatar.png',
+                              content_type: 'image/png' )
+    end
   end
 
   # GET /resource/edit
