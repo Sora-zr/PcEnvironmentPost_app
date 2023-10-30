@@ -3,7 +3,7 @@
     <div class="card bg-dark text-white border-white">
       <div class="card-header" style="padding: 0; ">
         <%= link_to post_path(post), data: { turbo: false } do %>
-          <%= image_tag post.images[0], class: 'card-img-top', size: '400x330', style: "object-fit: cover;" %>
+          <%= image_tag post.images[0], class: 'card-img-top', style: "object-fit: cover;" %>
         <% end %>
       </div>
       <div class="card-body post-body">

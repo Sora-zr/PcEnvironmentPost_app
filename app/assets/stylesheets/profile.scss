@@ -1,0 +1,51 @@
+.profile-page-content {
+  width: 60%;
+  padding: 50px;
+
+  .card {
+    margin-top: 110px;
+  }
+
+  .card-body {
+    h1 {
+      padding-top: 70px;
+    }
+  }
+
+  .avatar {
+    z-index: 10;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .profile-my-post {
+    margin: 20px 60px;
+  }
+}
+
+/* タブレット向けスタイル */
+@media (max-width: 820px) {
+  .profile-page-content {
+    width: 80%;
+    padding: 25px;
+
+    .profile-my-post {
+      margin: 10px 30px;
+    }
+  }
+}
+
+/* スマートフォン向けスタイル */
+@media (max-width: 480px) {
+  .profile-page-content {
+    width: 95%;
+    padding: 10px;
+
+    .profile-my-post {
+      margin: 0;
+    }
+  }
+}
+

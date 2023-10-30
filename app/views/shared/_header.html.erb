@@ -11,36 +11,41 @@
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
+          <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <div class="nav-item">
               <%= link_to root_path, class: 'nav-link ms-2' do %>
                 <i class="fa-solid fa-house"></i>　ホームページ
               <% end %>
-            </li>
-            <li class="nav-item">
+            </div>
+            <div class="nav-item">
               <%= link_to posts_path, class: 'nav-link ms-2' do %>
                 <i class="fa-solid fa-paste post-btn"></i>　投稿一覧
               <% end %>
-            </li>
-            <li class="nav-item">
+            </div>
+            <div class="nav-item">
               <%= link_to bookmarks_posts_path, class: 'nav-link ms-2' do %>
                 <i class="fa-solid fa-bookmark"></i>　ブックマーク
               <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '#', class: 'nav-link ms-2' do %>
-                <i class="fa-solid fa-user mypage-btn"></i>　アカウント情報
-              <% end %>
-            </li>
+            </div>
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user mypage-btn ms-2"></i>　アカウント情報
+              </a>
+              <div class="dropdown-menu dropdown-menu-dark">
+                <%= link_to 'プロフィール', profile_path, class: 'dropdown-item' %>
+                <%= link_to 'メールアドレス・パスワードの変更', edit_user_registration_path, class: 'dropdown-item' %>
+                <%= link_to 'アカウント削除', user_registration_path, class: 'dropdown-item text-danger', data: { turbo_method: :delete, turbo_confirm: '退会する場合保存されていたデータは全て削除されます。本当に削除しますか？' } %>
+              </div>
+            </div>
             <hr>
-            <li class="nav-item">
+            <div class="nav-item">
               <%= link_to destroy_user_session_path,
                           data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' },
                           class: 'nav-link text-danger ms-2' do %>
                 <i class="fa-solid fa-right-from-bracket logout-btn"></i>　ログアウト
               <% end %>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

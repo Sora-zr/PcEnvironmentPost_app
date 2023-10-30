@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "devise-page";
+@import "profile";
 
 @import "home";
 @import "post";
@@ -138,4 +139,12 @@ ul#file-preview-list {
 
 #up_images {
   /* ファイルフィールドのスタイル（非表示） */
+}
+
+.profile {
+  //z-index: 10;
+  //position: absolute;
+  //left: 0;
+  //right: 0;
+  //margin: auto;
 }

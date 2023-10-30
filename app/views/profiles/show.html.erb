@@ -1,0 +1,55 @@
+<div class="container profile-page-content">
+  <%= image_tag @user.avatar, size: 250, class: 'avatar' %>
+  <div class="card nav-color">
+    <div class="card-body text-center">
+      <div class="dropdown text-end">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+          ユーザー情報を編集
+        </button>
+        <form class="dropdown-menu p-4 bg-dark text-white">
+          <%= form_with model: @user, url: profile_path(current_user), local: true do |f| %>
+            <div class="form-group mb-2">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group mb-3">
+              <%= f.label :avatar %>
+              <%= f.file_field :avatar, class: 'form-control' %>
+            </div>
+
+            <div class="text-center">
+              <%= f.submit '更新', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </form>
+      </div>
+      <h1><%= @user.name %></h1>
+      <hr>
+      <h5>＜ 自身の投稿 ＞</h5>
+      <% if @user.post.present? %>
+        <div class="card bg-dark text-white border-white profile-my-post">
+          <%= link_to post_path(@post), data: { turbo: false } do %>
+            <%= image_tag @post.images[0], class: 'card-img-top', size: '400x330', style: "object-fit: cover;" %>
+          <% end %>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-8 d-flex">
+                <%= image_tag @post.user.avatar, class: 'rounded-circle', size: 45 %>
+                <h5 style="margin: auto 10px;"><%= @post.user.name %></h5>
+              </div>
+              <div class="col-sm-4" style="margin: auto 0;">
+                <div class="row" style="">
+                  <%= render 'shared/like_bookmark_menu', post: @post %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <p>投稿はありません。</p>
+        <%= link_to '投稿する', new_post_path, class: 'btn btn-primary', data: { turbo: false } %>
+      <% end %>
+    </div>
+  </div>
+</div>
