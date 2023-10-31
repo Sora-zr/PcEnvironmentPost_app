@@ -1,5 +1,5 @@
 <div class="mb-2 mt-3">
-  <h6><%= comment.user.user_name %></h6>
+  <h6><%= comment.user.name %></h6>
   <%= comment.content %>
   <% if current_user.own?(comment) %>
     <ul class="list-inline justify-content-center" style="float: right;">

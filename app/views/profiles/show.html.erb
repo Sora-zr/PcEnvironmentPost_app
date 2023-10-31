@@ -3,26 +3,30 @@
   <div class="card nav-color">
     <div class="card-body text-center">
       <div class="dropdown text-end">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-          ユーザー情報を編集
-        </button>
-        <form class="dropdown-menu p-4 bg-dark text-white">
-          <%= form_with model: @user, url: profile_path(current_user), local: true do |f| %>
-            <div class="form-group mb-2">
-              <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
-            </div>
+        <% if @user.email == 'guest@example.com' %>
+          <h1></h1>
+        <% else %>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+            ユーザー情報を編集
+          </button>
+          <form class="dropdown-menu p-4 bg-dark text-white">
+            <%= form_with model: @user, url: profile_path(current_user), local: true do |f| %>
+              <div class="form-group mb-2">
+                <%= f.label :name %>
+                <%= f.text_field :name, class: 'form-control' %>
+              </div>
 
-            <div class="form-group mb-3">
-              <%= f.label :avatar %>
-              <%= f.file_field :avatar, class: 'form-control' %>
-            </div>
+              <div class="form-group mb-3">
+                <%= f.label :avatar %>
+                <%= f.file_field :avatar, class: 'form-control' %>
+              </div>
 
-            <div class="text-center">
-              <%= f.submit '更新', class: 'btn btn-primary' %>
-            </div>
-          <% end %>
-        </form>
+              <div class="text-center">
+                <%= f.submit '更新', class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </form>
+        <% end %>
       </div>
       <h1><%= @user.name %></h1>
       <hr>

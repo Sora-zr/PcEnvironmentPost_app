@@ -1,21 +1,15 @@
-<div class="container mt-5 content">
-  <div class="card bg-dark text-white border-white mb-4">
-    <div class="card-body">
-      <div class="row">
-        <div class="col text-center d-flex">
-          <%= image_tag @post.user.avatar, class: 'rounded-circle', size: 45 %>
-          <h4 style="margin: auto 20px;"><%= @post.user.name %></h4>
-        </div>
-      </div>
+<div class="container mt-5 post-content">
+  <div class="card bg-dark text-white border-white">
+    <div class="card-header text-center d-flex">
+      <%= image_tag @post.user.avatar, class: 'rounded-circle', size: 45 %>
+      <h4 style="margin: auto 20px;"><%= @post.user.name %></h4>
     </div>
-  </div>
-  <div class="card bg-dark text-white border-white mb-5">
-    <div class="card-body" style="padding: 10px">
+    <div class="card-body" style="padding: 0;">
       <div class="swiper">
         <div class="swiper-wrapper">
           <% @post.images.each do |image| %>
             <div class="swiper-slide">
-              <%= image_tag image, size: '600x700', class: 'card-img-top' %>
+              <%= image_tag image, size: '600x700', class: 'card-img-top post-image' %>
             </div>
           <% end %>
         </div>
@@ -26,7 +20,7 @@
     </div>
   </div>
 
-  <hr class="mb-5">
+  <hr class="my-5">
 
   <div class="container">
     <div class="row">
@@ -39,28 +33,19 @@
               <div class="card-text">
                 <%= simple_format @post.description %>
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card bg-dark border-white text-white">
-          <div class="card-body">
-            <h4 class="card-title text-center">使用アイテム一覧</h4>
-            <hr>
-            <div class="card" style="width: 18rem;">
-              <%= image_tag 'sample1.jpg', class: 'card-img-top' %>
-              <div class="card-body">
-                <p class="card-text">Test</p>
+              <div class="card-footer text-end" style="padding: 16px 16px 0 16px;">
+                投稿作成日：　<%= @post.created_at.strftime("%Y年 %m月 %d日") %>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-sm-3">
         <div class="mb-5">
           <div class="card bg-dark border-white text-white mb-4">
-            <div class="card-body">
-              <div class="row">
+            <div class="card-header">
+              <div class="row my-2">
                 <% if current_user.own?(@post) %>
                   <%= render 'shared/crud_menu', post: @post %>
                 <% else %>
@@ -68,9 +53,6 @@
                 <% end %>
               </div>
             </div>
-          </div>
-
-          <div class="card bg-dark border-white text-white">
             <div class="card-body">
               <h4 class="card-title text-center">コメント一覧</h4>
               <hr>
@@ -78,7 +60,7 @@
                 <% if @comments.present? %>
                   <%= render @comments %>
                 <% else %>
-                  <p>コメントはありません。</p>
+                  <p class="text-center">コメントはありません。</p>
                 <% end %>
                 <% unless current_user.own?(@post) %>
                   <hr>
@@ -92,4 +74,3 @@
     </div>
   </div>
 </div>
-
