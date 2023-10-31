@@ -2,9 +2,9 @@
   <div class="form-group">
     <%= f.text_area :content,
                     class: 'form-control mb-3',
-                    id: 'js_comment_textarea',
+                    id: 'js_new_comment_textarea',
+                    placeholder: Comment.human_attribute_name(:content),
                     rows: 2 %>
   </div>
-  <%= f.hidden_field :post_id, value: post.id %>
-  <%= f.submit nil, class: 'btn btn-primary' %>
+  <%= f.submit 'コメントする', class: 'btn btn-outline-primary' %>
 <% end %>

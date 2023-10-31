@@ -1,2 +1,7 @@
-$('#js_comment_index').prepend('<%= j(render 'comments/comment', comment: @comment) %>')
-$('#js_comment_textarea').val('');
+//$('#error_messages').remove();
+
+<%# if @comment.errors.present? %>
+<%# else %>
+  $('#js_post_comment').prepend('<%= j(render 'comments/comment', comment: @comment) %>')
+  $('#js_new_comment_textarea').val('');
+<%# end %>

@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col" style="padding-right: 0;">
     <%= link_to likes_path(post_id: post.id),
-                method: :post,
                 data: { turbo: false },
+                method: :post,
                 remote: true do %>
-      <i class="fa-regular fa-heart like-btn"></i>
+      <i class="fa-regular fa-heart like-btn fs-5" style="margin-top: 2px;"></i>
     <% end %>
   </div>
   <div class="col like-btn" style="padding-left: 0;">

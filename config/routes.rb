@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create destroy], shallow: true
     get :bookmarks, on: :collection
   end
   resources :likes, only: %i[create destroy]

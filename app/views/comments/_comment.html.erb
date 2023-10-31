@@ -1,13 +1,14 @@
-<div class="mb-2 mt-3">
-  <h6><%= comment.user.name %></h6>
-  <%= comment.content %>
-  <% if current_user.own?(comment) %>
-    <ul class="list-inline justify-content-center" style="float: right;">
-      <li class="list-inline-item">
-      </li>
-      <li class="list-inline-item">
-      </li>
-    </ul>
-  <% end %>
+<div id="comment_<%= comment.id %>">
+  <div class="d-flex justify-content-between">
+    <h6 style="color: lightgrey;"><%= comment.user.name %></h6>
+    <% if current_user.own?(comment) %>
+      <%= link_to comment_path(comment),
+                  data: { turbo: false },
+                  method: :delete,
+                  remote: true do %>
+        <i class="fa-regular fa-trash-can trash-btn me-2"></i>
+      <% end %>
+    <% end %>
+  </div>
+  <%= simple_format(comment.content) %>
 </div>
-

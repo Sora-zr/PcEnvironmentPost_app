@@ -24,7 +24,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-8">
         <div class="mb-4">
           <div class="card bg-dark border-white text-white">
             <div class="card-body">
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-4">
         <div class="mb-5">
           <div class="card bg-dark border-white text-white mb-4">
             <div class="card-header">
@@ -54,19 +54,12 @@
               </div>
             </div>
             <div class="card-body">
-              <h4 class="card-title text-center">コメント一覧</h4>
+              <!-- コメント一覧 -->
+              <%= render 'comments/comments', { comments: @comments } %>
               <hr>
-              <div id="js_comment_index">
-                <% if @comments.present? %>
-                  <%= render @comments %>
-                <% else %>
-                  <p class="text-center">コメントはありません。</p>
-                <% end %>
-                <% unless current_user.own?(@post) %>
-                  <hr>
-                  <%= render 'comments/form', comment: @comment, post: @post %>
-                <% end %>
-              </div>
+
+              <!-- コメントフォーム -->
+              <%= render 'comments/form', { post: @post, comment: @comment } %>
             </div>
           </div>
         </div>
