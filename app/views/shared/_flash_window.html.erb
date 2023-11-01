@@ -1,8 +1,18 @@
-<% if flash.present? %>
-  <div class="flash-window hidden">
-    <p><%= notice %></p>
+<%# if flash.present? %>
+<!--  <div class="flash-window hidden">-->
+<!--    <p><%#= notice %></p>-->
 <!--    <div class="flash-window-delete">-->
 <!--      <i class="fa-solid fa-x"></i>-->
 <!--    </div>-->
+<!--  </div>-->
+<%# end %>
+
+<% if flash[:notice].present? %>
+  <div class="flash-window hidden notice-window">
+    <p><%= notice %></p>
+  </div>
+<% elsif flash[:alert].present? %>
+  <div class="flash-window hidden alert-window">
+    <p><%= alert %></p>
   </div>
 <% end %>
