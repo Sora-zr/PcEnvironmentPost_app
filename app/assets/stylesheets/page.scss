@@ -1,3 +1,20 @@
+.footer {
+  padding: 15px 0;
+  color: gray;
+
+  .footer-link {
+    color: gray;
+    font-size: 15px;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  .copy-right {
+    margin: 0;
+  }
+}
+
+
 .page-container {
   margin: 0 auto;
   padding: 50px;
