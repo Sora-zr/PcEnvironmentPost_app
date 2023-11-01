@@ -3,7 +3,9 @@ document.addEventListener('turbo:load', () => {
     if (flashWindow) {
         flashWindowToggle();
         setTimeout(flashWindowToggle, 3000)
-        // document.getElementsByClassName("flash-window-delete")[0].addEventListener('click', flashWindowToggle);
+        document.getElementsByClassName("flash-window-delete")[0].addEventListener('click', () => {
+            flashWindow.remove();
+        });
     }
     function flashWindowToggle()
     {

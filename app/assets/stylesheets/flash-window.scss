@@ -27,14 +27,14 @@
     margin: 0 auto;
   }
 
-  //div {
-  //  margin: 0 10px;
-  //  color: white;
-  //
-  //  &:hover {
-  //    cursor: pointer;
-  //  }
-  //}
+  div {
+    margin: 0 10px;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   // 窓が非表示の時の状態
   &.hidden {
