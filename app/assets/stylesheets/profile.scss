@@ -23,6 +23,11 @@
   .profile-my-post {
     margin: 20px 60px;
   }
+
+  .post-image {
+    object-fit: cover;
+    height: 500px;
+  }
 }
 
 /* タブレット向けスタイル */

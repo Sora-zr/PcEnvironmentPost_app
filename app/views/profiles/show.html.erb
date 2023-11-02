@@ -32,21 +32,32 @@
       <hr>
       <h5>＜ 自身の投稿 ＞</h5>
       <% if @user.post.present? %>
-        <div class="card bg-dark text-white border-white profile-my-post">
+        <div class="card text-white profile-my-post">
           <%= link_to post_path(@post), data: { turbo: false } do %>
-            <%= image_tag @post.images[0], class: 'card-img-top', size: '400x330', style: "object-fit: cover;" %>
+            <%= image_tag @post.images[0], class: 'post-image' %>
           <% end %>
-          <div class="card-body">
+          <div class="card-body bg-dark">
             <div class="row">
               <div class="col-sm-8 d-flex">
                 <%= image_tag @post.user.avatar, class: 'rounded-circle', size: 45 %>
                 <h5 style="margin: auto 10px;"><%= @post.user.name %></h5>
               </div>
-              <div class="col-sm-4" style="margin: auto 0;">
-                <div class="row" style="">
-                  <%= render 'shared/like_bookmark_menu', post: @post %>
+
+              <!-- いいねボタン -->
+              <div class="col-sm-4 text-end" style="margin: auto 0;">
+                <div class="row">
+                  <div class="col text-center">
+                    <div id="like_buttons_<%= @post.id %>">
+                      <% if current_user.like?(@post) %>
+                        <%= render 'likes/unlike', post: @post %>
+                      <% else %>
+                        <%= render 'likes/like', post: @post %>
+                      <% end %>
+                    </div>
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

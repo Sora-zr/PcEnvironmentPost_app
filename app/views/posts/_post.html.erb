@@ -1,28 +1,24 @@
-<div class="col-lg-4 mb-5 px-3">
-  <div id="board-id-<%= post.id %>">
-    <div class="card bg-dark text-white border-white">
-      <div class="card-header" style="padding: 0; ">
-        <%= link_to post_path(post), data: { turbo: false } do %>
-          <%= image_tag post.images[0], class: 'card-img-top', style: "object-fit: cover;" %>
-        <% end %>
-      </div>
-      <div class="card-body post-body">
-        <div class="row">
-          <div class="col-sm-8 d-flex">
-            <%= image_tag post.user.avatar, class: 'rounded-circle', size: 45 %>
-            <h5 style="margin: auto 10px;"><%= post.user.name %></h5>
-          </div>
-          <div class="col-sm-4" style="margin: auto 0;">
-            <% if current_user.own?(post) %>
-              <div class="row" style="">
-                <%= render 'shared/crud_menu', post: post %>
-              </div>
-            <% else %>
-              <div class="row">
-                <%= render 'shared/like_bookmark_menu', post: post %>
-              </div>
-            <% end %>
-          </div>
+<div class="col-lg-6 mb-5" id="board-id-<%= post.id %>">
+  <div class="card bg-dark text-white border-white">
+    <%= link_to post_path(post), data: { turbo: false } do %>
+      <%= image_tag post.images[0], size: '200x400', class: 'card-img', style: 'object-fit: cover;' %>
+    <% end %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-8 d-flex">
+          <%= image_tag post.user.avatar, class: 'rounded-circle', size: 45 %>
+          <h4 style="margin: auto 10px;"><%= post.user.name %></h4>
+        </div>
+        <div class="col-sm-4" style="margin: auto 0;">
+          <% if current_user.own?(post) %>
+            <div class="row">
+              <%= render 'shared/crud_menu', post: post %>
+            </div>
+          <% else %>
+            <div class="row d-flex">
+              <%= render 'shared/like_bookmark_menu', post: post %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

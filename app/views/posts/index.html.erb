@@ -1,23 +1,21 @@
-<div class="card index">
-  <div class="card-body text-white">
-    <div class="container pt-5">
-      <div class="col-12">
-        <div class="row">
-          <h1 class="text-center mb-4">投稿一覧</h1>
-          <hr>
-          <div class="mb-5">
-            <%= form_tag(posts_path, method: 'get') do %>
-              <div class="input-group mb-3">
-                <label class="input-group-text" for="sort">並べ替え：</label>
-                <%= select_tag(:sort, options_for_select([['新しい順', 'new'], ['古い順', 'old'], ['いいねの件数順', 'like']], params[:sort]), class: 'form-select') %>
-                <button type="submit" class="btn btn-primary">ソート</button>
-              </div>
-            <% end %>
-          </div>
-          <%= render @posts %>
+<div class="container post-body">
+  <div class="row">
+    <h1 class="text-center mb-4">投稿一覧</h1>
+    <hr>
+    <div class="mb-5">
+      <%= form_tag(posts_path, method: 'get') do %>
+        <div class="input-group mb-3">
+          <label class="input-group-text" for="sort">並べ替え：</label>
+          <%= select_tag(:sort, options_for_select([['新しい順', 'new'], ['古い順', 'old'], ['いいねの件数順', 'like']], params[:sort]), class: 'form-select') %>
+          <button type="submit" class="btn btn-primary">ソート</button>
         </div>
-      </div>
-      <%= paginate @posts %>
+      <% end %>
     </div>
+    <% if @posts.present? %>
+      <%= render @posts %>
+    <% else %>
+      <p>投稿はありません。</p>
+    <% end %>
   </div>
+  <%= paginate @posts %>
 </div>
