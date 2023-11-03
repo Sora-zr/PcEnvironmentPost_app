@@ -1,52 +1,71 @@
 <%= form_with model: post, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <p>対応しているフォーマットはjpeg、png、gifです。<br>4枚まで選択できます。<br>先頭の画像がサムネイルとなります。</p>
-
-  <div class="mb-5 text-center">
-    <!-- 画像投稿フォーム -->
-    <div id="image-upload-container" onClick="$('#up_images').click()">
-      <p class="text-white" id="image-upload-text">この空間をクリックして画像を追加してください</p>
+  <!--   画像アップロードスペース-->
+  <div data-controller="file-upload" data-action="dragover->file-upload#dragover drop->file-upload#drop">
+    <div class="file-upload-container" onClick="$('#up_images').click()">
+      <p class="file-upload-text">
+        ここをクリック、もしくはドラッグアンドドロップして画像を追加してください
+      </p>
     </div>
     <%= f.file_field :images,
                      id: 'up_images',
-                     style: 'display: none;',
                      multiple: true,
-                     accept: "image/jpeg, image/gif, image/png" %>
+                     accept: "image/jpeg, image/gif, image/png",
+                     # style: 'display: none;',
+                     'data-file-upload-target': 'fileUpload' %>
+  </div>
 
-    <!-- プレビュー -->
-    <div class="card bg-secondary text-white mt-5">
-      <h4 style="margin: 0; padding-top: 15px;">プレビュー</h4>
-      <hr>
-      <div class="row">
-        <div id="preview-container" style="padding: 10px;">
-          <div class="col-3" style="padding: 0 12px;">
-            <ul  id="file-preview-list">
-              <!-- プレビューがここに追加されます -->
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="my-3" data-controller="previews">
+    <%= f.label :images %><br>
+    <%= f.file_field :images,
+                        multiple: true,
+                        direct_upload: true,
+                        data: { previews_target: "input", action: "change->previews#preview" } %>
 
-    <!-- 編集を行う前に登録されていた画像を表示する -->
     <% if post.images.attached? %>
-      <div class="card bg-secondary text-white mt-5">
-        <h4 style="margin: 0; padding-top: 15px;">現在登録されている画像</h4>
-        <hr>
-        <div class="row" style="padding: 10px;">
-          <% post.images.each do |image| %>
-              <div class="col-3" style="padding: 0 12px">
-                <%= image_tag image,
-                              style: 'border-radius: 2%; object-fit: cover;',
-                              size: '250x150' %>
-              </div>
-          <% end %>
-        </div>
-      </div>
+      <%= image_tag post.images, data: { previews_target: "preview" } %>
+    <% else %>
+      <%= image_tag "", data: { previews_target: "preview" } %>
     <% end %>
 
   </div>
+
+  <!--  <div class="mb-5 text-center">-->
+  <!--    <div id="image-upload-container" onClick="$('#up_images').click()">-->
+  <!--      <p class="text-white" id="image-upload-text">この空間をクリックして画像を追加してください</p>-->
+  <!--    </div>-->
+  <%#= f.file_field :images, id: 'up_images', style: 'display: none;', multiple: true, accept: "image/jpeg, image/gif, image/png" %>
+
+  <!-- プレビュー -->
+<!--  <h4 style="margin: 0; padding-top: 15px;">プレビュー</h4>-->
+<!--  <hr>-->
+<!--  <div class="row">-->
+<!--    <div id="preview-container" style="padding: 10px;">-->
+<!--      <div class="col-3" style="padding: 0 12px;">-->
+<!--        <ul id="file-preview-list">-->
+<!--          プレビューがここに追加されます-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <!-- 編集を行う前に登録されていた画像を表示する -->
+  <%# if post.images.attached? %>
+  <!--      <div class="card bg-secondary text-white mt-5">-->
+  <!--        <h4 style="margin: 0; padding-top: 15px;">現在登録されている画像</h4>-->
+  <!--        <hr>-->
+  <!--        <div class="row" style="padding: 10px;">-->
+  <%# post.images.each do |image| %>
+  <!--            <div class="col-3" style="padding: 0 12px">-->
+  <%#= image_tag image, style: 'border-radius: 2%; object-fit: cover;', size: '250x150' %>
+  <!--            </div>-->
+  <%# end %>
+  <!--        </div>-->
+  <!--      </div>-->
+  <%# end %>
+
+  <!--  </div>-->
 
   <div class="row">
     <div class="col-8">

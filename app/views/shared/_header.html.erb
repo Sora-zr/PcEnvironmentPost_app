@@ -32,7 +32,7 @@
                 <i class="fa-solid fa-user mypage-btn ms-2"></i>　アカウント情報
               </a>
               <div class="dropdown-menu dropdown-menu-dark">
-                <%= link_to 'プロフィール', profile_path, class: 'dropdown-item' %>
+                <%= link_to 'ユーザーページ', profile_path, class: 'dropdown-item' %>
                 <%= link_to 'メールアドレス・パスワードの変更', edit_user_registration_path, class: 'dropdown-item' %>
                 <%= link_to 'アカウント削除', user_registration_path, class: 'dropdown-item text-danger', data: { turbo_method: :delete, turbo_confirm: '退会する場合保存されていたデータは全て削除されます。本当に削除しますか？' } %>
               </div>

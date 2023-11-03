@@ -1,9 +1,9 @@
 <div class="col-lg-6 mb-5" id="board-id-<%= post.id %>">
-  <div class="card bg-dark text-white border-white">
+  <div class="card text-white border-white">
     <%= link_to post_path(post), data: { turbo: false } do %>
       <%= image_tag post.images[0], size: '200x400', class: 'card-img', style: 'object-fit: cover;' %>
     <% end %>
-    <div class="card-body">
+    <div class="card-body bg-dark">
       <div class="row">
         <div class="col-sm-8 d-flex">
           <%= image_tag post.user.avatar, class: 'rounded-circle', size: 45 %>

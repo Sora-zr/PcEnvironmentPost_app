@@ -142,10 +142,19 @@ ul#file-preview-list {
   /* ファイルフィールドのスタイル（非表示） */
 }
 
-.profile {
-  //z-index: 10;
-  //position: absolute;
-  //left: 0;
-  //right: 0;
-  //margin: auto;
+.file-upload-container {
+  width: 500px;
+  height: 250px;
+  position: relative;
+  border: 2px dashed #fff;
+  border-radius: 2%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.file-upload-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
