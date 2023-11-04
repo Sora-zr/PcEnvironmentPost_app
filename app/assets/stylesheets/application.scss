@@ -149,12 +149,19 @@ ul#file-preview-list {
   border: 2px dashed #fff;
   border-radius: 2%;
   margin: 0 auto;
-  cursor: pointer;
+
+  .file-upload-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.file-upload-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.drop-default-color {
+  background-color: #a9a9a9;
+}
+
+.drop-color {
+  background-color: #4d4d4d;
 }

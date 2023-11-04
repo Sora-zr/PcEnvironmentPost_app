@@ -12,6 +12,3 @@ eagerLoadControllersFrom("controllers", application)
 
 import FileUploadController from './file_upload_controller'
 application.register('file-upload', FileUploadController)
-
-import PreviewsController from './image_upload_preview_controller'
-application.register('previews', PreviewsController)

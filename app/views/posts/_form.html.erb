@@ -1,82 +1,47 @@
-<%= form_with model: post, local: true do |f| %>
+<%= form_with model: post, data: { controller: 'file-upload' }, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
-  <!--   画像アップロードスペース-->
-  <div data-controller="file-upload" data-action="dragover->file-upload#dragover drop->file-upload#drop">
-    <div class="file-upload-container" onClick="$('#up_images').click()">
-      <p class="file-upload-text">
-        ここをクリック、もしくはドラッグアンドドロップして画像を追加してください
-      </p>
-    </div>
+  <!-- 画像アップロードフォーム-->
+  <div class="form-group">
     <%= f.file_field :images,
-                     id: 'up_images',
                      multiple: true,
-                     accept: "image/jpeg, image/gif, image/png",
-                     # style: 'display: none;',
-                     'data-file-upload-target': 'fileUpload' %>
+                     class: 'form-control',
+                     accept: 'image/jpeg, image/gif, image/png',
+                     data: { file_upload_target: 'select', action: 'change->file-upload#selectImages' } %>
+
+    <p data-file-upload-target="error" class=""></p>
+
+    <!-- ドラッグ＆ドロップエリア -->
+    <div class="file-upload-container drop-default-color" data-file-upload-target="drop" data-action="dragover->file-upload#dragover dragleave->file-upload#dragleave drop->file-upload#dropImages">
+      <span class="file-upload-text">ここに画像をドラッグ&ドロップ</span>
+    </div>
+
+    <!-- 画像プレビュー -->
+    <div data-file-upload-target="preview">
+      <% if @post.images.attached? %>
+        <% @post.images.each do |image| %>
+          <div class="d-flex" data-controller="images" data-file-upload-target="image_box">
+            <!--            <div class="text-center">-->
+            <%= image_tag image %>
+            <a class="" data-action="click->file-upload#deleteImage">削除</a>
+            <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
+            <!--            </div>-->
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="my-3" data-controller="previews">
-    <%= f.label :images %><br>
-    <%= f.file_field :images,
-                        multiple: true,
-                        direct_upload: true,
-                        data: { previews_target: "input", action: "change->previews#preview" } %>
-
-    <% if post.images.attached? %>
-      <%= image_tag post.images, data: { previews_target: "preview" } %>
-    <% else %>
-      <%= image_tag "", data: { previews_target: "preview" } %>
-    <% end %>
-
-  </div>
-
-  <!--  <div class="mb-5 text-center">-->
-  <!--    <div id="image-upload-container" onClick="$('#up_images').click()">-->
-  <!--      <p class="text-white" id="image-upload-text">この空間をクリックして画像を追加してください</p>-->
-  <!--    </div>-->
-  <%#= f.file_field :images, id: 'up_images', style: 'display: none;', multiple: true, accept: "image/jpeg, image/gif, image/png" %>
-
-  <!-- プレビュー -->
-<!--  <h4 style="margin: 0; padding-top: 15px;">プレビュー</h4>-->
-<!--  <hr>-->
-<!--  <div class="row">-->
-<!--    <div id="preview-container" style="padding: 10px;">-->
-<!--      <div class="col-3" style="padding: 0 12px;">-->
-<!--        <ul id="file-preview-list">-->
-<!--          プレビューがここに追加されます-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-
-  <!-- 編集を行う前に登録されていた画像を表示する -->
-  <%# if post.images.attached? %>
-  <!--      <div class="card bg-secondary text-white mt-5">-->
-  <!--        <h4 style="margin: 0; padding-top: 15px;">現在登録されている画像</h4>-->
-  <!--        <hr>-->
-  <!--        <div class="row" style="padding: 10px;">-->
-  <%# post.images.each do |image| %>
-  <!--            <div class="col-3" style="padding: 0 12px">-->
-  <%#= image_tag image, style: 'border-radius: 2%; object-fit: cover;', size: '250x150' %>
-  <!--            </div>-->
-  <%# end %>
-  <!--        </div>-->
-  <!--      </div>-->
-  <%# end %>
-
-  <!--  </div>-->
-
-  <div class="row">
-    <div class="col-8">
+  <div class="row mt-5">
+    <div class="col-7">
       <h4>説明</h4>
       <hr>
       <div class="form-group mb-3">
-        <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: 'こだわりのポイントなど' %>
+        <%= f.text_area :description, rows: 6, class: 'form-control', placeholder: '使っているデバイスやこだわりのポイントなど' %>
       </div>
     </div>
-    <div class="col-4">
-      <h4>タグ登録</h4>
+    <div class="col-5">
+      <h4>タグ</h4>
       <hr>
     </div>
   </div>
@@ -85,18 +50,3 @@
     <%= f.submit nil, class: 'btn new-post-btn' %>
   </div>
 <% end %>
-
-<!--  <div class="form-group mb-3">-->
-<%#= f.label :images, class: "form-label" %>
-<%#= f.file_field :images, multiple: true, onchange: "postImage(this);", accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
-<!--  </div>-->
-
-<!--<script>-->
-<!--    function postImage(obj) {-->
-<!--        var fileReader = new FileReader();-->
-<!--        fileReader.onload = (function() {-->
-<!--            document.getElementById('preview').src = fileReader.result;-->
-<!--        });-->
-<!--        fileReader.readAsDataURL(obj.files[0]);-->
-<!--    }-->
-<!--</script>-->

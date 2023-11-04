@@ -1,69 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="file-upload"
+// Connects to data-controller="image-upload"
 export default class extends Controller {
-  // static targets = ['drop', 'preview']
-  static targets = ['select', 'preview', 'image_box', 'drop', 'error' ]
+  /* ①静的プロパティを定義（data-{controller}-target で指定したターゲット名） */
+  static targets = ["select", "preview", "image_box"]
 
   connect() {
   }
 
-  imageSizeOver(file){ // アップロードする画像ファイルサイズの上限（2MB）を超えたかどうか判定
-    const fileSize = (file.size)/1000 // ファイルサイズ(KB)
-    if(fileSize > 2000){
-      return true // ファイルサイズが2MBを超えた場合はtrueを返す
-    }else{
-      return false
-    }
-  }
-
-  dragover(e) {
-    e.preventDefault()
-    // dragover したときに drop_area の色を変える
-    this.dropTarget.classList.remove('drop-default-color')
-    this.dropTarget.classList.add('drop-color')
-  }
-
-  dragleave(e) {
-    e.preventDefault()
-    // dragleave したときに drop_area の色を元に戻す
-    this.dropTarget.classList.remove('drop-color')
-    this.dropTarget.classList.add('drop-default-color')
-  }
-
-  dropImages(e){
-    e.preventDefault()
-    // drop した後に drop_area の色を元に戻す
-    this.dropTarget.classList.remove('drop-color')
-    this.dropTarget.classList.add('drop-default-color')
-
-    this.errorTarget.textContent = ""
-    const uploadedFilesCount = this.previewTarget.querySelectorAll(".image-box").length
-    const files = e.dataTransfer.files // ドラッグ&ドロップした画像ファイルを読み込む
-    if(files.length + uploadedFilesCount > 10){
-      this.errorTarget.textContent = "画像アップロード上限は最大10枚です。"
-    }else{
-      for(const file of files){
-        if(this.imageSizeOver(file)){
-          this.errorTarget.textContent = "ファイルサイズの上限(1枚あたり5MB)を超えている画像はアップロードできません。"
-        }else{
-          this.uploadImage(file) // ファイルのアップロード
-        }
-      }
+  /* ②画像選択時の処理 */
+  selectImages(){
+    const files = this.selectTargets[0].files // file_fieldで取得した画像ファイル
+    for(const file of files){
+      this.uploadImage(file) // 選択した画像ファイルのアップロード
     }
     this.selectTarget.value = "" // 選択ファイルのリセット
   }
 
-  selectImages() {
-    console.log('Hello')
-    const files = this.selectTargets[0].files
-    for(const file of files){
-      this.uploadImage(file)
-    }
-    this.selectTarget.value = ''
-  }
-
-  uploadImage(file) {
+  /* ③画像アップロード */
+  uploadImage(file){
     const csrfToken = document.getElementsByName('csrf-token')[0].content // CSRFトークンを取得
     const formData = new FormData()
     formData.append("image", file) // formDataオブジェクトに画像ファイルをセット
@@ -85,6 +40,7 @@ export default class extends Controller {
         })
   }
 
+  /* ④画像プレビュー */
   previewImage(file, id){
     const preview = this.previewTarget // プレビュー表示用の<div>要素
     const fileReader = new FileReader()
@@ -130,14 +86,13 @@ export default class extends Controller {
       imgInnerBox.appendChild(deleteBtn)
       imgInnerBox.appendChild(hiddenField)
       img.src = this.result
-      img.width = 250;
-      img.height = 150;
-      img.style.objectFit = 'contain';
+      img.width = 100;
 
       preview.appendChild(imgBox) // プレビュー表示用の<div>要素の中にimgBox（プレビュー画像の要素）を入れる
     })
   }
 
+  /* ⑤プレビュー画像の削除 */
   deleteImage(){
     this.image_boxTarget.remove()
   }

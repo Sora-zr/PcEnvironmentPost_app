@@ -47,13 +47,32 @@ class PostsController < ApplicationController
     @post_bookmarks = current_user.post_bookmarks.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
-  private
-
-  def post_params
-    params.require(:post).permit(:description, images: [])
+  def upload_image
+    @image_blob = create_blob(params[:image])
+    render json: @image_blob
   end
+
+  private
 
   def set_post
     @post = current_user.post
   end
+
+  def post_params
+    # params.require(:post).permit(:description, images: [])
+    params.require(:post).permit(:description).merge(images: uploaded_images)
+  end
+
+  def uploaded_images
+    params[:post][:images].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:post][:images]
+  end
+
+  def create_blob(file)
+    ActiveStorage::Blob.create_and_upload!(
+      io: file.open,
+      filename: file.original_filename,
+      content_type: file.content_type
+    )
+  end
+
 end
