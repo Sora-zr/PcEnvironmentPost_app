@@ -1,8 +1,9 @@
 @import "bootstrap";
 @import "devise-page";
 @import "post";
+@import "form";
 @import "profile";
-@import "page";
+@import "footer";
 
 @import "home";
 @import "icon";
@@ -140,28 +141,4 @@ ul#file-preview-list {
 
 #up_images {
   /* ファイルフィールドのスタイル（非表示） */
-}
-
-.file-upload-container {
-  width: 500px;
-  height: 250px;
-  position: relative;
-  border: 2px dashed #fff;
-  border-radius: 2%;
-  margin: 0 auto;
-
-  .file-upload-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-.drop-default-color {
-  background-color: #a9a9a9;
-}
-
-.drop-color {
-  background-color: #4d4d4d;
 }

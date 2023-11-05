@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="file-upload"
 export default class extends Controller {
   // static targets = ['drop', 'preview']
-  static targets = ['select', 'preview', 'image_box', 'drop', 'error' ]
+  static targets = ["select", "preview", "image_box", "drop", "error"]
 
   connect() {
   }
@@ -27,21 +27,21 @@ export default class extends Controller {
   dragleave(e) {
     e.preventDefault()
     // dragleave したときに drop_area の色を元に戻す
-    this.dropTarget.classList.remove('drop-color')
-    this.dropTarget.classList.add('drop-default-color')
+    this.dropTarget.classList.remove("drop-color")
+    this.dropTarget.classList.add("drop-default-color")
   }
 
   dropImages(e){
     e.preventDefault()
     // drop した後に drop_area の色を元に戻す
-    this.dropTarget.classList.remove('drop-color')
-    this.dropTarget.classList.add('drop-default-color')
+    this.dropTarget.classList.remove("drop-color")
+    this.dropTarget.classList.add("drop-default-color")
 
     this.errorTarget.textContent = ""
     const uploadedFilesCount = this.previewTarget.querySelectorAll(".image-box").length
     const files = e.dataTransfer.files // ドラッグ&ドロップした画像ファイルを読み込む
-    if(files.length + uploadedFilesCount > 10){
-      this.errorTarget.textContent = "画像アップロード上限は最大10枚です。"
+    if(files.length + uploadedFilesCount > 8){
+      this.errorTarget.textContent = "画像アップロード上限は最大8枚です。"
     }else{
       for(const file of files){
         if(this.imageSizeOver(file)){
@@ -55,7 +55,6 @@ export default class extends Controller {
   }
 
   selectImages() {
-    console.log('Hello')
     const files = this.selectTargets[0].files
     for(const file of files){
       this.uploadImage(file)
@@ -101,16 +100,16 @@ export default class extends Controller {
       const deleteBtn = document.createElement("a")
       const hiddenField = document.createElement("input")
       const imgBoxAttr = { // imgBoxに設定する属性
-        "class" : "image-box inline-flex mx-1 mb-5",
-        "data-controller" : "images",
-        "data-images-target" : "image_box",
+        "class" : "",
+        "data-controller" : "file-upload",
+        "data-file-upload-target" : "image_box",
       }
       const imgInnerBoxAttr = { // imgInnerBoxに設定する属性
-        "class" : "text-center"
+        "class" : "text-center card me-2"
       }
       const deleteBtnAttr = { // deleteBtnに設定する属性
-        "class" : "link cursor-pointer",
-        "data-action" : "click->images#deleteImage"
+        "class" : "preview-delete-btn",
+        "data-action" : "click->file-upload#deleteImage"
       }
       const hiddenFieldAttr = { // hiddenFieldに設定する属性
         "name" : "post[images][]",
@@ -132,7 +131,7 @@ export default class extends Controller {
       img.src = this.result
       img.width = 250;
       img.height = 150;
-      img.style.objectFit = 'contain';
+      img.style.objectFit = "contain";
 
       preview.appendChild(imgBox) // プレビュー表示用の<div>要素の中にimgBox（プレビュー画像の要素）を入れる
     })

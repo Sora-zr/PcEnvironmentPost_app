@@ -1,0 +1,50 @@
+.file-upload-container {
+  max-width: 100%;
+  width: 500px;
+  height: 250px;
+  position: relative;
+  border: 2px dashed #fff;
+  border-radius: 2%;
+  margin: 0 auto;
+
+  .file-upload-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.drop-default-color {
+  background-color: #a9a9a9;
+}
+
+.drop-color {
+  background-color: #4d4d4d;
+}
+
+.preview-container {
+  display: flex;
+  max-width: 100%;
+  overflow: scroll;
+}
+
+.preview-image {
+  object-fit: contain;
+  width: 250px;
+  height: 150px;
+}
+
+.preview-delete-btn {
+  color: red;
+  font-size: 15px;
+  margin-top: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.preview-delete-btn:hover {
+  color: darkred;
+}
+
+

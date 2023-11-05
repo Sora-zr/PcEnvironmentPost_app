@@ -5,11 +5,13 @@
   <div class="form-group">
     <%= f.file_field :images,
                      multiple: true,
-                     class: 'form-control',
+                     # class: 'form-control',
                      accept: 'image/jpeg, image/gif, image/png',
                      data: { file_upload_target: 'select', action: 'change->file-upload#selectImages' } %>
 
     <p data-file-upload-target="error" class=""></p>
+
+    <p>または</p>
 
     <!-- ドラッグ＆ドロップエリア -->
     <div class="file-upload-container drop-default-color" data-file-upload-target="drop" data-action="dragover->file-upload#dragover dragleave->file-upload#dragleave drop->file-upload#dropImages">
@@ -17,29 +19,31 @@
     </div>
 
     <!-- 画像プレビュー -->
-    <div data-file-upload-target="preview">
+    <div data-file-upload-target="preview" class="preview-container mt-5">
       <% if @post.images.attached? %>
         <% @post.images.each do |image| %>
-          <div class="d-flex" data-controller="images" data-file-upload-target="image_box">
-            <!--            <div class="text-center">-->
-            <%= image_tag image %>
-            <a class="" data-action="click->file-upload#deleteImage">削除</a>
-            <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
-            <!--            </div>-->
+          <div class="" data-controller="images" data-file-upload-target="image_box">
+            <div class="text-center card me-2">
+              <%= image_tag image, class: 'preview-image' %>
+              <a class="preview-delete-btn" data-action="click->file-upload#deleteImage">削除</a>
+              <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
+            </div>
           </div>
         <% end %>
       <% end %>
     </div>
   </div>
 
-  <div class="row mt-5">
+  <div class="row my-5">
+
     <div class="col-7">
       <h4>説明</h4>
       <hr>
       <div class="form-group mb-3">
-        <%= f.text_area :description, rows: 6, class: 'form-control', placeholder: '使っているデバイスやこだわりのポイントなど' %>
+        <%= f.text_area :description, rows: 6, class: 'form-control', placeholder: '使用しているデバイスやこだわりのポイントなど' %>
       </div>
     </div>
+
     <div class="col-5">
       <h4>タグ</h4>
       <hr>

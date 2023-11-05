@@ -28,8 +28,8 @@ class Post < ApplicationRecord
 
   # 枚数制限のためのバリデーション
   def validate_image_count
-    if images.attached? && images.count > 4
-      errors.add(:images, "は最大4枚までです。")
+    if images.attached? && images.count > 8
+      errors.add(:images, "は最大8枚までです。")
       images.purge
     end
   end

@@ -59,7 +59,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    # params.require(:post).permit(:description, images: [])
     params.require(:post).permit(:description).merge(images: uploaded_images)
   end
 
