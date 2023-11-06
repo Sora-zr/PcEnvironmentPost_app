@@ -22,6 +22,9 @@ class User < ApplicationRecord
       user.name = auth.info.name
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
+      user.avatar.attach( io: File.open( Rails.root.join('app', 'assets', 'images', 'default_avatar.png')),
+                          filename: 'default_avatar.png',
+                          content_type: 'image/png' )
     end
   end
 
