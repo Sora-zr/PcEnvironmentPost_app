@@ -4,10 +4,15 @@ class PostsController < ApplicationController
   def index
     sort_option = params[:sort]
     @posts = Post.sort_posts(sort_option, params[:page])
+
+    if params[:tag_name]
+      @tags = Post.tagged_with("#{params[:tag_name]}").page(params[:page])
+    end
   end
 
   def show
     @post = Post.find(params[:id])
+    @tags = @post.tag_counts_on(:tags)
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
   end
@@ -59,7 +64,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:description).merge(images: uploaded_images)
+    params.require(:post).permit(:description, :tag_list).merge(images: uploaded_images)
   end
 
   def uploaded_images
@@ -73,5 +78,4 @@ class PostsController < ApplicationController
       content_type: file.content_type
     )
   end
-
 end

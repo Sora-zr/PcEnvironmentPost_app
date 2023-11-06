@@ -23,6 +23,18 @@
   <hr class="my-5">
 
   <div class="container">
+    <% if @tags.present? %>
+      <div class="card bg-dark border-white text-white tags-container">
+        <div class="">
+          <% @tags.each do |tag| %>
+            <div class="tag-body">
+              <span class="tag-item"><%= tag.name %></span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="row">
       <div class="col-sm-8">
         <div class="mb-4">
