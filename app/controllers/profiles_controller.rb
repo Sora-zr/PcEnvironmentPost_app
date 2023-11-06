@@ -7,9 +7,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(profile_params)
-      redirect_back fallback_location: root_url
+      redirect_to profile_path
     else
-      redirect_back fallback_location: root_url
+      render :show
     end
   end
 

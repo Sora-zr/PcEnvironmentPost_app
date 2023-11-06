@@ -34,7 +34,7 @@
               <div class="dropdown-menu dropdown-menu-dark">
                 <%= link_to 'ユーザーページ', profile_path, class: 'dropdown-item' %>
                 <%= link_to 'メールアドレス・パスワードの変更', edit_user_registration_path, class: 'dropdown-item' %>
-                <%= link_to 'アカウント削除', user_registration_path, class: 'dropdown-item text-danger', data: { turbo_method: :delete, turbo_confirm: '退会する場合保存されていたデータは全て削除されます。本当に削除しますか？' } %>
+                <%= link_to 'アカウントの削除', user_registration_path, class: 'dropdown-item text-danger', data: { turbo_method: :delete, turbo_confirm: '退会する場合保存されていたデータは全て削除されます。本当に削除しますか？' } %>
               </div>
             </div>
             <hr>

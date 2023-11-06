@@ -1,34 +1,32 @@
 <div class="container profile-page-content">
-  <%= image_tag @user.avatar, size: 250, class: 'avatar' %>
+    <%= image_tag @user.avatar, size: 250, class: 'avatar rounded-circle bg-white' %>
   <div class="card nav-color">
     <div class="card-body text-center">
       <div class="dropdown text-end">
         <% if @user.email == 'guest@example.com' %>
-          <h1></h1>
+          <h1>ゲストユーザーはユーザー編集を行うことができません。</h1>
         <% else %>
           <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
             ユーザー情報を編集
           </button>
-          <form class="dropdown-menu p-4 bg-dark text-white">
-            <%= form_with model: @user, url: profile_path(current_user), local: true do |f| %>
-              <div class="form-group mb-2">
-                <%= f.label :name %>
-                <%= f.text_field :name, class: 'form-control' %>
-              </div>
+          <%= form_with model: @user, url: profile_path(@user), class: 'dropdown-menu bg-dark text-white p-4', local: true do |f| %>
+            <div class="form-group mb-2">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
 
-              <div class="form-group mb-3">
-                <%= f.label :avatar %>
-                <%= f.file_field :avatar, class: 'form-control' %>
-              </div>
+            <div class="form-group mb-3">
+              <%= f.label :avatar %>
+              <%= f.file_field :avatar, class: 'form-control' %>
+            </div>
 
-              <div class="text-center">
-                <%= f.submit '更新', class: 'btn btn-primary' %>
-              </div>
-            <% end %>
-          </form>
+            <div class="text-center">
+              <%= f.submit '更新', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
         <% end %>
       </div>
-      <h1><%= @user.name %></h1>
+      <h1 class="mt-5"><%= @user.name %></h1>
       <hr>
       <h5>＜ 自身の投稿 ＞</h5>
       <% if @user.post.present? %>
