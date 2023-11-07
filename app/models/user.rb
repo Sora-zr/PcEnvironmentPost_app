@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates_presence_of :name, :email
+  validates_uniqueness_of :email
   validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: "有効なフォーマットではありません。" },
             size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
 

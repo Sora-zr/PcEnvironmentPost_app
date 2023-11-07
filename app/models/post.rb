@@ -7,8 +7,8 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many_attached :images
 
-  validates_presence_of :images
-  validates :images, content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: "有効なフォーマットではありません。" },
+  validates_presence_of :description, :images
+  validates :images, content_type: { in: %w[image/jpg image/jpeg image/png], message: "有効なフォーマットではありません。" },
             size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
   validate :validate_image_count
 

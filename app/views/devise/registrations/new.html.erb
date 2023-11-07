@@ -22,7 +22,6 @@
           <div class="input-group mb-5">
             <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
             <%= f.email_field :email,
-                              autofocus: true,
                               autocomplete: 'email',
                               class: 'form-control p-2',
                               id: 'email',
@@ -34,7 +33,6 @@
           <div class="input-group mb-5">
             <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
             <%= f.password_field :password,
-                                 autofocus: true,
                                  autocomplete: 'new-password',
                                  class: 'form-control p-2',
                                  id: 'password',
@@ -46,7 +44,6 @@
           <div class="input-group mb-5">
             <label class="input-group-text" for="password-confirmation"><i class="fa-solid fa-lock"></i></label>
             <%= f.password_field :password_confirmation,
-                                 autofocus: true,
                                  autocomplete: 'new-password',
                                  class: 'form-control p-2',
                                  id: 'password-confirmation',
