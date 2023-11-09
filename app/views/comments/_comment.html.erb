@@ -1,14 +1,14 @@
 <div id="comment_<%= comment.id %>">
-  <div class="d-flex justify-content-between">
-    <h6 style="color: lightgrey;"><%= comment.user.name %></h6>
-    <% if current_user.own?(comment) %>
-      <%= link_to comment_path(comment),
-                  data: { turbo: false },
-                  method: :delete,
-                  remote: true do %>
-        <i class="fa-regular fa-trash-can trash-btn me-2"></i>
+    <div class="d-flex justify-content-between">
+      <h6 style="color: lightgrey;"><%= comment.user.name %></h6>
+      <% if current_user.own?(comment) %>
+        <%= link_to comment_path(comment),
+                    data: { confirm: 'コメントを削除しますか？' },
+                    method: :delete,
+                    remote: true do %>
+          <i class="fa-regular fa-trash-can trash-btn me-2"></i>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <%= simple_format(comment.content) %>
+    </div>
+    <%= simple_format(comment.content) %>
 </div>
