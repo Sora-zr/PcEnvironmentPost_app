@@ -4,4 +4,6 @@
 <%# else %>
   $('#js_post_comment').prepend('<%= j(render 'comments/comment', comment: @comment) %>')
   $('#js_new_comment_textarea').val('');
+
+  $('#js_comment_no_result').hide();
 <%# end %>

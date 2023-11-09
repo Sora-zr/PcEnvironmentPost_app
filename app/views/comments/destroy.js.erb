@@ -1,1 +1,5 @@
 $('#<%= "comment_#{@comment.id}" %>').remove();
+
+if ($('#js_post_comment').find('.comment').length === 0) {
+    $('#js_comment_no_result').show();
+}
