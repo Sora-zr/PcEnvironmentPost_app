@@ -86,3 +86,8 @@ group :development do
   gem "pry-byebug"
 end
 
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
+end
+

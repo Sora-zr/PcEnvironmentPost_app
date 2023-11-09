@@ -4,6 +4,7 @@ ja:
 
     attributes:
       post:
+        images: 画像
         description: 説明
 
       comment:

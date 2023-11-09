@@ -6,6 +6,8 @@
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
+          <p class="alert"><%= alert %></p>
+
           <span>メールアドレス</span>
           <div class="input-group mb-4">
             <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
@@ -14,8 +16,8 @@
                               autocomplete: 'email',
                               class: 'form-control p-2',
                               id: 'email',
-                              placeholder: User.human_attribute_name(:email),
-                              required: true %>
+                              placeholder: User.human_attribute_name(:email) %>
+<!--                              required: true %>-->
           </div>
 
           <span>パスワード</span>
@@ -25,8 +27,8 @@
                                  autocomplete: 'password',
                                  class: 'form-control p-2',
                                  id: 'password',
-                                 placeholder: User.human_attribute_name(:password),
-                                 required: true %>
+                                 placeholder: User.human_attribute_name(:password) %>
+<!--                                 required: true %>-->
           </div>
           <div class="text-center">
             <div class="mt-1 mb-4">
@@ -41,7 +43,7 @@
             <% end %>
 
             <div class="mb-4">
-              <%= button_tag type: 'submit', class: 'btn green-btn' do %>
+              <%= button_tag type: 'submit', class: 'btn green-btn', id: 'login-button' do %>
                 <i class="fa-solid fa-right-to-bracket"></i>
                 <span>　ログイン</span>
               <% end %>
@@ -64,6 +66,7 @@
 
           <%= link_to users_guest_sign_in_path,
                       class: 'btn gray-btn mb-4',
+                      id: 'guest-login-button',
                       data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } do %>
             <i class="fa-solid fa-user-check"></i>
             <span>　ゲストユーザーとしてログイン</span>

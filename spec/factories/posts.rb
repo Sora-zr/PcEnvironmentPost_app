@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :post do
-    description { 'test_description' }
+    description { 'Test Description' }
 
     association :user
     after(:build) do |post|

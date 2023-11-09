@@ -37,7 +37,8 @@
   <div class="row my-5">
 
     <div class="col-7">
-      <h4>説明</h4>
+
+      <h4><%= f.label :description %></h4>
       <hr>
       <div class="form-group mb-3">
         <%= f.text_area :description, rows: 6, class: 'form-control', placeholder: '使用しているデバイスやこだわりのポイントなど' %>
@@ -45,10 +46,9 @@
     </div>
 
     <div class="col-5">
-      <h4>タグ</h4>
+      <h4><%= f.label :tag_list, 'タグ' %></h4>
       <hr>
       <div class="form-group">
-        <%= f.label :tag_list %>
         <%= f.text_field :tag_list, value: post.tag_list.join(','), class: 'form-control' %>
       </div>
     </div>

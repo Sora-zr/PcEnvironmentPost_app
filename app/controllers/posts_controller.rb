@@ -45,7 +45,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy!
-    redirect_to post_url, notice: t('.success')
+    redirect_to posts_url, notice: t('.success')
   end
 
   def bookmarks
@@ -60,7 +60,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = current_user.post
+    @post = Post.find(params[:id])
   end
 
   def post_params
