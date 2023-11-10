@@ -5,17 +5,21 @@
 }
 
 .pagination > li > a {
+  color: white;
   background-color: #1a1a1a;
   border: none;
-  color: white;
   margin: 0 20px;
 }
 
 .pagination > .active > a {
-  background: #93c9ff;
-  border-radius: 50%;
+  background: skyblue;
+  border-radius: 20%;
 }
 
 .pagination > li > a:hover {
-  border-radius: 50%;
+  border-radius: 20%;
+}
+
+.page-link {
+  border-radius: 20%;
 }
