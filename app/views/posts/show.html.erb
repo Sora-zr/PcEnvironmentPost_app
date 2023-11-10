@@ -26,6 +26,8 @@
     <% if @tags.present? %>
       <div class="card bg-dark border-white text-white tags-container">
         <div class="">
+          <h6 class="text-center" style="margin: 0;">タグ</h6>
+          <hr style="margin: 10px 0">
           <% @tags.each do |tag| %>
             <div class="tag-body">
               <span class="tag-item"><%= tag.name %></span>

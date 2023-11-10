@@ -1,3 +1,23 @@
+.file-input-btn {
+  width: 350px;
+  color: white;
+  background-color: gray;
+  display: block;
+  padding: 10px 0;
+  margin: 0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+
+}
+
+.file-input-btn:hover {
+  background-color: lightgray;
+}
+
+.file-input-field {
+  display: none;
+}
+
 .file-upload-container {
   max-width: 100%;
   width: 500px;

@@ -2,36 +2,37 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <!-- 画像アップロードフォーム-->
-  <div class="form-group">
-    <%= f.file_field :images,
-                     multiple: true,
-                     # class: 'form-control',
-                     accept: 'image/jpeg, image/gif, image/png',
-                     data: { file_upload_target: 'select', action: 'change->file-upload#selectImages' } %>
+  <%= f.label :images, class: 'file-input-btn' do %>
+    <i class="fa-regular fa-image"></i>　画像をアップロード
+  <% end %>
+  <%= f.file_field :images,
+                   multiple: true,
+                   class: 'file-input-field',
+                   accept: 'image/jpeg, image/gif, image/png',
+                   data: { file_upload_target: 'select', action: 'change->file-upload#selectImages' } %>
 
-    <p data-file-upload-target="error" class=""></p>
+  <p data-file-upload-target="error" class=""></p>
 
-    <p>または</p>
+  <p>または</p>
 
-    <!-- ドラッグ＆ドロップエリア -->
-    <div class="file-upload-container drop-default-color" data-file-upload-target="drop" data-action="dragover->file-upload#dragover dragleave->file-upload#dragleave drop->file-upload#dropImages">
-      <span class="file-upload-text">ここに画像をドラッグ&ドロップ</span>
-    </div>
+  <!-- ドラッグ＆ドロップエリア -->
+  <div class="file-upload-container drop-default-color" data-file-upload-target="drop" data-action="dragover->file-upload#dragover dragleave->file-upload#dragleave drop->file-upload#dropImages">
+    <span class="file-upload-text">ここに画像をドラッグ&ドロップ</span>
+  </div>
 
-    <!-- 画像プレビュー -->
-    <div data-file-upload-target="preview" class="preview-container mt-5">
-      <% if @post.images.attached? %>
-        <% @post.images.each do |image| %>
-          <div class="" data-controller="images" data-file-upload-target="image_box">
-            <div class="text-center card me-2">
-              <%= image_tag image, class: 'preview-image' %>
-              <a class="preview-delete-btn" data-action="click->file-upload#deleteImage">削除</a>
-              <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
-            </div>
+  <!-- 画像プレビュー -->
+  <div data-file-upload-target="preview" class="preview-container mt-5">
+    <% if @post.images.attached? %>
+      <% @post.images.each do |image| %>
+        <div class="" data-controller="images" data-file-upload-target="image_box">
+          <div class="text-center card me-2">
+            <%= image_tag image, class: 'preview-image' %>
+            <a class="preview-delete-btn" data-action="click->file-upload#deleteImage">削除</a>
+            <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
           </div>
-        <% end %>
+        </div>
       <% end %>
-    </div>
+    <% end %>
   </div>
 
   <div class="row my-5">
@@ -49,7 +50,7 @@
       <h4><%= f.label :tag_list, 'タグ' %></h4>
       <hr>
       <div class="form-group">
-        <%= f.text_field :tag_list, value: post.tag_list.join(','), class: 'form-control' %>
+        <%= f.text_field :tag_list, value: post.tag_list.join(','), class: 'form-control', placeholder: ',で区切って入力してください' %>
       </div>
     </div>
   </div>
