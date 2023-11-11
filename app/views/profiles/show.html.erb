@@ -1,6 +1,6 @@
 <div class="container profile-page-content">
     <%= image_tag @user.avatar, size: 250, class: 'avatar' %>
-  <div class="card nav-color">
+  <div class="card border-black">
     <div class="card-body text-center">
       <div class="dropdown text-end">
         <% if @user.email == 'guest@example.com' %>
@@ -11,7 +11,7 @@
           <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
             ユーザー情報を編集
           </button>
-          <%= form_with model: @user, url: profile_path(@user), class: 'dropdown-menu bg-dark text-white p-5', local: true do |f| %>
+          <%= form_with model: @user, url: profile_path(@user), class: 'dropdown-menu border-black p-4', local: true do |f| %>
             <div class="form-group mb-3">
               <%= f.label :name %>
               <%= f.text_field :name, class: 'form-control' %>
@@ -32,11 +32,11 @@
       <hr>
       <h5>＜ 自身の投稿 ＞</h5>
       <% if @user.post.present? %>
-        <div class="card text-white profile-my-post">
+        <div class="card profile-my-post">
           <%= link_to post_path(@post), data: { turbo: false } do %>
             <%= image_tag @post.images[0], class: 'post-image' %>
           <% end %>
-          <div class="card-body bg-dark">
+          <div class="card-body">
             <div class="row">
               <div class="col-sm-8 d-flex">
                 <%= image_tag @post.user.avatar, class: 'rounded-circle', size: 45 %>

@@ -3,7 +3,7 @@
 @import "post";
 @import "form";
 @import "profile";
-@import "footer";
+@import "navbar";
 
 @import "home";
 @import "icon";
@@ -15,17 +15,10 @@
 
 main {
   margin-top: 57.43px;
-  color: white;
-  background-color: #1a1a1a;
 }
 
 .container {
   padding-top: 60px;
-}
-
-.nav-color {
-  color: white;
-  background-color: #3d454d;
 }
 
 .flash-message {
@@ -34,57 +27,6 @@ main {
   z-index: 10;
   opacity: 0.7;
 }
-
-.post-btn {
-  padding-right: 2px;
-}
-
-.mypage-btn {
-  padding: 0 1px;
-}
-
-.login-btn {
-  padding-right: 4px;
-}
-
-.logout-btn {
-  padding-left: 2px;
-}
-
-.index {
-  background-color: #1a1a1a;
-}
-
-//.post-body {
-//  padding: 10px;
-//}
-
-.upload-page {
-  padding: 80px 0;
-}
-
-//#preview-container {
-////  overflow: hidden;
-//}
-//
-//#preview {
-//  width: 100%;
-//  height: auto;
-//  border-radius: 2%;
-//  object-fit: cover;
-//}
-
-//.preview-image {
-//  width: 250px;
-//  height: 150px;
-//  border-radius: 2%;
-//  object-fit: cover;
-//}
-
-//#file-preview-wrapper {
-//  display: flex;
-//  flex-direction: row;
-//}
 
 /* CSSファイルまたはstyleタグ内に追加 */
 #file-preview-list {

@@ -1,6 +1,6 @@
 <div class="col text-center">
   <div id="like_buttons_<%= post.id %>">
-    <% if current_user.like?(post) %>
+    <% if current_user && current_user.like?(post) %>
       <%= render 'likes/unlike', post: post %>
     <% else %>
       <%= render 'likes/like', post: post %>
@@ -9,7 +9,7 @@
 </div>
 <div class="col text-center">
   <div id="bookmark_buttons_<%= post.id %>">
-    <% if current_user.bookmark?(post) %>
+    <% if current_user && current_user.bookmark?(post) %>
       <%= render 'bookmarks/unbookmark', post: post %>
     <% else %>
       <%= render 'bookmarks/bookmark', post: post %>

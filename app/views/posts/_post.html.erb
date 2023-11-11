@@ -1,5 +1,5 @@
 <div class="col-lg-6 mb-5" id="board-id-<%= post.id %>">
-  <div class="card bg-dark text-white border-white">
+  <div class="card border-dark">
     <%= link_to post_path(post), data: { turbo: false } do %>
       <%= image_tag post.images[0], size: '200x400', class: 'card-img', style: 'object-fit: cover;' %>
     <% end %>
@@ -10,11 +10,11 @@
           <h4 style="margin: auto 10px;"><%= post.user.name %></h4>
         </div>
         <div class="col-sm-4" style="margin: auto 0;">
-          <% if current_user.own?(post) %>
+          <% if current_user && current_user.own?(post) %>
             <div class="row">
               <%= render 'shared/crud_menu', post: post %>
             </div>
-          <% else %>
+          <% elsif current_user %>
             <div class="row d-flex">
               <%= render 'shared/like_bookmark_menu', post: post %>
             </div>

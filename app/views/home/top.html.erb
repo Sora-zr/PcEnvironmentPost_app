@@ -1,19 +1,7 @@
 <div class='top-wrapper'>
   <div class='top-inner-text'>
     <h1>Home Page</h1>
+    <%= link_to 'みんなの投稿を見てみる', posts_path %>
   </div>
-  <% unless user_signed_in? %>
-    <div class="session-button">
-      <%= link_to 'サインイン', user_session_path, class: 'btn btn-primary' %>
-    </div>
-    <div class="registration-button">
-      <%= link_to 'サインアップ', new_user_registration_path, class: 'btn btn-primary' %>
-    </div>
-    <div class="guest-login-button">
-      <%= link_to 'ゲストログイン',
-                  users_guest_sign_in_path,
-                  class: 'btn btn-success',
-                  data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } %>
-    </div>
-  <% end %>
+
 </div>

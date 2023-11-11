@@ -1,16 +1,16 @@
 <header class="header">
-  <nav class="navbar navbar-dark nav-color fixed-top">
+  <nav class="navbar fixed-top">
     <div class="container-fluid">
-      <h2><%= link_to 'Title', root_path, class: 'navbar-brand' %></h2>
+      <h1><%= link_to 'Title', root_path, class: 'navbar-brand' %></h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="offcanvas offcanvas-end nav-color" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-        <div class="offcanvas-header">
+      <div class="offcanvas offcanvas-end navbar-manu" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+        <div class="offcanvas-header ">
           <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">メニュー</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body nav-manu">
           <div class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <div class="nav-item">
               <%= link_to root_path, class: 'nav-link ms-2' do %>
@@ -31,7 +31,7 @@
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa-solid fa-user mypage-btn ms-2"></i>　アカウント情報
               </a>
-              <div class="dropdown-menu dropdown-menu-dark">
+              <div class="dropdown-menu dropdown-menu-white">
                 <%= link_to 'ユーザーページ', profile_path, class: 'dropdown-item' %>
                 <%= link_to 'メールアドレス・パスワードの変更', edit_user_registration_path, class: 'dropdown-item' %>
                 <%= link_to 'アカウントの削除', user_registration_path, class: 'dropdown-item text-danger', data: { turbo_method: :delete, turbo_confirm: '退会する場合保存されていたデータは全て削除されます。本当に削除しますか？' } %>
@@ -39,9 +39,7 @@
             </div>
             <hr>
             <div class="nav-item">
-              <%= link_to destroy_user_session_path,
-                          data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' },
-                          class: 'nav-link text-danger ms-2' do %>
+              <%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'ログアウトしますか？' }, class: 'nav-link text-danger ms-2' do %>
                 <i class="fa-solid fa-right-from-bracket logout-btn"></i>　ログアウト
               <% end %>
             </div>
