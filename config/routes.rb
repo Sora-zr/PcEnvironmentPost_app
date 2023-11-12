@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   }
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+
+    # 体感確認画面
+    get 'users/check', to: 'users/registrations#check'
+    patch 'users/withdraw', to: 'users/registrations#withdraw'
   end
 
   resources :posts do

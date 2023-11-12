@@ -43,6 +43,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def check
+  end
+
+  def withdraw
+    @user = User.find(current_user.id)
+    @user.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました。"
+    redirect_to root_path
+  end
+
   protected
 
   # ゲストユーザーがメールアドレス・パスワードの変更パージへ遷移できないように

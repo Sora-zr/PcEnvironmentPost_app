@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :reject_deleted_user, only: %i[create]
 
   # GET /resource/sign_in
   # def new
@@ -10,7 +11,7 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   # def create
-    # super
+  # super
   # end
 
   # DELETE /resource/sign_out
@@ -32,7 +33,22 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to root_url, notice: t('devise.sessions.guest_sign_in')
   end
 
-  # protected
+  protected
+
+  # 退会済みのアカウント化確認するメソッド
+  def reject_deleted_user
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      if @user.valid_password?(params[:user][:password]) && (@user.active_for_authentication? == false)
+        flash[:alert] = '退会済みのアカウントです。再度ご登録してご利用ください。'
+        redirect_to new_user_session_path
+      else
+        flash[:alert] = '項目を入力してください。'
+      end
+    else
+      flash[:alert] = '該当するユーザーが見つかりませんでした。'
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
