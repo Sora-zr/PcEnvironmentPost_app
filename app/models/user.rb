@@ -30,7 +30,7 @@ class User < ApplicationRecord
     end
   end
 
-  # ゲストユーザー作成メソッド
+  # ゲストユーザー作成用メソッド
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -46,29 +46,31 @@ class User < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
-  # オブジェクトが自身のものか調べる
+  # オブジェクトが自身のものか確認
   def own?(object)
     id == object.user_id
   end
 
+  # いいね機能
   def like?(post)
     post_likes.include?(post)
-  end
-
-  def bookmark?(post)
-    post_bookmarks.include?(post)
   end
 
   def like(post)
     post_likes << post
   end
 
-  def bookmark(post)
-    post_bookmarks << post
-  end
-
   def unlike(post)
     post_likes.destroy(post)
+  end
+
+  # ブックマーク機能
+  def bookmark?(post)
+    post_bookmarks.include?(post)
+  end
+
+  def bookmark(post)
+    post_bookmarks << post
   end
 
   def unbookmark(post)

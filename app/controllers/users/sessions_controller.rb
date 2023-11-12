@@ -35,7 +35,7 @@ class Users::SessionsController < Devise::SessionsController
 
   protected
 
-  # 退会済みのアカウント化確認するメソッド
+  # 退会済みのアカウントか確認するメソッド
   def reject_deleted_user
     @user = User.find_by(email: params[:user][:email])
     if @user
@@ -49,7 +49,7 @@ class Users::SessionsController < Devise::SessionsController
       flash[:alert] = '該当するユーザーが見つかりませんでした。'
     end
   end
-
+  
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

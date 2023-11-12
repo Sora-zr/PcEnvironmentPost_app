@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_user, only: [:edit, :update]
+  before_action :guest_not_edit, only: [:edit, :update]
+  before_action :guest_not_withdraw, only: %i[check withdraw]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -43,8 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def check
-  end
+  def check; end
 
   def withdraw
     @user = User.find(current_user.id)
@@ -57,9 +57,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   # ゲストユーザーがメールアドレス・パスワードの変更パージへ遷移できないように
-  def ensure_normal_user
+  def guest_not_edit
     if resource.email == 'guest@example.com'
       redirect_to root_path, alert: 'ゲストユーザーはメールアドレス・パスワードの変更を行うことができません。'
+    end
+  end
+
+  # ゲストユーザーが退会処理を実行できないように
+  def guest_not_withdraw
+    if current_user.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーは退会処理を行うことができません。'
     end
   end
 
