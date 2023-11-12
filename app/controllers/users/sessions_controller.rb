@@ -26,6 +26,12 @@ class Users::SessionsController < Devise::SessionsController
     new_user_session_url
   end
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to root_url, notice: t('devise.sessions.guest_sign_in')
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -33,9 +39,4 @@ class Users::SessionsController < Devise::SessionsController
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   #
 
-  def guest_sign_in
-    user = User.guest
-    sign_in user
-    redirect_to root_url, notice: t('devise.sessions.guest_sign_in')
-  end
 end

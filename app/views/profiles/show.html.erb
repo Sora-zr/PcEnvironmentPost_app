@@ -3,11 +3,7 @@
   <div class="card border-black">
     <div class="card-body text-center">
       <div class="dropdown text-end">
-        <% if @user.email == 'guest@example.com' %>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-            ユーザー情報を編集
-          </button>
-        <% else %>
+        <% if @user.email != 'guest@example.com' %>
           <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
             ユーザー情報を編集
           </button>

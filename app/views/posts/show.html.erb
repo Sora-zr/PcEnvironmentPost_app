@@ -55,19 +55,19 @@
 
       <div class="col-sm-4">
         <div class="mb-5">
+          <% unless current_user %>
+            <p class="text-center text-danger">以下の機能はログインユーザーのみ使用できます。</p>
+          <% end %>
           <div class="card border-black mb-4">
-            <% unless current_user %>
-              <p style="margin: 20px auto; color: red;">以下の機能はログインユーザーのみ使用できます。</p>
-              <hr style="margin: 0">
-            <% end %>
-            <div class="row mt-3">
+            <div class="row my-3">
               <% if current_user && current_user.own?(@post) %>
                 <%= render 'shared/crud_menu', post: @post %>
               <% else %>
                 <%= render 'shared/like_bookmark_menu', post: @post %>
               <% end %>
             </div>
-            <hr>
+          </div>
+          <div class="card border-black mb-4">
             <div class="card-body">
               <!-- コメント一覧 -->
               <%= render 'comments/comments', { comments: @comments } %>

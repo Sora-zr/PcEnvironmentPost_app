@@ -45,10 +45,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  # ゲストユーザーがユーザー編集できないように
+  # ゲストユーザーがメールアドレス・パスワードの変更パージへ遷移できないように
   def ensure_normal_user
     if resource.email == 'guest@example.com'
-      redirect_to root_path, danger: 'ゲストユーザーはメールアドレス・パスワードの変更を行うことができません。'
+      redirect_to root_path, alert: 'ゲストユーザーはメールアドレス・パスワードの変更を行うことができません。'
     end
   end
 

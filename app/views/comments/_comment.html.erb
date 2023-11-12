@@ -1,14 +1,23 @@
-<div id="comment_<%= comment.id %>">
-    <div class="d-flex justify-content-between">
-      <h6 style="color: lightgrey;"><%= comment.user.name %></h6>
-      <% if current_user.own?(comment) %>
-        <%= link_to comment_path(comment),
-                    data: { confirm: 'コメントを削除しますか？' },
-                    method: :delete,
-                    remote: true do %>
-          <i class="fa-regular fa-trash-can trash-btn me-2"></i>
+<div id="comment_<%= comment.id %>" class="comment">
+  <div class="d-flex align-items-center">
+    <%= image_tag comment.user.avatar, size: 40, class: 'rounded-circle' %>
+    <div class="d-flex flex-column ms-3 flex-grow-1">
+      <div class="d-flex justify-content-between align-items-center">
+        <h6 class="m-0 ps-1" style="font-weight: bold;"><%= comment.user.name %></h6>
+        <% if current_user && current_user.own?(comment) %>
+          <%= link_to comment_path(comment),
+                      data: { confirm: 'コメントを削除しますか？' },
+                      method: :delete,
+                      remote: true do %>
+            <i class="fa-regular fa-trash-can trash-btn me-2"></i>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+      <hr class="m-1">
+      <div class="ps-1 pt-1">
+        <%= simple_format(comment.content) %>
+      </div>
     </div>
-    <%= simple_format(comment.content) %>
+  </div>
 </div>
+

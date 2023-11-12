@@ -67,12 +67,12 @@ ul#file-preview-list {
 
 #image-upload-container {
   position: relative;
-  width: 400px; /* 必要な幅に合わせて調整 */
-  height: 300px; /* 必要な高さに合わせて調整 */
+  //width: 400px; /* 必要な幅に合わせて調整 */
+  //height: 300px; /* 必要な高さに合わせて調整 */
   border: 2px dashed #ccc;
   border-radius: 2%;
   text-align: center;
-  cursor: pointer;
+  //cursor: pointer;
   background-color: gray;
 }
 
@@ -83,8 +83,4 @@ ul#file-preview-list {
   transform: translate(-50%, -50%);
   font-size: 16px;
   color: #333;
-}
-
-#up_images {
-  /* ファイルフィールドのスタイル（非表示） */
 }
