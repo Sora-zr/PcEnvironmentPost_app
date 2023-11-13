@@ -1,5 +1,13 @@
+.devise-page {
+  background-image: url("devise_page.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
 .devise-page-content {
-  width: 50%;
+
+  width: 40%;
   padding: 80px;
 
   .devise-body {
@@ -15,6 +23,7 @@
   .green-btn {
     background-color: #00b300;
   }
+
   .green-btn:hover {
     background-color: #008000;
   }
@@ -22,6 +31,7 @@
   .google-btn {
     background-color: #ea4335;
   }
+
   .google-btn:hover {
     background-color: #b33529;
   }
@@ -29,6 +39,7 @@
   .gray-btn {
     background-color: #7d7d7d;
   }
+
   .gray-btn:hover {
     background-color: #666666;
   }
@@ -36,6 +47,7 @@
   .blue-btn {
     background-color: #0067C0;
   }
+
   .blue-btn:hover {
     background-color: #005299;
   }

@@ -1,79 +1,85 @@
-<div class="container devise-page-content">
-  <div class="mx-auto">
-    <div class="card">
-      <h2 class="card-header text-center p-4">ログイン</h2>
-      <div class="card-body devise-body">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
+<div class="devise-page">
+  <div class="container devise-page-content">
+    <div class="mx-auto">
+      <div class="card">
+        <h2 class="card-header text-center p-4">ログイン</h2>
+        <div class="card-body devise-body">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-          <span>メールアドレス</span>
-          <div class="input-group mb-4">
-            <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
-            <%= f.email_field :email,
-                              autofocus: true,
-                              autocomplete: 'email',
-                              class: 'form-control p-2',
-                              id: 'email',
-                              placeholder: User.human_attribute_name(:email) %>
-<!--                              required: true %>-->
-          </div>
-
-          <span>パスワード</span>
-          <div class="input-group">
-            <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
-            <%= f.password_field :password,
-                                 autocomplete: 'password',
-                                 class: 'form-control p-2',
-                                 id: 'password',
-                                 placeholder: User.human_attribute_name(:password) %>
-<!--                                 required: true %>-->
-          </div>
-          <div class="text-center">
-            <div class="mt-1 mb-4">
-              <%= link_to 'パスワードをお忘れですか？', new_user_password_path %>
+            <span>メールアドレス</span>
+            <div class="input-group mb-4">
+              <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
+              <%= f.email_field :email,
+                                autofocus: true,
+                                autocomplete: 'email',
+                                class: 'form-control p-2',
+                                id: 'email',
+                                placeholder: User.human_attribute_name(:email),
+                                required: true %>
             </div>
 
-            <% if devise_mapping.rememberable? %>
-              <div class="field mb-3">
-                <%= f.check_box :remember_me %>
-                <%= f.label :remember_me %>
+            <span>パスワード</span>
+            <div class="input-group">
+              <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
+              <%= f.password_field :password,
+                                   autocomplete: 'password',
+                                   class: 'form-control p-2',
+                                   id: 'password',
+                                   placeholder: User.human_attribute_name(:password),
+                                   required: true %>
+            </div>
+            <div class="text-center">
+              <div class="mt-1 mb-4">
+                <%= link_to 'パスワードをお忘れですか？', new_user_password_path %>
               </div>
-            <% end %>
 
-            <div class="mb-4">
-              <%= button_tag type: 'submit', class: 'btn green-btn', id: 'login-button' do %>
-                <i class="fa-solid fa-right-to-bracket"></i>
-                <span>　ログイン</span>
+              <% if devise_mapping.rememberable? %>
+                <div class="field mb-3">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                </div>
               <% end %>
+
+              <div class="mb-4">
+                <%= button_tag type: 'submit', class: 'btn green-btn', id: 'login-button' do %>
+                  <i class="fa-solid fa-right-to-bracket"></i>
+                  <span>　ログイン</span>
+                <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
 
-        <hr>
-        <div class="text-center">
-          <h6 class="mt-4 mb-4">または</h6>
+            <div class="text-center" style="font-size: 12px;">
+              <%= link_to '利用規約', page_path('terms_of_service'), class: 'footer-link' %>および<%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'footer-link' %>に同意の上ログイン及び、ご登録してください。
+            </div>
+          <% end %>
 
-          <% if devise_mapping.omniauthable? %>
-            <% resource_class.omniauth_providers.each do |provider| %>
-              <%= button_to omniauth_authorize_path(resource_name, provider), class: 'btn google-btn mb-4', data: { turbo: false } do %>
-                <i class="fa-brands fa-google"></i>
-                <span>　Googleアカウントでログイン　</span>
+          <hr>
+          <div class="text-center">
+            <h6 class="mt-4 mb-4">または</h6>
+
+            <% if devise_mapping.omniauthable? %>
+              <% resource_class.omniauth_providers.each do |provider| %>
+                <%= button_to omniauth_authorize_path(resource_name, provider), class: 'btn google-btn mb-4', data: { turbo: false } do %>
+                  <i class="fa-brands fa-google"></i>
+                  <span>　Googleアカウントでログイン　</span>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
 
-          <%= link_to users_guest_sign_in_path,
-                      class: 'btn gray-btn mb-4',
-                      id: 'guest-login-button',
-                      data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } do %>
-            <i class="fa-solid fa-user-check"></i>
-            <span>　ゲストユーザーとしてログイン</span>
-          <% end %>
+            <%= link_to users_guest_sign_in_path,
+                        class: 'btn gray-btn mb-4',
+                        id: 'guest-login-button',
+                        data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } do %>
+              <i class="fa-solid fa-user-check"></i>
+              <span>　ゲストユーザーとしてログイン</span>
+            <% end %>
 
-          <%= link_to new_user_registration_path, class: 'btn blue-btn mb-4' do %>
-            <i class="fa-solid fa-user-plus"></i>
-            <span>　アカウントを新規作成する</span>
-          <% end %>
+            <%= link_to new_user_registration_path, class: 'btn blue-btn mb-4' do %>
+              <i class="fa-solid fa-user-plus"></i>
+              <span>　アカウントを新規作成する</span>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

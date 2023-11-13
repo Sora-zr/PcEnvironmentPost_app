@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     sort_option = params[:sort]
-    @posts = Post.sort_posts(sort_option, params[:page])
+    @posts = Post.sort_posts(sort_option, params[:page]).visible
 
     if params[:tag_name]
       @tags = Post.tagged_with("#{params[:tag_name]}").page(params[:page])
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   end
 
   def bookmarks
-    @post_bookmarks = current_user.post_bookmarks.includes(:user).order(created_at: :desc).page(params[:page])
+    @post_bookmarks = current_user.post_bookmarks.includes(:user).order(created_at: :desc).page(params[:page]).visible
   end
 
   def upload_image

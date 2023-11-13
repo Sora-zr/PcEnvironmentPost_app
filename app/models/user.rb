@@ -13,11 +13,12 @@ class User < ApplicationRecord
   has_many :post_bookmarks, through: :bookmarks, source: :post
   has_one_attached :avatar
 
-  validates_presence_of :name, :email
-  validates_uniqueness_of :email
+  validates :name, presence: true,  length: { maximum: 20, minimum: 1 }
+  validates :email, presence: true, uniqueness: true
   validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: "有効なフォーマットではありません。" },
             size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
 
+  scope :active, -> { where(is_deleted: false) }
   scope :deleted_user, -> { where(is_deleted: 1).where('deleted_at < ?', 30.days.ago) }
 
   # Googleログイン用メソッド

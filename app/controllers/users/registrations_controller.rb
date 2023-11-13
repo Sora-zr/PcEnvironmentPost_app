@@ -59,14 +59,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # ゲストユーザーがメールアドレス・パスワードの変更パージへ遷移できないように
   def guest_not_edit
     if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーはメールアドレス・パスワードの変更を行うことができません。'
+      redirect_back fallback_location: root_path, alert: 'ゲストユーザーはメールアドレス・パスワードの変更を行うことができません。'
     end
   end
 
   # ゲストユーザーが退会処理を実行できないように
   def guest_not_withdraw
     if current_user.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーは退会処理を行うことができません。'
+      redirect_back fallback_location: root_path, alert: 'ゲストユーザーは退会処理を行うことができません。'
     end
   end
 

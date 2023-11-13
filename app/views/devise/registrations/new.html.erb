@@ -1,68 +1,75 @@
-<div class="container devise-page-content">
-  <div class="mx-auto">
-    <div class="card nav-color">
-      <h2 class="card-header text-center p-4">ユーザー登録</h2>
-      <div class="card-body devise-body">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= render "devise/shared/error_messages", resource: resource %>
+<div class="devise-page">
+  <div class="container devise-page-content">
+    <div class="mx-auto">
+      <div class="card">
+        <h2 class="card-header text-center p-4">ユーザー登録</h2>
+        <div class="card-body devise-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
 
-          <div>ユーザネーム</div>
-          <div class="input-group mb-5">
-            <label class="input-group-text" for="name"><i class="fa-solid fa-user"></i></label>
-            <%= f.text_field :name,
-                             autofocus: true,
-                             autocomplete: 'name',
-                             class: 'form-control p-2',
-                             id: 'name',
-                             placeholder: User.human_attribute_name(:name) %>
-<!--                             required: true %>-->
+            <div>ユーザネーム</div>
+            <div class="input-group mb-5">
+              <label class="input-group-text" for="name"><i class="fa-solid fa-user"></i></label>
+              <%= f.text_field :name,
+                               autofocus: true,
+                               autocomplete: 'name',
+                               class: 'form-control p-2',
+                               id: 'name',
+                               placeholder: '１〜２０文字以内でご入力ください',
+                               required: true %>
+            </div>
+
+            <div>メールアドレス</div>
+            <div class="input-group mb-5">
+              <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
+              <%= f.email_field :email,
+                                autocomplete: 'email',
+                                class: 'form-control p-2',
+                                id: 'email',
+                                placeholder: '送信可能なアドレスをご入力ください',
+                                required: true %>
+            </div>
+
+            <div>パスワード（6文字以上）</div>
+            <div class="input-group mb-5">
+              <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
+              <%= f.password_field :password,
+                                   autocomplete: 'new-password',
+                                   class: 'form-control p-2',
+                                   id: 'password',
+                                   placeholder: '6文字以上でご入力ください',
+                                   required: true %>
+            </div>
+
+            <div>パスワード（確認）</div>
+            <div class="input-group mb-5">
+              <label class="input-group-text" for="password-confirmation"><i class="fa-solid fa-lock"></i></label>
+              <%= f.password_field :password_confirmation,
+                                   autocomplete: 'new-password',
+                                   class: 'form-control p-2',
+                                   id: 'password-confirmation',
+                                   placeholder: '確認のためもう一度ご入力ください',
+                                   required: true %>
+            </div>
+
+
+            <div class="mb-4 text-center">
+              <%= button_tag type: 'submit', class: 'btn green-btn' do %>
+                <i class="fa-solid fa-user-plus"></i>
+                <span>　ユーザー登録をする</span>
+              <% end %>
+            </div>
+
+            <div class="text-center" style="font-size: 12px;">
+              <%= link_to '利用規約', page_path('terms_of_service'), class: 'footer-link' %>および<%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'footer-link' %>に同意の上ログイン及び、ご登録してください。
+            </div>
+          <% end %>
+
+          <hr>
+
+          <div class="mt-4 text-center">
+            <%= link_to 'ログインページへ', user_session_path %>
           </div>
-
-          <div>メールアドレス</div>
-          <div class="input-group mb-5">
-            <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
-            <%= f.email_field :email,
-                              autocomplete: 'email',
-                              class: 'form-control p-2',
-                              id: 'email',
-                              placeholder: User.human_attribute_name(:email) %>
-<!--                              required: true %>-->
-          </div>
-
-          <div>パスワード（6文字以上）</div>
-          <div class="input-group mb-5">
-            <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
-            <%= f.password_field :password,
-                                 autocomplete: 'new-password',
-                                 class: 'form-control p-2',
-                                 id: 'password',
-                                 placeholder: User.human_attribute_name(:password) %>
-<!--                                 required: true %>-->
-          </div>
-
-          <div>パスワード確認</div>
-          <div class="input-group mb-5">
-            <label class="input-group-text" for="password-confirmation"><i class="fa-solid fa-lock"></i></label>
-            <%= f.password_field :password_confirmation,
-                                 autocomplete: 'new-password',
-                                 class: 'form-control p-2',
-                                 id: 'password-confirmation',
-                                 placeholder: User.human_attribute_name(:password_confirmation) %>
-<!--                                 required: true %>-->
-          </div>
-
-          <div class="mb-4 text-center">
-            <%= button_tag type: 'submit', class: 'btn green-btn' do %>
-              <i class="fa-solid fa-user-plus"></i>
-              <span>　ユーザー登録をする</span>
-            <% end %>
-          </div>
-        <% end %>
-
-        <hr>
-
-        <div class="mt-4 text-center">
-          <%= link_to 'ログインページへ', user_session_path %>
         </div>
       </div>
     </div>
