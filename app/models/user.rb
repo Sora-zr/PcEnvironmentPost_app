@@ -18,6 +18,8 @@ class User < ApplicationRecord
   validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: "有効なフォーマットではありません。" },
             size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
 
+  scope :deleted_user, -> { where(is_deleted: 1).where('deleted_at < ?', 30.days.ago) }
+
   # Googleログイン用メソッド
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
