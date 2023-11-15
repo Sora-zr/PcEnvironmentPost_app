@@ -23,7 +23,7 @@ set :output, "#{Rails.root}/log/cron.log"
 # end
 
 every 1.day, at: "0:00 am" do
-  rake "users:delete_after_30_days"
+  rake "users:delete_after_10_days"
 end
 
 # Learn more: http://github.com/javan/whenever

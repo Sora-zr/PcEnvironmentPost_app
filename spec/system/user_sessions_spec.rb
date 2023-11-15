@@ -12,15 +12,15 @@ RSpec.describe User, type: :system do
         fill_in 'パスワード', with: 'password'
         find('#login-button').click
         expect(page).to have_content 'ログインしました。'
-        expect(current_path).to eq root_path
+        expect(current_path).to eq posts_path
       end
     end
 
     context 'フォームが未入力' do
       it 'ログインに失敗する' do
         visit user_session_path
-        fill_in 'メールアドレス', with: nil
-        fill_in 'パスワード', with: nil
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: '　'
         find('#login-button').click
         expect(page).to have_content 'メールアドレスまたはパスワードが違います。'
         expect(current_path).to eq user_session_path
@@ -45,7 +45,7 @@ RSpec.describe User, type: :system do
         find('#guest-login-button').click
         page.driver.browser.switch_to.alert.accept
         expect(page).to have_content 'ゲストユーザーとしてログインしました。'
-        expect(current_path).to eq root_path
+        expect(current_path).to eq posts_path
       end
     end
   end

@@ -49,7 +49,7 @@ class User < ApplicationRecord
     super && (self.is_deleted == false)
   end
 
-  # オブジェクトが自身のものか確認
+  # オブジェクトが自身のものか確認するメソッド
   def own?(object)
     id == object.user_id
   end

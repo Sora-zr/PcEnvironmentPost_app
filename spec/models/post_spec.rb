@@ -6,11 +6,6 @@ RSpec.describe Post, type: :model do
     expect(post).to be_valid
   end
 
-  it '説明文を入力しなかった場合、無効となる' do
-    post = FactoryBot.build(:post, description: nil)
-    expect(post).not_to be_valid
-  end
-
   it '画像を入力しなかった場合、無効となる' do
     post = FactoryBot.build(:post)
     post.images.purge

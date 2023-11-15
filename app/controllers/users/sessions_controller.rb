@@ -23,7 +23,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    stored_location_for(resource_or_scope) || root_url
+    stored_location_for(resource_or_scope) || posts_url
   end
 
   def after_sign_out_path_for(_resource_or_scope)
@@ -33,7 +33,7 @@ class Users::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to root_url, notice: t('devise.sessions.guest_sign_in')
+    redirect_to posts_url, notice: t('devise.sessions.guest_sign_in')
   end
 
   protected

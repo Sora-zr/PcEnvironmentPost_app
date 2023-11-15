@@ -6,7 +6,7 @@
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
-          <span>メールアドレス</span>
+          <%= f.label :email, for: :email %>
           <div class="input-group mb-5">
             <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
             <%= f.email_field :email,
@@ -19,7 +19,7 @@
           </div>
 
           <div class="text-center mb-3">※パスワードを変更しない場合は空白のままにしてください。</div>
-          <span>パスワード（6文字以上）</span>
+          <%= f.label :password, for: :password %>
           <div class="input-group mb-4">
             <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
             <%= f.password_field :password,
@@ -29,7 +29,7 @@
                                  placeholder: '6文字以上でご入力してください' %>
           </div>
 
-          <span>パスワード確認</span>
+          <%= f.label :password_confirmation, for: 'password-confirmation' %>
           <div class="input-group mb-5">
             <label class="input-group-text" for="password-confirmation"><i class="fa-solid fa-lock"></i></label>
             <%= f.password_field :password_confirmation,
@@ -60,7 +60,7 @@
 
         <hr>
         <div class="text-center">
-          <%= link_to "戻る", :back, class: 'text-center' %>
+          <%= link_to '戻る', :back, class: 'text-center' %>
         </div>
       </div>
     </div>

@@ -1,7 +1,10 @@
 <header class="header">
   <nav class="navbar fixed-top">
     <div class="container-fluid">
-      <h1><%= link_to 'Title', root_path, class: 'navbar-brand' %></h1>
+      <h1 class="mx-3">
+        <%= image_tag 'title.png', size: 40 %>
+        <%= link_to 'DeskVista.', root_path, class: 'navbar-brand title' %>
+      </h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

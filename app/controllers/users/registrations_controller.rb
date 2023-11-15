@@ -21,19 +21,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
 
   # PUT /resource
-  def update
-    super
-  end
+  # def update
+  #   super
+  # end
 
   # DELETE /resource
-  def destroy
-    super
-  end
+  # def destroy
+  #   super
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -52,6 +52,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     reset_session
     flash[:notice] = '退会処理が完了しました。ご利用ありがとうございました。'
     redirect_to root_path
+  end
+
+  # ユーザー登録完了後のリダイレクト先
+  def after_sign_up_path_for(resource)
+    posts_url
+  end
+
+  # ユーザー情報更新後のリダイレクト先
+  def after_update_path_for(resource)
+    profile_url
   end
 
   protected

@@ -43,6 +43,12 @@ main {
   opacity: 0.7;
 }
 
+.title {
+  font-size: 25px;
+  font-family: 'Courier New', sans-serif;
+  margin: 0 10px;
+}
+
 /* CSSファイルまたはstyleタグ内に追加 */
 #file-preview-list {
   display: flex; /* フレキシブルボックスとして表示 */

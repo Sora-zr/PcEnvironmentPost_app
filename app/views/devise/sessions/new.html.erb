@@ -5,9 +5,14 @@
         <h2 class="card-header text-center p-4">ログイン</h2>
         <div class="card-body devise-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
+            <%#= render "devise/shared/error_messages", resource: resource %>
+            <% flash.each do |_, message| %>
+              <% if message == 'メールアドレスまたはパスワードが違います。' %>
+                <div class="text-center text-danger pb-3"><%= message %></div>
+              <% end %>
+            <% end %>
 
-            <span>メールアドレス</span>
+            <%= f.label :email, for: :email %>
             <div class="input-group mb-4">
               <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
               <%= f.email_field :email,
@@ -19,7 +24,7 @@
                                 required: true %>
             </div>
 
-            <span>パスワード</span>
+            <%= f.label :password, for: :password %>
             <div class="input-group">
               <label class="input-group-text" for="password"><i class="fa-solid fa-lock"></i></label>
               <%= f.password_field :password,
@@ -65,7 +70,7 @@
               <% resource_class.omniauth_providers.each do |provider| %>
                 <%= button_to omniauth_authorize_path(resource_name, provider), class: 'btn google-btn mb-4', data: { turbo: false } do %>
                   <i class="fa-brands fa-google"></i>
-                  <span>　Googleアカウントでログイン　</span>
+                  <span style="font-size: 14px;">　Googleアカウントでログイン　</span>
                 <% end %>
               <% end %>
             <% end %>
@@ -75,12 +80,12 @@
                         id: 'guest-login-button',
                         data: { turbo_method: :post, turbo_confirm: 'ゲストユーザーとしてログインしますか？' } do %>
               <i class="fa-solid fa-user-check"></i>
-              <span>　ゲストユーザーとしてログイン</span>
+              <span style="font-size: 14px;">　ゲストユーザーとしてログイン</span>
             <% end %>
 
             <%= link_to new_user_registration_path, class: 'btn blue-btn mb-4' do %>
               <i class="fa-solid fa-user-plus"></i>
-              <span>　アカウントを新規作成する</span>
+              <span style="font-size: 14px;">　アカウントを新規作成する</span>
             <% end %>
           </div>
         </div>
