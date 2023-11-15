@@ -15,11 +15,11 @@ class User < ApplicationRecord
 
   validates :name, presence: true,  length: { maximum: 20, minimum: 1 }
   validates :email, presence: true, uniqueness: true
-  validates :avatar, content_type: { in: %w[image/jpeg image/gif image/png image/jpg], message: "有効なフォーマットではありません。" },
+  validates :avatar, content_type: { in: %w[image/jpg image/jpeg image/png], message: "有効なフォーマットではありません。" },
             size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
 
   scope :active, -> { where(is_deleted: false) }
-  scope :deleted_user, -> { where(is_deleted: 1).where('deleted_at < ?', 30.days.ago) }
+  scope :deleted_user, -> { where(is_deleted: 1).where('deleted_at < ?', 10.days.ago) }
 
   # Googleログイン用メソッド
   def self.from_omniauth(auth)

@@ -1,17 +1,19 @@
-.file-input-btn {
-  width: 350px;
-  color: white;
-  background-color: gray;
-  display: block;
-  padding: 10px 0;
-  margin: 0 auto;
-  border-radius: 5px;
-  cursor: pointer;
-
+.form-back-image {
+  background-image: url("form-background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-.file-input-btn:hover {
-  background-color: lightgray;
+.form-container {
+  background-color: #fff;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 70px;
+}
+
+.file-upload-text p {
+  margin: 0;
 }
 
 .file-input-field {
@@ -23,7 +25,6 @@
   width: 500px;
   height: 250px;
   position: relative;
-  border: 2px dashed #fff;
   border-radius: 2%;
   margin: 0 auto;
 
@@ -32,15 +33,22 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    .file-upload-icon {
+      font-size: 100px;
+      margin-bottom: 25px;
+    }
   }
 }
 
 .drop-default-color {
-  background-color: #a9a9a9;
+  color: white;
+  background-color: #bbb;
 }
 
 .drop-color {
-  background-color: #4d4d4d;
+  color: white;
+  background-color: #7d7d7d;
 }
 
 .preview-container {
@@ -54,17 +62,3 @@
   width: 250px;
   height: 150px;
 }
-
-.preview-delete-btn {
-  color: red;
-  font-size: 15px;
-  margin-top: 5px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.preview-delete-btn:hover {
-  color: darkred;
-}
-
-

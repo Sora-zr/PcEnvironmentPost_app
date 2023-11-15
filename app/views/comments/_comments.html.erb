@@ -1,10 +1,8 @@
-<h4 class="card-title text-center">コメント一覧</h4>
-<hr>
-
+<h4 class="card-header text-center py-3">コメント一覧</h4>
 <div id="js_post_comment">
   <% if comments.present? %>
     <%= render comments %>
   <% else %>
-    <p id="js_comment_no_result" class="text-center">コメントはありません。</p>
+    <p id="js_comment_no_result" class="text-center m-4">コメントはありません。</p>
   <% end %>
 </div>

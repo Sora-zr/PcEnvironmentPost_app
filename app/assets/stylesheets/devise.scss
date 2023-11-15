@@ -6,8 +6,7 @@
 }
 
 .devise-page-content {
-
-  width: 40%;
+  width: 50%;
   padding: 80px;
 
   .devise-body {
@@ -15,41 +14,9 @@
   }
 
   .btn {
-    width: 80%;
     color: white;
+    width: 80%;
     padding: 15px 60px;
-  }
-
-  .green-btn {
-    background-color: #00b300;
-  }
-
-  .green-btn:hover {
-    background-color: #008000;
-  }
-
-  .google-btn {
-    background-color: #ea4335;
-  }
-
-  .google-btn:hover {
-    background-color: #b33529;
-  }
-
-  .gray-btn {
-    background-color: #7d7d7d;
-  }
-
-  .gray-btn:hover {
-    background-color: #666666;
-  }
-
-  .blue-btn {
-    background-color: #0067C0;
-  }
-
-  .blue-btn:hover {
-    background-color: #005299;
   }
 }
 

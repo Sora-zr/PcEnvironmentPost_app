@@ -15,6 +15,7 @@
   .avatar {
     z-index: 10;
     position: absolute;
+    top: 12%;
     left: 0;
     right: 0;
     margin: auto;
@@ -29,6 +30,18 @@
   .post-image {
     object-fit: cover;
     height: 500px;
+  }
+
+  .user-update-form {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+
+  .btn {
+    color: #fff;
+    max-width: 60%;
+    width: 60%;
+    padding: 10px 0;
   }
 }
 

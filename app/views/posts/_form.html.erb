@@ -2,9 +2,15 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <!-- 画像アップロードフォーム-->
-  <%= f.label :images, class: 'file-input-btn' do %>
-    <i class="fa-regular fa-image"></i>　画像をアップロード
-  <% end %>
+  <div class="file-upload-text mb-4">
+    <p>・対応画像フォーマット：　jpg / jpeg / png</p>
+    <p>・ファイルサイズ：　5MBまで</p>
+    <p>・画像上限枚数：　8枚まで</p>
+  </div>
+
+    <%= f.label :images, class: 'file-input-btn' do %>
+      <i class="fa-regular fa-image"></i>　画像をアップロード
+    <% end %>
   <%= f.file_field :images,
                    multiple: true,
                    class: 'file-input-field',
@@ -13,19 +19,23 @@
 
   <p data-file-upload-target="error" class=""></p>
 
-  <p>または</p>
+  <p class="m-4 text-center">または</p>
 
   <!-- ドラッグ＆ドロップエリア -->
-  <div class="file-upload-container drop-default-color" data-file-upload-target="drop" data-action="dragover->file-upload#dragover dragleave->file-upload#dragleave drop->file-upload#dropImages">
-    <span class="file-upload-text">ここに画像をドラッグ&ドロップ</span>
+  <div class="file-upload-container drop-default-color mb-5" data-file-upload-target="drop" data-action="dragover->file-upload#dragover dragleave->file-upload#dragleave drop->file-upload#dropImages">
+    <div class="file-upload-text">
+      <i class="fa-regular fa-image file-upload-icon"></i>
+      <p class="">ここに画像をドラッグ&ドロップ</p>
+    </div>
   </div>
 
   <!-- 画像プレビュー -->
-  <div data-file-upload-target="preview" class="preview-container mt-5">
+  <p>画像プレビューは横にスクロールできます。</p>
+  <div data-file-upload-target="preview" class="preview-container">
     <% if @post.images.attached? %>
       <% @post.images.each do |image| %>
         <div class="" data-controller="images" data-file-upload-target="image_box">
-          <div class="text-center card me-2">
+          <div class="card me-2">
             <%= image_tag image, class: 'preview-image' %>
             <a class="preview-delete-btn" data-action="click->file-upload#deleteImage">削除</a>
             <%= f.hidden_field :images, name: "post[images][]", style: "display: none", value: "#{image.blob.id}" %>
@@ -36,9 +46,7 @@
   </div>
 
   <div class="row my-5">
-
     <div class="col-7">
-
       <h4><%= f.label :description %></h4>
       <hr>
       <div class="form-group mb-3">
@@ -56,6 +64,6 @@
   </div>
 
   <div class="mb-4">
-    <%= f.submit nil, class: 'btn new-post-btn' %>
+    <%= f.submit nil, class: 'btn green-btn', style: 'padding: 15px 60px;' %>
   </div>
 <% end %>

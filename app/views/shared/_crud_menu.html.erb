@@ -1,10 +1,10 @@
-<div class="col text-center" style="padding: 0;">
+<div class="col text-center edit-btn" style="padding: 0;">
   <%= link_to edit_post_path(post), id: 'edit-btn', data: { turbo: false } do %>
-    <i class="fa-regular fa-pen-to-square edit-btn fs-5"></i>
+    <i class="fa-regular fa-pen-to-square"></i>
   <% end %>
 </div>
-<div class="col text-center" style="padding: 0;">
-  <%= link_to post_path(post), id: 'delete-btn', data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } do %>
-    <i class="fa-regular fa-trash-can trash-btn fs-5"></i>
+<div class="col text-center trash-btn" style="padding: 0;">
+  <%= link_to post_path(post), id: 'delete-btn', data: { turbo_method: :delete, turbo_confirm: 'この投稿を削除します。よろしいですか？' } do %>
+    <i class="fa-regular fa-trash-can"></i>
   <% end %>
 </div>

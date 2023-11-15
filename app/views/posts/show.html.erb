@@ -22,61 +22,56 @@
 
   <hr class="my-5">
 
-  <div class="container">
-    <% if @tags.present? %>
-      <div class="card border-black tags-container">
-        <div class="">
-          <h6 class="text-center" style="margin: 0;">タグ</h6>
-          <hr style="margin: 10px 0">
-          <% @tags.each do |tag| %>
-            <div class="tag-body">
-              <span class="tag-item"><%= tag.name %></span>
-            </div>
-          <% end %>
-        </div>
+  <% if @tags.present? %>
+    <div class="card border-black tags-container">
+      <h5 class="card-header text-center py-2">タグ</h5>
+      <div class="tag-body-container">
+        <% @tags.each do |tag| %>
+          <div class="tag-body">
+            <div class="tag-item"><%= tag.name %></div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="mb-4">
-          <div class="card border-black">
-            <h4 class="card-header text-center py-3">説明</h4>
-            <div class="card-body">
-              <div class="card-text">
-                <%= simple_format @post.description %>
-              </div>
-              <hr>
-              <p class="text-end m-0">投稿作成日：　<%= @post.created_at.strftime("%Y年 %m月 %d日") %></p>
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="mb-4">
+        <div class="card border-black">
+          <h4 class="card-header text-center py-3">説明</h4>
+          <div class="card-body">
+            <div class="card-text">
+              <%= simple_format @post.description %>
             </div>
+            <hr>
+            <p class="text-end m-0">投稿作成日：　<%= @post.created_at.strftime("%Y年 %m月 %d日") %></p>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-sm-4">
-        <div class="mb-5">
-          <% unless current_user %>
-            <p class="text-center text-danger">以下の機能はログインユーザーのみ使用できます。</p>
-          <% end %>
-          <div class="card border-black mb-4">
-            <div class="row my-3">
-              <% if current_user && current_user.own?(@post) %>
-                <%= render 'shared/crud_menu', post: @post %>
-              <% else %>
-                <%= render 'shared/like_bookmark_menu', post: @post %>
-              <% end %>
-            </div>
+    <div class="col-sm-4">
+      <div class="mb-5">
+        <% unless current_user %>
+          <p class="text-center text-danger">以下の機能はログインユーザーのみ使用できます。</p>
+        <% end %>
+        <div class="card border-black mb-4">
+          <div class="row my-3">
+            <% if current_user && current_user.own?(@post) %>
+              <%= render 'shared/crud_menu', post: @post %>
+            <% else %>
+              <%= render 'shared/like_bookmark_menu', post: @post %>
+            <% end %>
           </div>
-          <div class="card border-black mb-4">
-            <div class="card-body">
-              <!-- コメント一覧 -->
-              <%= render 'comments/comments', { comments: @comments } %>
-              <hr>
+        </div>
+        <div class="card border-black">
+          <!-- コメント一覧 -->
+          <%= render 'comments/comments', { comments: @comments } %>
+          <hr class="my-1">
 
-              <!-- コメントフォーム -->
-              <%= render 'comments/form', { post: @post, comment: @comment } %>
-            </div>
-          </div>
+          <!-- コメントフォーム -->
+          <%= render 'comments/form', { post: @post, comment: @comment } %>
         </div>
       </div>
     </div>

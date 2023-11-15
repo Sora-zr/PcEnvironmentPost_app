@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_user, only: %i[show update]
 
   def show
@@ -7,9 +8,9 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(profile_params)
-      redirect_to profile_path
+      redirect_back fallback_location: root_url, notice: 'ユーザー情報を更新しました。'
     else
-      render :show
+      redirect_back fallback_location: root_url, alert: 'ユーザー情報の更新に失敗しました。'
     end
   end
 

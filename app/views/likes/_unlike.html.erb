@@ -1,13 +1,11 @@
 <div class="row">
-  <div class="col" style="padding-right: 0;">
+  <div class="col like-btn">
     <%= link_to like_path(current_user.likes.find_by(post_id: post.id)),
                 data: { turbo: false },
                 method: :delete,
                 remote: true do %>
-      <i class="fa-solid fa-heart like-btn fs-5" style="margin-top: 2px;"></i>
+      <i class="fa-solid fa-heart"></i>
     <% end %>
-  </div>
-  <div class="col like-btn" style="padding-left: 0;">
-    <%= post.likes.count %>
+    <span><%= post.likes.count %></span>
   </div>
 </div>

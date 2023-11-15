@@ -14,7 +14,7 @@
                               autocomplete: 'email',
                               class: 'form-control p-2',
                               id: 'email',
-                              placeholder: User.human_attribute_name(:email),
+                              placeholder: '送信可能なアドレスをご入力してください',
                               required: true %>
           </div>
 
@@ -26,7 +26,7 @@
                                  autocomplete: 'password',
                                  class: 'form-control p-2',
                                  id: 'password',
-                                 placeholder: User.human_attribute_name(:password) %>
+                                 placeholder: '6文字以上でご入力してください' %>
           </div>
 
           <span>パスワード確認</span>
@@ -36,7 +36,7 @@
                                  autocomplete: 'new-password',
                                  class: 'form-control p-2',
                                  id: 'password-confirmation',
-                                 placeholder: User.human_attribute_name(:password_confirmation) %>
+                                 placeholder: '確認のためもう一度ご入力してください' %>
           </div>
 
           <hr>
@@ -48,7 +48,7 @@
                                  autocomplete: 'current-password',
                                  class: 'form-control p-2',
                                  id: 'current-password',
-                                 placeholder: '現在のパスワード' %>
+                                 placeholder: '現在のパスワードをご入力してください' %>
           </div>
 
           <div class="mb-4 text-center">

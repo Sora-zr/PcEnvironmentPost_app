@@ -3,16 +3,19 @@
   <hr>
   <div class="text-center" style="color: #f00;">
     <i class="fa-solid fa-triangle-exclamation my-4" style="font-size: 60px;"></i>
-    <h4>退会処理を実行した場合、<br>30日間は再登録することができません。</h4>
+    <h4>退会処理を実行した場合、<br>10日間は再登録することができません。</h4>
   </div>
   <div class="my-5">
-    <p>退会処理を実行します。よろしいですか？</p>
+    <p class="mb-5">退会処理を実行します。よろしいですか？</p>
     <%= link_to '退会します',
                 users_withdraw_path,
-                class: "btn btn-danger ms-3",
-                style: 'width: 30%; height: 10%;',
+                class: "btn destroy-btn",
                 method: :patch,
                 data: { confirm: "本当に退会しますか？" } %>
+  </div>
+  <hr>
+  <div class="text-center my-4">
+    <%= link_to "戻る", :back, class: 'text-center' %>
   </div>
 </div>
 

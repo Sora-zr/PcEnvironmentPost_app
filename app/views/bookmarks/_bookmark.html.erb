@@ -1,10 +1,10 @@
 <div class="row">
-  <div class="col">
+  <div class="col bookmark-btn">
     <%= link_to bookmarks_path(post_id: post.id),
                 method: :post,
                 data: { turbo: false },
                 remote: true do %>
-      <i class="fa-regular fa-bookmark bookmark-btn fs-5" style="margin-top: 2px;"></i>
+      <i class="fa-regular fa-bookmark"></i>
     <% end %>
   </div>
 </div>

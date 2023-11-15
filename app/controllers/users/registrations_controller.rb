@@ -48,9 +48,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def withdraw
     @user = User.find(current_user.id)
-    @user.update(is_deleted: true)
+    @user.update(is_deleted: true, deleted_at: Time.current)
     reset_session
-    flash[:notice] = "退会処理が完了しました。ご利用ありがとうございました。"
+    flash[:notice] = '退会処理が完了しました。ご利用ありがとうございました。'
     redirect_to root_path
   end
 

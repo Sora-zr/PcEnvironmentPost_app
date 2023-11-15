@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def index
     sort_option = params[:sort]
     @posts = Post.sort_posts(sort_option, params[:page]).visible
+    @new_posts = Post.includes(:user).order(created_at: :desc).visible.limit(2)
 
     if params[:tag_name]
       @tags = Post.tagged_with("#{params[:tag_name]}").page(params[:page])
@@ -19,7 +20,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if current_user.post.present?
+      redirect_to posts_url, alert: 'すでに投稿済みです。'
+    else
+      @post = Post.new
+    end
   end
 
   def create

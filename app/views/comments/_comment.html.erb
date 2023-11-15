@@ -1,4 +1,4 @@
-<div id="comment_<%= comment.id %>" class="comment">
+<div id="comment_<%= comment.id %>" class="comment m-3">
   <div class="d-flex align-items-center">
     <%= image_tag comment.user.avatar, size: 40, class: 'rounded-circle' %>
     <div class="d-flex flex-column ms-3 flex-grow-1">
@@ -9,7 +9,7 @@
                       data: { confirm: 'コメントを削除しますか？' },
                       method: :delete,
                       remote: true do %>
-            <i class="fa-regular fa-trash-can trash-btn me-2"></i>
+            <i class="fa-regular fa-trash-can trash-btn pe-2" style="color: #ff2d2d;"></i>
           <% end %>
         <% end %>
       </div>

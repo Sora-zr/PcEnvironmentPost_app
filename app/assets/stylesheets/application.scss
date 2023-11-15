@@ -6,7 +6,7 @@
 @import "navbar";
 
 @import "home";
-@import "icon";
+@import "button";
 
 @import "flash-window";
 @import "pagination";
@@ -19,6 +19,21 @@ main {
 
 .container {
   padding-top: 60px;
+}
+
+// 線の間に文章を挟む
+.text-divider {
+  display: flex;
+  align-items: center;
+  --text-divider-gap: 1rem;
+}
+
+.text-divider::before,
+.text-divider::after {
+  content: '';
+  height: 1px;
+  background-color: #000;
+  flex-grow: 1;
 }
 
 .flash-message {
@@ -83,4 +98,11 @@ ul#file-preview-list {
   transform: translate(-50%, -50%);
   font-size: 16px;
   color: #333;
+}
+
+.sort-label {
+  color: #00f;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }

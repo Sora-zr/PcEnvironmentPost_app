@@ -1,0 +1,107 @@
+.edit-btn {
+  font-size: 20px;
+}
+
+.edit-btn a {
+  color: #13c716;
+  margin-top: 5px;
+}
+
+.trash-btn {
+  font-size: 20px;
+}
+
+.trash-btn a {
+  color: #ff2d2d;
+  margin-top: 5px;
+}
+
+.like-btn {
+  color: #ff4192;
+  font-size: 20px;
+}
+
+.like-btn a {
+  color: #ff4192;
+  margin: 5px 7px 0 0;
+  text-decoration: none;
+}
+
+.bookmark-btn {
+  font-size: 20px;
+}
+
+.bookmark-btn a {
+  color: #86b3e0;
+  margin-top: 5px;
+}
+
+.green-btn {
+  color: #fff;
+  background-color: #00b300;
+}
+
+.green-btn:hover {
+  color: #fff;
+  background-color: #008000;
+}
+
+.google-btn {
+  background-color: #ea4335;
+}
+
+.google-btn:hover {
+  background-color: #b33529;
+}
+
+.gray-btn {
+  background-color: #7d7d7d;
+}
+
+.gray-btn:hover {
+  background-color: #666666;
+}
+
+.blue-btn {
+  background-color: #0067C0;
+}
+
+.blue-btn:hover {
+  background-color: #005299;
+}
+
+.destroy-btn {
+  color: #fff;
+  background-color: #f00;
+  padding: 15px 60px;
+}
+
+.destroy-btn:hover {
+  color: #fff;
+  background-color: #8b0000;
+}
+
+.file-input-btn {
+  color: #fff;
+  background-color: #bbb;
+  width: 350px;
+  padding: 15px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.file-input-btn:hover {
+  background-color: #7d7d7d;
+}
+
+.preview-delete-btn {
+  color: #f00;
+  font-size: 15px;
+  margin: 5px auto;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.preview-delete-btn:hover {
+  color: #8b0000;
+}

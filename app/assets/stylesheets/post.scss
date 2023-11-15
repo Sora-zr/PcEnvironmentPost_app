@@ -11,22 +11,50 @@
   }
 }
 
+.new-posts {
+  position: relative;
+  border-color: black;
+  padding: 50px 0;
+  margin: 70px auto;
+  box-shadow: 5px 2px 2px gray;
+
+  .new-posts-title {
+    position: absolute;
+    top: -18px;
+    left: 17%;
+    background-color: white;
+    padding: 0 15px;
+  }
+}
+
 .tags-container {
-  padding: 10px 10px;
   margin: 30px 0;
 }
 
 .tag-body {
   display: inline-block;
-  margin: 0 5px;
+  margin: 12px 0 12px 12px;
+}
+
+.tag-body-container {
+  white-space: normal;
 }
 
 .tag-item {
   background-color: #007bff;
   color: #fff;
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-radius: 5px;
-  text-decoration: none;
+  //text-decoration: none;
+}
+
+
+.text-divider::before {
+  margin-right: var(--text-divider-gap);
+}
+
+.text-divider::after {
+  margin-left: var(--text-divider-gap);
 }
 
 // コメント

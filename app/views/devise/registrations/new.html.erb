@@ -15,7 +15,7 @@
                                autocomplete: 'name',
                                class: 'form-control p-2',
                                id: 'name',
-                               placeholder: '１〜２０文字以内でご入力ください',
+                               placeholder: '１〜２０文字以内でご入力してください',
                                required: true %>
             </div>
 
@@ -26,7 +26,7 @@
                                 autocomplete: 'email',
                                 class: 'form-control p-2',
                                 id: 'email',
-                                placeholder: '送信可能なアドレスをご入力ください',
+                                placeholder: '送信可能なアドレスをご入力してください',
                                 required: true %>
             </div>
 
@@ -37,7 +37,7 @@
                                    autocomplete: 'new-password',
                                    class: 'form-control p-2',
                                    id: 'password',
-                                   placeholder: '6文字以上でご入力ください',
+                                   placeholder: '6文字以上でご入力してください',
                                    required: true %>
             </div>
 
@@ -48,7 +48,7 @@
                                    autocomplete: 'new-password',
                                    class: 'form-control p-2',
                                    id: 'password-confirmation',
-                                   placeholder: '確認のためもう一度ご入力ください',
+                                   placeholder: '確認のためもう一度ご入力してください',
                                    required: true %>
             </div>
 
@@ -61,11 +61,26 @@
             </div>
 
             <div class="text-center" style="font-size: 12px;">
-              <%= link_to '利用規約', page_path('terms_of_service'), class: 'footer-link' %>および<%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'footer-link' %>に同意の上ログイン及び、ご登録してください。
+              <%= link_to '利用規約', page_path('terms_of_service'), class: 'footer-link' %>
+              および<%= link_to 'プライバシーポリシー', page_path('privacy_policy'), class: 'footer-link' %>
+              に同意の上ログイン及び、ご登録してください。
             </div>
           <% end %>
 
-          <hr>
+          <div class="text-divider my-4">
+            <h6>または</h6>
+          </div>
+
+          <div class="text-center">
+            <% if devise_mapping.omniauthable? %>
+              <% resource_class.omniauth_providers.each do |provider| %>
+                <%= button_to omniauth_authorize_path(resource_name, provider), class: 'btn google-btn mb-4', data: { turbo: false } do %>
+                  <i class="fa-brands fa-google"></i>
+                  <span>　Googleアカウントで新規作成　</span>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
 
           <div class="mt-4 text-center">
             <%= link_to 'ログインページへ', user_session_path %>

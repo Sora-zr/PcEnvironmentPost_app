@@ -1,21 +1,40 @@
 <div class="container post-body">
-  <div class="row">
-    <h1 class="text-center mb-4">投稿一覧</h1>
-    <hr>
-    <div class="mb-5">
-      <%= form_tag(posts_path, method: 'get') do %>
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="sort">並べ替え：</label>
-          <%= select_tag(:sort, options_for_select([['新しい順', 'new'], ['古い順', 'old'], ['いいねの件数順', 'like']], params[:sort]), class: 'form-select') %>
-          <button type="submit" class="btn btn-primary">ソート</button>
-        </div>
-      <% end %>
+  <div class="row text-center">
+    <div class="text-divider">
+      <h2>投稿一覧</h2>
     </div>
     <% if @posts.present? %>
+      <div class="card new-posts">
+        <h3 class="new-posts-title d-inline">新着の投稿</h3>
+        <div class="row">
+          <%= render @new_posts %>
+        </div>
+      </div>
+      <hr>
+      <div class="my-3">
+        <%= form_tag posts_path, method: 'get', id: 'sort-form' do %>
+          <div class="mb-3 text-end">
+            <label class="" for="sort">並べ替え：</label>
+            <%= select_tag :sort,
+                           options_for_select([['新着順', 'new'], ['古い順', 'old'], ['人気順', 'like'], ['ランダム', 'random']], params[:sort]),
+                           class: 'sort-label' %>
+          </div>
+        <% end %>
+      </div>
       <%= render @posts %>
     <% else %>
-      <p>投稿はありません。</p>
+      <p class="my-5">投稿はありません。</p>
     <% end %>
   </div>
-  <%= paginate @posts %>
+  <hr>
+  <div class="my-5">
+    <%= paginate @posts %>
+  </div>
 </div>
+
+
+<script>
+    document.getElementById('sort-form').addEventListener('change', function () {
+        this.submit();
+    });
+</script>
