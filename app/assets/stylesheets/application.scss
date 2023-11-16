@@ -1,24 +1,28 @@
 @import "bootstrap";
-@import "devise";
-@import "post";
-@import "form";
-@import "profile";
-@import "navbar";
-
-@import "home";
 @import "button";
-
+@import "devise";
 @import "flash-window";
+@import "form";
+@import "home";
+@import "navbar";
 @import "pagination";
+@import "profile";
+@import "post";
 @import "swiper/swiper-bundle.min.css";
 
 
 main {
-  margin-top: 57.43px;
+  margin-top: 70px;
 }
 
 .container {
-  padding-top: 60px;
+  padding-top: 80px;
+}
+
+.title {
+  font-size: 25px;
+  font-family: 'Courier New', sans-serif;
+  margin: 0 10px;
 }
 
 // 線の間に文章を挟む
@@ -28,87 +32,18 @@ main {
   --text-divider-gap: 1rem;
 }
 
+.text-divider::before {
+  margin-right: var(--text-divider-gap);
+}
+
+.text-divider::after {
+  margin-left: var(--text-divider-gap);
+}
+
 .text-divider::before,
 .text-divider::after {
   content: '';
   height: 1px;
   background-color: #000;
   flex-grow: 1;
-}
-
-.flash-message {
-  margin: 0 auto;
-  position: absolute;
-  z-index: 10;
-  opacity: 0.7;
-}
-
-.title {
-  font-size: 25px;
-  font-family: 'Courier New', sans-serif;
-  margin: 0 10px;
-}
-
-/* CSSファイルまたはstyleタグ内に追加 */
-#file-preview-list {
-  display: flex; /* フレキシブルボックスとして表示 */
-  list-style: none; /* リストのデフォルトのマーカーを削除 */
-}
-
-ul#file-preview-list {
-  margin: 0;
-  padding: 0;
-}
-
-#file-preview-list li {
-  margin-right: 10px; /* プレビュー間の間隔を調整 */
-}
-
-#file-preview-list img {
-  width: 250px; /* 幅を固定 */
-  height: 150px; /* 高さを固定 */
-  object-fit: cover;
-  border-radius: 2%;
-}
-
-.upload-container {
-  position: relative;
-  width: 400px; /* 必要に応じて幅を調整 */
-  height: 300px; /* 必要に応じて高さを調整 */
-  border: 2px dashed #ccc;
-  border-radius: 2%;
-  cursor: pointer;
-  text-align: center;
-}
-
-#upload-text {
-  padding-top: 100px; /* テキストを中央に配置するために調整 */
-}
-
-
-#image-upload-container {
-  position: relative;
-  //width: 400px; /* 必要な幅に合わせて調整 */
-  //height: 300px; /* 必要な高さに合わせて調整 */
-  border: 2px dashed #ccc;
-  border-radius: 2%;
-  text-align: center;
-  //cursor: pointer;
-  background-color: gray;
-}
-
-#image-upload-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 16px;
-  color: #333;
-}
-
-.sort-label {
-  color: #00f;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
 }

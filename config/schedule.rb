@@ -26,4 +26,8 @@ every 1.day, at: "0:00 am" do
   rake "users:delete_after_10_days"
 end
 
+every 1.day, at: "0:00 am" do
+  rake "posts:unattached_images"
+end
+
 # Learn more: http://github.com/javan/whenever

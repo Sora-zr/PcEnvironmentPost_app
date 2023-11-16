@@ -1,6 +1,4 @@
 .post-body {
-  //padding-top: 60px;
-
   .post-image {
     object-fit: contain;
     height: 700px;
@@ -27,6 +25,8 @@
   }
 }
 
+
+// タグ関連
 .tags-container {
   margin: 30px 0;
 }
@@ -45,16 +45,6 @@
   color: #fff;
   padding: 5px 15px;
   border-radius: 5px;
-  //text-decoration: none;
-}
-
-
-.text-divider::before {
-  margin-right: var(--text-divider-gap);
-}
-
-.text-divider::after {
-  margin-left: var(--text-divider-gap);
 }
 
 // コメント
@@ -62,4 +52,12 @@
   border: 1px solid #ccc;
   padding: 10px 10px 0 10px;
   margin-bottom: 10px;
+}
+
+// ソート
+.sort-label {
+  color: #00f;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }
