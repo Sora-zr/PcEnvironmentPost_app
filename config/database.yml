@@ -50,6 +50,9 @@ test:
 #
 production:
   <<: *default
-  database: PcEnvironmentPost_app_production
-  username: PcEnvironmentPost_app
-  password: <%= ENV["PCENVIRONMENTPOST_APP_DATABASE_PASSWORD"] %>
+#  database: PcEnvironmentPost_app_production
+#  username: PcEnvironmentPost_app
+#  password: <%#= ENV["PCENVIRONMENTPOST_APP_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
