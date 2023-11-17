@@ -10,6 +10,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "@fortawesome/fontawesome-free"
 import "custom/flash-window"
-import "custom/preview"
 import Rails from '@rails/ujs';
 Rails.start();
