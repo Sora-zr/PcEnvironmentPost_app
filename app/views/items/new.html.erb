@@ -1,0 +1,32 @@
+<div class="form-back-image">
+  <div class="search-result-container text-center pb-5">
+    <% if @items.present? %>
+      <div class="text-divider mb-5">
+        <h2>検索結果</h2>
+      </div>
+      <% @items.each do |item| %>
+        <div class="card mb-3 search-result-item" style="width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4" style="margin: auto 0;">
+              <%= image_tag item[:image_url], class: 'card-img-top', size: 128, style: 'object-fit: contain;' %>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <p class="text-start" style="margin: 0; color: #7d7d7d;"><%= item[:brand_name] %></p>
+                <hr class="m-1">
+                <h6 class="card-title text-start"><%= item[:item_name] %></h6>
+                <p class="card-text">
+                  <%= button_to '選択する', items_path, { method: :post, params: { brand_name: item[:brand_name], item_name: item[:item_name], image_url: item[:image_url], item_url: item[:item_url], price: item[:price] } } %>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="text-center">
+      <hr class="my-4">
+      <%= link_to '戻る', :back %>
+    </div>
+  </div>
+</div>

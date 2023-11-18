@@ -38,7 +38,7 @@
   <div class="row">
     <div class="col-sm-8">
       <div class="mb-4">
-        <div class="card border-black">
+        <div class="card border-black mb-4">
           <h4 class="card-header text-center py-3">説明</h4>
           <div class="card-body">
             <div class="card-text">
@@ -46,6 +46,56 @@
             </div>
             <hr>
             <p class="text-end m-0">投稿作成日：　<%= @post.created_at.strftime("%Y年 %m月 %d日") %></p>
+          </div>
+        </div>
+
+        <div class="card border-black text-center">
+          <h4 class="card-header py-3">デバイス</h4>
+          <div class="card-body p-0">
+            <% @items.each do |item| %>
+              <div class="card mb-3 search-result-item" style="max-width: 380px; max-height: 300px;">
+                <div class="row g-0">
+                  <div class="col-md-4" style="margin: auto 0;">
+                    <%= image_tag item[:image_url], class: 'card-img-top', size: 128, style: 'object-fit: contain;' %>
+                  </div>
+
+                  <div class="col-md-8">
+                    <div class="d-flex justify-content-between align-items-center" style="padding: 5px 15px">
+                      <p class="text-start m-0" style="color: #7d7d7d;"><%= item[:brand_name] %></p>
+                      <% if current_user.own?(@post) %>
+                        <%= link_to item_path(item), id: 'delete-btn', method: :delete, data: { confirm: '削除しますか？' } do %>
+                          <i class="fa-regular fa-trash-can" style="color: #ff2d2d;"></i>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <% if item[:brand_name].present? %>
+                      <hr class="mx-3 my-0">
+                    <% end %>
+                    <div class="card-body" style="padding: 5px 15px;">
+                      <%= link_to item[:item_url], style: 'text-decoration: none;' do %>
+                        <h6 class="card-title text-start"><%= item[:item_name] %></h6>
+                      <% end %>
+                      <hr class="mx-0 my-2">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <span class="">平均価格</span>
+                        <span class=""><%= number_to_currency(item[:price], unit: '¥', format: '%u %n') %></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+            <% if current_user.own?(@post) %>
+              <hr class="m-0">
+              <h5 class="card-header">デバイスを追加する</h5>
+
+              <%= form_with url: new_item_path, method: :get, class: 'search-form', local: true do |f| %>
+                <%= f.text_field :keyword, placeholder: 'キーワードを入力' %>
+                <%= button_tag '', type: 'submit' %>
+              <% end %>
+
+            <% end %>
           </div>
         </div>
       </div>

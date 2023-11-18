@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @tags = @post.tag_counts_on(:tags)
+    @items = @post.items
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @comment = Comment.new
   end
@@ -24,6 +25,10 @@ class PostsController < ApplicationController
       redirect_to posts_url, alert: 'すでに投稿済みです。'
     else
       @post = Post.new
+      @items = []
+      if params[:item]
+        @item = params[:item]
+      end
     end
   end
 

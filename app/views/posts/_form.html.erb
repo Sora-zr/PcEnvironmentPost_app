@@ -2,15 +2,17 @@
   <%= render 'shared/error_messages', object: f.object %>
 
   <!-- 画像アップロードフォーム-->
+  <h4>画像を追加</h4>
+  <hr>
   <div class="file-upload-text mb-4">
     <p>・対応画像フォーマット：　jpg / jpeg / png</p>
     <p>・ファイルサイズ：　5MBまで</p>
     <p>・画像上限枚数：　8枚まで</p>
   </div>
 
-    <%= f.label :images, class: 'file-input-btn' do %>
-      <i class="fa-regular fa-image"></i>　画像をアップロード
-    <% end %>
+  <%= f.label :images, class: 'file-input-btn' do %>
+    <i class="fa-regular fa-image"></i>　画像をアップロード
+  <% end %>
   <%= f.file_field :images,
                    multiple: true,
                    class: 'file-input-field',
@@ -58,7 +60,7 @@
       <h4><%= f.label :tag_list, 'タグ' %></h4>
       <hr>
       <div class="form-group">
-        <%= f.text_field :tag_list, value: post.tag_list.join(','), class: 'form-control', placeholder: ',で区切って入力してください' %>
+        <%= f.text_field :tag_list, value: post.tag_list.join(','), rows: 2, class: 'form-control', placeholder: ',で区切って入力してください' %>
       </div>
     </div>
   </div>

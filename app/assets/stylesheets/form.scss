@@ -7,7 +7,7 @@
 
 .form-container {
   background-color: #fff;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   padding-top: 80px;
 }
@@ -61,4 +61,62 @@
   object-fit: contain;
   width: 250px;
   height: 150px;
+}
+
+.search-result-container {
+  background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 80px;
+}
+
+.search-result-item {
+  display: inline-block;
+  margin: 20px
+}
+
+.search-form {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 3px;
+  margin: 30px 0;
+}
+
+.search-form input {
+  width: 60%;
+  height: 45px;
+  padding: 5px 15px;
+  border: solid 2px #89bce1;
+  border-radius: 3px 0 0 3px;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  font-size: 1em;
+  outline: none;
+}
+
+.search-form input::placeholder {
+  color: #767d83;
+}
+
+.search-form button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 45px;
+  border: none;
+  border-radius: 0 3px 3px 0;
+  background-color: #89bce1;
+  cursor: pointer;
+}
+
+.search-form button::after {
+  width: 20px;
+  height: 20px;
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%20%3Cpath%20d%3D%22M23.7%2020.8%2019%2016.1c-.2-.2-.5-.3-.8-.3h-.8c1.3-1.7%202-3.7%202-6C19.5%204.4%2015.1%200%209.7%200S0%204.4%200%209.7s4.4%209.7%209.7%209.7c2.3%200%204.3-.8%206-2v.8c0%20.3.1.6.3.8l4.7%204.7c.4.4%201.2.4%201.6%200l1.3-1.3c.5-.5.5-1.2.1-1.6zm-14-5.1c-3.3%200-6-2.7-6-6s2.7-6%206-6%206%202.7%206%206-2.6%206-6%206z%22%20fill%3D%22%23fff%22%3E%3C%2Fpath%3E%20%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  content: '';
 }

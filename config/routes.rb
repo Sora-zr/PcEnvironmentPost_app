@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   resources :likes, only: %i[create destroy]
   resources :bookmarks, only: %i[create destroy]
+  resources :items, only: %i[new create destroy]
   resource :profile, only: %i[show update]
   post 'posts/upload_image', to: 'posts#upload_image'
 
