@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     @items = []
 
     if params[:keyword]
-      results = RakutenWebService::Ichiba::Product.search(keyword: params[:keyword])
+      results = RakutenWebService::Ichiba::Product.search(keyword: params[:keyword], hits: 16)
       results.each do |result|
         item = Item.new(read(result))
         @items << item
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
       redirect_to post_path(current_user.post), alert: '投稿には最大で8個までのアイテムしか登録できません。'
     else
       if @item.save
-        redirect_to post_url(current_user.post)
+        redirect_to post_url(current_user.post), notice: 'アイテムを登録しました。'
       else
         render :new
       end
