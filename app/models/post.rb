@@ -33,7 +33,7 @@ class Post < ApplicationRecord
 
   private
 
-  # 枚数制限のためのバリデーション
+  # 画像枚数制限のためのバリデーション
   def validate_image_count
     if images.attached? && images.count > 8
       errors.add(:images, "は最大8枚までです。")

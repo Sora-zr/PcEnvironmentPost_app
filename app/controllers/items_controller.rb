@@ -15,10 +15,14 @@ class ItemsController < ApplicationController
 
   def create
     @item = current_user.post.items.build(brand_name: params[:brand_name], item_name: params[:item_name], image_url: params[:image_url], item_url: params[:item_url], price: params[:price])
-    if @item.save
-      redirect_to post_url(current_user.post)
+    if current_user.post.items.count >= 8
+      redirect_to post_path(current_user.post), alert: '投稿には最大で8個までのアイテムしか登録できません。'
     else
-      render :new
+      if @item.save
+        redirect_to post_url(current_user.post)
+      else
+        render :new
+      end
     end
   end
 
