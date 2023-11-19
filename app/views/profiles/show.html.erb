@@ -42,7 +42,7 @@
       <% if @user.email != 'guest@example.com' %>
         <hr class="mb-5">
         <div class="user-update-form">
-          <h4>ユーザー情報を編集</h4>
+          <h4>ユーザー情報の編集</h4>
           <%= form_with model: @user, url: profile_path(@user), class: 'p-4', local: true do |f| %>
             <div class="form-group mb-5">
               <%= f.label :name, 'ユーザーネーム（１〜２０文字以内でご入力してください）' %>
@@ -55,7 +55,7 @@
             </div>
 
             <div class="text-center">
-              <%= f.submit '更新する', class: 'btn green-btn' %>
+              <%= f.submit '更新', class: 'btn green-btn' %>
             </div>
           <% end %>
         </div>

@@ -74,7 +74,7 @@ RSpec.describe User, type: :system do
           visit profile_path
           fill_in 'ユーザーネーム', with: 'TestUser'
           attach_file 'プロフィール画像', Rails.root.join('spec', 'fixtures', 'test_image.jpg')
-          click_button '更新する'
+          click_button '更新'
           expect(page).to have_content 'ユーザー情報を更新しました。'
           expect(current_path).to eq profile_path
         end
@@ -84,7 +84,7 @@ RSpec.describe User, type: :system do
         it 'ユーザー情報の更新に失敗する' do
           visit profile_path
           fill_in 'ユーザーネーム', with: '　'
-          click_button '更新する'
+          click_button '更新'
           expect(page).to have_content 'ユーザー情報の更新に失敗しました。'
           expect(current_path).to eq profile_path
         end

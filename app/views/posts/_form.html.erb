@@ -1,6 +1,8 @@
 <%= form_with model: post, data: { controller: 'file-upload' }, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
+  <h5 class="text-danger mb-3">※現在アイテムの登録は投稿後の詳細画面から行うことができます。</h5>
+
   <!-- 画像アップロードフォーム-->
   <h4>画像を追加</h4>
   <hr>

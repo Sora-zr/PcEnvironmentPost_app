@@ -1,4 +1,4 @@
-.top-wrapper {
+.home-content {
   position: relative;
   background-image: url("home_page.jpg");
   background-repeat: no-repeat;
@@ -7,18 +7,94 @@
   color: white;
   height: calc(100vh - 134px);
 
-  .top-inner-text {
+  .home-link {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    text-align: center;
-    font-size: 3rem;
 
+    .btn {
+      position: relative;
+      opacity: 0.8;
+      font-weight: 600;
+      line-height: 1.5;
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      text-align: center;
+      vertical-align: middle;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+    }
 
-    @media screen and (max-width: 767px) {
-      font-size: 2.0rem;
+    a.btn-flat {
+      color: #fff;
+      background: #000;
+      overflow: hidden;
+      padding: 1rem 4rem;
+      border-radius: 3px;
+    }
+
+    a.btn-flat span {
+      position: relative;
+      z-index: 1;
+    }
+
+    a.btn-flat:before {
+      position: absolute;
+      top: 0;
+      left: calc(-100% + 10px);
+      width: 100%;
+      height: 100%;
+      content: '';
+      -webkit-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      -webkit-transform: translateX(0) translateY(0);
+      transform: translateX(0) translateY(0);
+    }
+
+    a.btn-flat:after {
+      position: absolute;
+      top: 0;
+      right: calc(-100% + 10px);
+      width: 100%;
+      height: 100%;
+      content: '';
+      -webkit-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      -webkit-transform: translateX(0) translateY(0);
+      transform: translateX(0) translateY(0);
+    }
+
+    a.btn-registration:before,
+    a.btn-registration:after {
+      background-color: #094;
+    }
+
+    a.btn-login:before,
+    a.btn-login:after {
+      background-color: #0dcaf0;
+    }
+
+    a.btn-post:before,
+    a.btn-post:after {
+      background-color: #8a2be2;
+    }
+
+    a.btn-flat:hover:before {
+      -webkit-transform: translateX(50%) translateY(0);
+      transform: translateX(50%) translateY(0);
+    }
+
+    a.btn-flat:hover:after {
+      -webkit-transform: translateX(-50%) translateY(0);
+      transform: translateX(-50%) translateY(0);
     }
   }
 }

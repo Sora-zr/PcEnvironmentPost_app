@@ -3,6 +3,11 @@
     <div class="text-divider">
       <h2>投稿一覧</h2>
     </div>
+    <% if current_user && current_user.post.blank? %>
+      <div class="mt-4">
+        <%= link_to '投稿する', new_post_path, class: 'btn blue-btn text-white px-4 py-3' %>
+      </div>
+    <% end %>
     <% if @posts.present? %>
       <div class="card new-posts">
         <h3 class="new-posts-title d-inline">新着の投稿</h3>

@@ -1,6 +1,15 @@
-<div class='top-wrapper'>
-  <div class='top-inner-text'>
-    <h1>Home Page</h1>
-    <%= link_to 'みんなの投稿を見てみる', posts_path %>
+<div class='home-content'>
+  <div class='home-link text-center'>
+    <% unless user_signed_in? %>
+      <%= link_to new_user_registration_path, class: 'btn btn-flat btn-registration', style: 'border-color: #094;' do %>
+        <span>ユーザー登録</span>
+      <% end %>
+      <%= link_to new_user_session_path, class: 'btn btn-flat btn-login m-5', style: 'border-color: #0dcaf0;' do %>
+        <span>ログイン</span>
+      <% end %>
+      <%= link_to posts_path, class: 'btn btn-flat btn-post', style: 'border-color: #8a2be2;' do %>
+        <span>投稿を閲覧</span>
+      <% end %>
+    <% end %>
   </div>
 </div>
