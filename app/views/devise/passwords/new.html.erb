@@ -1,17 +1,19 @@
 <div class="container devise-page-content">
   <div class="mx-auto">
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%#= render "devise/shared/error_messages", resource: resource %>
     <div class="card nav-color">
       <h2 class="card-header text-center p-4">パスワード再設定のご案内</h2>
       <div class="card-body devise-body">
         <div class="text-center">
-          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%#= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= form_with model: @user, url: user_password_path, class: 'registration-main', local: true do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
             <p>ご登録しているメールアドレスを入力してください。</p>
             <div class="input-group mt-2 mb-5">
               <label class="input-group-text" for="email"><i class="fa-solid fa-envelope"></i></label>
               <%= f.email_field :email,
                                 autofocus: true,
-                                autocomplete: 'email',
+                                # autocomplete: 'email',
                                 class: 'form-control p-2',
                                 id: 'email',
                                 placeholder: 'sample@example.com',
