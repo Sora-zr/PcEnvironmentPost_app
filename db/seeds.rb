@@ -12,15 +12,15 @@
     email: Faker::Internet.unique.email,
     password: 'password',
   )
-  user.avatar.attach(io: File.open(Rails.root.join("app/assets/images/default_avatar.png")), filename: "default_avatar.png")
+  user.avatar.attach(io: File.open(Rails.root.join("spec/fixtures/test_avatar.png")), filename: "test_avatar.png")
   user.save
 
   post = Post.new(
     user: user,
     description: "sample_description-#{n}"
   )
-  3.times do |i|
-    post.images.attach(io: File.open(Rails.root.join("app/assets/images/sample#{i + 1}.jpg")), filename: "sample#{i + 1}.jpg")
+  3.times do
+    post.images.attach(io: File.open(Rails.root.join("spec/fixtures/test_image.jpg")), filename: "test_image.jpg")
   end
   post.save
 

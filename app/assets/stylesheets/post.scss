@@ -33,18 +33,37 @@
 
 .tag-body {
   display: inline-block;
-  margin: 12px 0 12px 12px;
-}
-
-.tag-body-container {
-  white-space: normal;
 }
 
 .tag-item {
-  background-color: #007bff;
+  position: relative;
   color: #fff;
-  padding: 5px 15px;
-  border-radius: 5px;
+  background: linear-gradient(to right, #1976d2, #64b5f6);
+  height: 26px;
+  padding: 0 17px 0 8px;
+  margin: 10px 0 10px 20px;
+}
+
+.tag-item:before {
+  position: absolute;
+  top: -2px;
+  left: -7px;
+  content: '';
+  border-color: transparent #1976d2 transparent transparent;
+  border-width: 15px 8px 15px 0;
+  border-style: solid;
+  border-radius: 4px;
+}
+
+.tag-item:after {
+  position: absolute;
+  top: -2px;
+  right: 0;
+  content: '';
+  border-color: transparent #fff transparent transparent;
+  border-width: 15px 8px 15px 0;
+  border-style: solid;
+  border-radius: 4px;
 }
 
 // コメント
