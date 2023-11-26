@@ -1,0 +1,60 @@
+<div class="container text-center mb-5">
+  <h1>サービスご利用方法</h1>
+  <hr>
+
+  <div class="card mb-5">
+    <div class="card-header">
+      <h3 class="my-3">自身のデスク環境を投稿する</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #f5f5f5;">
+      <div class="mb-5">
+        <p>投稿一覧画面もしくは、右上のメニューバーから新規投稿を行うことができます。</p>
+        <%= image_tag 'explanation/posts.png', size: '350x200', style: 'object-fit: contain;' %>
+        <%= image_tag 'explanation/menu-bar.png', size: '350x200', style: 'object-fit: contain;' %>
+        <hr>
+      </div>
+
+      <div class="mb-5">
+        <p>投稿できる画像のフォーマット、枚数などに従って投稿してください。説明とタグは未入力でも投稿できます。</p>
+        <%= image_tag 'explanation/new-post.jpeg', size: '350x200', style: 'object-fit: contain;' %>
+        <%= image_tag 'explanation/new-post2.png', size: '350x200', style: 'object-fit: contain;' %>
+        <hr>
+      </div>
+
+      <div>
+        <p>自身の投稿の詳細画面にある「アイテムを登録する」から使用しているアイテムを検索して登録することができます。</p>
+        <%= image_tag 'explanation/search.png', size: '350x200', style: 'object-fit: contain;' %>　→　
+        <%= image_tag 'explanation/result.jpg', size: '350x200', style: 'object-fit: contain;' %>　→　
+        <%= image_tag 'explanation/search_after.png', size: '350x200', style: 'object-fit: contain;' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h3 class="my-3">他のユーザーの投稿を閲覧する</h3>
+    </div>
+
+    <div class="card-body" style="background-color: #f5f5f5;">
+      <div class="mb-3">
+        <p class="mb-0">投稿一覧画面で投稿の画像部分をクリックすると、その投稿の詳細画面へ遷移します。</p>
+        <p>他のユーザーの投稿にはコメント、いいね、ブックマークすることができます。（ログインユーザーのみ）</p>
+        <%= image_tag 'explanation/posts-menu.png', size: '350x200', style: 'object-fit: contain;' %>
+        <hr>
+      </div>
+
+      <div>
+        <p>ブックマークした投稿はメニューバーから一覧として確認することができます。</p>
+        <%= image_tag 'explanation/bookmarks.jpeg', size: '350x200', style: 'object-fit: contain;' %>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-5">
+
+  <%= link_to posts_path, class: 'btn blue-btn text-white', style: 'padding: 20px 80px' do %>
+    <span>投稿一覧へ</span>
+  <% end %>
+
+</div>

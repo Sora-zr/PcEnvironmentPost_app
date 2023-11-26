@@ -1,15 +1,35 @@
 <div class='home-content'>
   <div class='home-link text-center'>
-    <% unless user_signed_in? %>
-      <%= link_to new_user_registration_path, class: 'btn btn-flat btn-registration', style: 'border-color: #094;' do %>
-        <span>ユーザー登録</span>
-      <% end %>
-      <%= link_to new_user_session_path, class: 'btn btn-flat btn-login m-5', style: 'border-color: #0dcaf0;' do %>
-        <span>ログイン</span>
-      <% end %>
-      <%= link_to posts_path, class: 'btn btn-flat btn-post', style: 'border-color: #8a2be2;' do %>
-        <span>投稿を閲覧</span>
-      <% end %>
+    <% if user_signed_in? %>
+      <div>
+        <%= link_to page_path('service_instruction'), class: 'btn btn-flat btn-service', style: 'border-color: #666' do %>
+          <span>サービス利用方法</span>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to posts_path, class: 'btn btn-flat btn-post', style: 'border-color: #8a2be2;' do %>
+          <span>投稿を閲覧</span>
+        <% end %>
+      </div>
+    <% else %>
+      <div>
+        <%= link_to page_path('service_instruction'), class: 'btn btn-flat btn-service', style: 'border-color: #666' do %>
+          <span>サービス利用方法</span>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to new_user_registration_path, class: 'btn btn-flat btn-registration', style: 'border-color: #094;' do %>
+          <span>ユーザー登録</span>
+        <% end %>
+
+        <%= link_to new_user_session_path, class: 'btn btn-flat btn-login m-5', style: 'border-color: #0dcaf0;' do %>
+          <span>ログイン</span>
+        <% end %>
+
+        <%= link_to posts_path, class: 'btn btn-flat btn-post', style: 'border-color: #8a2be2;' do %>
+          <span>投稿を閲覧</span>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

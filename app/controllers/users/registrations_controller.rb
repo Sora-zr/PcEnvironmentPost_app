@@ -56,7 +56,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # ユーザー登録完了後のリダイレクト先
   def after_sign_up_path_for(resource)
-    posts_url
+    page_path('service_instruction')
   end
 
   # ユーザー情報更新後のリダイレクト先

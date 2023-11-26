@@ -8,9 +8,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
   devise_scope :user do
+    # ゲストユーザー機能
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
 
-    # 体感確認画面
+    # 退会機能
     get 'users/check', to: 'users/registrations#check'
     patch 'users/withdraw', to: 'users/registrations#withdraw'
   end

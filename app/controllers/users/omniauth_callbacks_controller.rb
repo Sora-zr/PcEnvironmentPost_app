@@ -8,7 +8,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
 
-  # More info at:
+  # More explanation at:
   # https://github.com/heartcombo/devise#omniauth
 
   # GET|POST /resource/auth/twitter

@@ -37,6 +37,11 @@
                 <i class="fa-solid fa-user mypage-btn ms-2"></i>　ユーザー情報
               </a>
               <div class="dropdown-menu dropdown-menu-white">
+                <% if current_user.post.present? %>
+                  <%= link_to '自身の投稿を編集する', edit_post_path(current_user.post), class: 'dropdown-item' %>
+                <% else %>
+                  <%= link_to '自身の投稿を作成する', new_post_path, class: 'dropdown-item' %>
+                <% end %>
                 <%= link_to 'ユーザーページ', profile_path, class: 'dropdown-item' %>
                 <%= link_to 'メールアドレス・パスワードの変更', edit_user_registration_path, class: 'dropdown-item' %>
                 <%= link_to 'アカウントの退会', users_check_path, class: 'dropdown-item text-danger' %>

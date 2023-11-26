@@ -72,6 +72,16 @@
       transform: translateX(0) translateY(0);
     }
 
+    a.btn-service {
+      top: -100px;
+      padding: 50px 100px;
+    }
+
+    a.btn-service:before,
+    a.btn-service:after {
+      background-color: #666;
+    }
+
     a.btn-registration:before,
     a.btn-registration:after {
       background-color: #094;
