@@ -5,37 +5,42 @@
     </div>
     <% if current_user && current_user.post.blank? %>
       <div class="mt-4">
-        <%= link_to '投稿する', new_post_path, class: 'btn blue-btn text-white', style: 'padding: 20px 80px'  %>
+        <%= link_to '投稿する', new_post_path, class: 'btn blue-btn text-white', style: 'padding: 20px 80px' %>
       </div>
     <% end %>
     <% if @posts.present? %>
-      <div class="card new-posts">
-        <h3 class="new-posts-title d-inline">新着の投稿</h3>
-        <div class="row">
-          <%= render @new_posts %>
+
+      <div class="text-end">
+        <div class="d-flex justify-content-end">
+          <span style="margin: auto 0;">投稿に登録されたアイテムのジャンル名で検索することができます（マウスが登録されている投稿など）：　</span>
+          <div style="margin: auto 0;">
+            <%= render 'shared/search', url: posts_path, search: @search %>
+          </div>
         </div>
-      </div>
-      <hr>
-      <div>
-      </div>
-      <div class="my-3">
-        <%= form_tag posts_path, method: 'get', id: 'sort-form' do %>
-          <div class="mb-3 text-end">
-            <label class="" for="sort">並べ替え：</label>
+        <div class="my-3">
+          <%= form_tag posts_path, method: 'get', id: 'sort-form' do %>
+            <label for="sort">並べ替え：</label>
             <%= select_tag :sort,
                            options_for_select([['新着順', 'new'], ['古い順', 'old'], ['人気順', 'like'], ['ランダム', 'random']], params[:sort]),
                            class: 'sort-label' %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
       <%= render @posts %>
     <% else %>
       <p class="my-5">投稿はありません。</p>
     <% end %>
   </div>
-  <hr>
   <div class="my-5">
     <%= paginate @posts %>
+  </div>
+
+  <hr>
+  <div class="card new-posts">
+    <h3 class="new-posts-title d-inline">新着の投稿</h3>
+    <div class="row">
+      <%= render @new_posts %>
+    </div>
   </div>
 </div>
 

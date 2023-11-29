@@ -67,6 +67,7 @@ gem "letter_opener_web"
 gem "high_voltage"
 gem "whenever", require: false
 gem "rakuten_web_service"
+gem "ransack"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -4,7 +4,9 @@ class PostsController < ApplicationController
 
   def index
     sort_option = params[:sort]
-    @posts = Post.sort_posts(sort_option, params[:page]).visible
+    @search = Post.ransack(params[:q])
+    @posts = @search.result(distinct: true).sort_posts(sort_option, params[:page]).visible
+    # @posts = Post.sort_posts(sort_option, params[:page]).visible
     @new_posts = Post.includes(:user).order(created_at: :desc).visible.limit(2)
 
     if params[:tag_name]
@@ -79,7 +81,7 @@ class PostsController < ApplicationController
   end
 
   def uploaded_images
-    params[:post][:images].drop(1).map{|id| ActiveStorage::Blob.find(id)} if params[:post][:images]
+    params[:post][:images].drop(1).map { |id| ActiveStorage::Blob.find(id) } if params[:post][:images]
   end
 
   def create_blob(file)

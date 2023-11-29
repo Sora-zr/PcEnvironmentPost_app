@@ -17,6 +17,15 @@ class Post < ApplicationRecord
   scope :likes_sort, -> { left_joins(:likes).group('posts.id').order('count(likes.id) desc') }
   scope :random_sort, -> { order(Arel.sql('RAND()')) }
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[genre_name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[items]
+  end
+
+  # 並べ替え用のメソッド
   def self.sort_posts(sort_option, page)
     posts = includes(:user)
     case sort_option
