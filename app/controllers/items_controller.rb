@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
     @items = []
 
     if params[:keyword]
-      results = RakutenWebService::Ichiba::Product.search(keyword: params[:keyword], hits: 16)
+      results = RakutenWebService::Ichiba::Product.search(keyword: params[:keyword], hits: 20)
       results.each do |result|
         item = Item.new(read(result))
         @items << item
@@ -14,7 +14,12 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = current_user.post.items.build(brand_name: params[:brand_name], item_name: params[:item_name], image_url: params[:image_url], item_url: params[:item_url], price: params[:price])
+    @item = current_user.post.items.build(brand_name: params[:brand_name],
+                                          item_name: params[:item_name],
+                                          image_url: params[:image_url],
+                                          item_url: params[:item_url],
+                                          price: params[:price],
+                                          genre_name: params[:genre_name])
     if current_user.post.items.count >= 8
       redirect_to post_path(current_user.post), alert: '投稿には最大で8個までのアイテムしか登録できません。'
     else
@@ -40,12 +45,14 @@ class ItemsController < ApplicationController
     image_url = result['mediumImageUrl']
     item_url = result['productUrlPC']
     price = result['averagePrice']
+    genre_name = result['genreName']
     {
       brand_name: brand_name,
       item_name: item_name,
       image_url: image_url,
       item_url: item_url,
-      price: price
+      price: price,
+      genre_name: genre_name
     }
   end
 end
