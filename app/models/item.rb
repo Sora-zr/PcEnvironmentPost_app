@@ -6,6 +6,6 @@ class Item < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["post"]
+    %w[post]
   end
 end

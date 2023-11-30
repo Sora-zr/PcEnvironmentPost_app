@@ -6,7 +6,6 @@ class PostsController < ApplicationController
     sort_option = params[:sort]
     @search = Post.ransack(params[:q])
     @posts = @search.result(distinct: true).sort_posts(sort_option, params[:page]).visible
-    # @posts = Post.sort_posts(sort_option, params[:page]).visible
     @new_posts = Post.includes(:user).order(created_at: :desc).visible.limit(2)
 
     if params[:tag_name]
