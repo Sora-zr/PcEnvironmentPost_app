@@ -33,6 +33,7 @@
 
 .tag-body {
   display: inline-block;
+  margin: 10px;
 }
 
 .tag-item {
@@ -40,7 +41,8 @@
   color: #fff;
   background: linear-gradient(to right, #1976d2, #64b5f6);
   height: 26px;
-  padding: 0 17px 0 8px;
+  text-decoration: none;
+  padding: 3px 17px 3px 8px;
   margin: 10px 0 10px 20px;
 }
 

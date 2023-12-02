@@ -8,8 +8,9 @@ class PostsController < ApplicationController
     @posts = @search.result(distinct: true).sort_posts(sort_option, params[:page]).visible
     @new_posts = Post.includes(:user).order(created_at: :desc).visible.limit(2)
 
-    if params[:tag_name]
-      @tags = Post.tagged_with("#{params[:tag_name]}").page(params[:page])
+    # タグ絞り込み
+    if params[:tag]
+      @posts = Post.tagged_with("#{params[:tag]}").sort_posts(sort_option, params[:page]).visible
     end
   end
 

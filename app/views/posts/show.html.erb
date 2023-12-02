@@ -28,7 +28,7 @@
       <div class="tag-body-container">
         <% @tags.each do |tag| %>
           <div class="tag-body">
-            <div class="tag-item"><%= tag.name %></div>
+            <%= link_to tag, posts_path(tag: tag.name), class: 'tag-item' %>
           </div>
         <% end %>
       </div>
