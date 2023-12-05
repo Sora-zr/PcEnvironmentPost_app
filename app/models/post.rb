@@ -40,6 +40,11 @@ class Post < ApplicationRecord
     end
   end
 
+  # ユーザーがいいねしていない投稿をランダムで2件取得
+  def self.recommended_for_user(user)
+    where.not(id: user.likes.pluck(:post_id)).order(Arel.sql('RAND()')).limit(2)
+  end
+
   private
 
   # 画像枚数制限のためのバリデーション

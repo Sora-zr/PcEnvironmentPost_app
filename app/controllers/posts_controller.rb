@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     @posts = @search.result(distinct: true).sort_posts(sort_option, params[:page]).visible
     @new_posts = Post.includes(:user).order(created_at: :desc).visible.limit(2)
 
+    # おすすめの投稿
+    if user_signed_in?
+      @recommended_posts = Post.recommended_for_user(current_user)
+    end
+
     # タグ絞り込み
     if params[:tag]
       @posts = Post.tagged_with("#{params[:tag]}").sort_posts(sort_option, params[:page]).visible
