@@ -21,7 +21,7 @@
           <%= form_tag posts_path, method: 'get', id: 'sort-form' do %>
             <label for="sort">並べ替え：</label>
             <%= select_tag :sort,
-                           options_for_select([['新着順', 'new'], ['古い順', 'old'], ['人気順', 'like'], ['ランダム', 'random']], params[:sort]),
+                           options_for_select([['新着順', 'new'], ['古い順', 'old'], ['人気順', 'like']], params[:sort]),
                            class: 'sort-label' %>
           <% end %>
         </div>
