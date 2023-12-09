@@ -15,7 +15,6 @@ class Post < ApplicationRecord
 
   scope :visible, -> { joins(:user).merge(User.active) }
   scope :likes_sort, -> { left_joins(:likes).group('posts.id').order('count(likes.id) desc') }
-  scope :random_sort, -> { order(Arel.sql('RAND()')) }
 
   def self.ransackable_attributes(auth_object = nil)
     %w[genre_name]
@@ -33,8 +32,6 @@ class Post < ApplicationRecord
       posts.order(created_at: :asc).page(page)
     when 'like'
       posts.likes_sort.page(page)
-    when 'random'
-      posts.random_sort.page(page)
     else
       posts.order(created_at: :desc).page(page)
     end
@@ -42,7 +39,8 @@ class Post < ApplicationRecord
 
   # ユーザーがいいねしていない投稿をランダムで2件取得
   def self.recommended_for_user(user)
-    where.not(id: user.likes.pluck(:post_id)).order(Arel.sql('RAND()')).limit(2)
+    random_order_function = ActiveRecord::Base.connection.adapter_name.downcase == 'postgresql' ? 'RANDOM()' : 'RAND()'
+    where.not(id: user.likes.pluck(:post_id)).where.not(user_id: user.id).order(Arel.sql(random_order_function)).limit(2)
   end
 
   private
