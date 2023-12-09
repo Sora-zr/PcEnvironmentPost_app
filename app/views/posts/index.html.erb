@@ -36,14 +36,6 @@
   </div>
 
   <hr>
-  <% if user_signed_in? %>
-    <div class="card new-posts">
-      <h3 class="new-posts-title d-inline">あなたへおすすめの投稿</h3>
-      <div class="row">
-        <%= render @recommended_posts %>
-      </div>
-    </div>
-  <% end %>
 
   <div class="card new-posts">
     <h3 class="new-posts-title d-inline">新着の投稿</h3>
