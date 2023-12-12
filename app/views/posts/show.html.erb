@@ -23,13 +23,18 @@
   <hr class="my-5">
 
   <% if @tags.present? %>
-    <div class="card border-black tags-container">
+    <div class="card border-black mb-4">
       <h5 class="card-header text-center py-2">タグ</h5>
-      <div class="tag-body-container">
+      <div class="tag-body d-flex">
         <% @tags.each do |tag| %>
-          <div class="tag-body">
-            <%= link_to tag, posts_path(tag: tag.name), class: 'tag-item' %>
-          </div>
+          <ul>
+            <li>
+              <%= link_to posts_path(tag: tag.name), class: 'tag-item' do %>
+                <%= tag %>
+                <span><%= tag.taggings_count %></span>
+              <% end %>
+            </li>
+          </ul>
         <% end %>
       </div>
     </div>
