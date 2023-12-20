@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create destroy], shallow: true
     get :bookmarks, on: :collection
   end
+  get :diagnose, to: 'posts#diagnose'
   resources :likes, only: %i[create destroy]
   resources :bookmarks, only: %i[create destroy]
   resources :items, only: %i[new create destroy]

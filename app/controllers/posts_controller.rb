@@ -66,6 +66,9 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: t('.success')
   end
 
+  def diagnose
+  end
+
   def bookmarks
     @post_bookmarks = current_user.post_bookmarks.includes(:user).order(created_at: :desc).page(params[:page]).visible
   end
