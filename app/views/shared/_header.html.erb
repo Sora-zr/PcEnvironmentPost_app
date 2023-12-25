@@ -7,7 +7,6 @@
           <span>DeskVista.</span>
         <% end %>
       </h1>
-      <%= link_to '投稿診断', new_diagnosis_path %>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -26,6 +25,11 @@
             <div class="nav-item">
               <%= link_to posts_path, class: 'nav-link ms-2' do %>
                 <i class="fa-solid fa-paste post-btn"></i>　投稿一覧
+              <% end %>
+            </div>
+            <div class="nav-item">
+              <%= link_to new_diagnosis_path, class: 'nav-link ms-2' do %>
+                <i class="fa-solid fa-paste post-btn"></i>　投稿診断
               <% end %>
             </div>
             <div class="nav-item">
