@@ -67,6 +67,7 @@ class PostsController < ApplicationController
   end
 
   def diagnose
+    @diagnose_posts = Post.diagnose(params)
   end
 
   def bookmarks

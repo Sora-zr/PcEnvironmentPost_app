@@ -98,7 +98,7 @@
             <% if current_user && current_user.own?(@post) %>
               <hr class="m-0">
               <h5 class="card-header">アイテムを登録する</h5>
-              <p class="mt-2">登録できるアイテムの数は8つまでです。</p>
+              <p class="mt-2">登録できるアイテムの数は10個までです。</p>
 
               <%= form_with url: new_item_path, method: :get, class: 'search-form', local: true do |f| %>
                 <%= f.text_field :keyword, placeholder: 'キーワードを入力' %>

@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-20.times do |n|
+10.times do |n|
   user = User.new(
     name: Faker::Name.unique.name,
     email: Faker::Internet.unique.email,
@@ -23,5 +23,4 @@
     post.images.attach(io: File.open(Rails.root.join("spec/fixtures/test_image.jpg")), filename: "test_image.jpg")
   end
   post.save
-
 end

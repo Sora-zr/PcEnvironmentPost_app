@@ -43,6 +43,34 @@ class Post < ApplicationRecord
     where.not(id: user.likes.pluck(:post_id)).where.not(user_id: user.id).order(Arel.sql(random_order_function)).limit(2)
   end
 
+  # 診断用のアルゴリズム
+  def self.diagnose(params)
+    selected_posts = []
+    item_conditions = []
+
+    item_conditions << { column: 'items.genre_name', value: '%マウス%' } if params[:selected_1] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%キーボード%' } if params[:selected_1] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%パソコンデスク%' } if params[:selected_3] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%チェア%' } if params[:selected_4] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%ノートPC%' } if params[:selected_5] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%ヘッドホン%' } if params[:selected_6] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%スピーカー%' } if params[:selected_6] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%ゲーミング%' } if params[:selected_7] == 'Yes'
+    item_conditions << { column: 'items.genre_name', value: '%観葉植物%' } if params[:selected_8] == 'Yes'
+
+    if params[:selected_2] == '1台'
+      selected_posts.concat(Post.joins(:items).where(items: { genre_name: 'ディスプレイ' }).group(:id).having('COUNT(items.id) = 1'))
+    elsif params[:selected_2] == '2台以上'
+      selected_posts.concat(Post.joins(:items).where(items: { genre_name: 'ディスプレイ' }).group(:id).having('COUNT(items.id) >= 2'))
+    end
+
+    item_conditions.each do |condition|
+      selected_posts.concat(Post.joins(:items).where("#{condition[:column]} LIKE ?", condition[:value]))
+    end
+
+    return selected_posts.uniq
+  end
+
   private
 
   # 画像枚数制限のためのバリデーション

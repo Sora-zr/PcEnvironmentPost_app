@@ -1,0 +1,64 @@
+<div class="container text-center">
+  <div class="text-divider mb-4">
+    <h2>投稿診断</h2>
+  </div>
+
+  <div class="diagnose-container card p-3 mb-5">
+    この機能では、既存の投稿に登録されているアイテムと、以下の質問の回答を元にあなたにおすすめの投稿を表示します。
+  </div>
+
+  <%= form_with url: diagnose_posts_path, method: :get, local: true do %>
+    <div class="diagnose">
+      <h5>マウスやキーボードがあると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_1', 'Yes' %> はい　</label>
+      <label><%= radio_button_tag 'selected_1', 'No' %> いいえ　</label>
+    </div>
+
+    <div class="diagnose">
+      <h5>モニターは何台あると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_2', 'No' %> なし　</label>
+      <label><%= radio_button_tag 'selected_2', '1台' %> 1台　</label>
+      <label><%= radio_button_tag 'selected_2', '2台以上' %> 2台以上　</label>
+    </div>
+
+    <div class="diagnose">
+      <h5>作業用のデスクがあると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_3', 'Yes' %> はい　</label>
+      <label><%= radio_button_tag 'selected_3', 'No' %> いいえ　</label>
+    </div>
+
+    <div class="diagnose">
+      <h5>チェアがあると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_4', 'Yes' %> はい　</label>
+      <label><%= radio_button_tag 'selected_4', 'No' %> いいえ　</label>
+    </div>
+
+    <div class="diagnose">
+      <h5>ノートパソコンがあると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_5', 'Yes' %> はい　</label>
+      <label><%= radio_button_tag 'selected_5', 'No' %> いいえ　</label>
+    </div>
+
+    <div class="diagnose">
+      <h5>ヘッドホンやスピーカーがあると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_6', 'Yes' %> はい　</label>
+      <label><%= radio_button_tag 'selected_6', 'No' %> いいえ　</label>
+    </div>
+
+    <div class="diagnose">
+      <h5>ゲーミング系のデバイスがあると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_7', 'Yes' %> はい　</label>
+      <label><%= radio_button_tag 'selected_7', 'No' %> いいえ　</label>
+    </div>
+
+    <div class="diagnose">
+      <h5>デスク上に観葉植物があると良いですか？</h5>
+      <label><%= radio_button_tag 'selected_8', 'Yes' %> はい　</label>
+      <label><%= radio_button_tag 'selected_8', 'No' %> いいえ　</label>
+    </div>
+
+    <div class="mt-4 mb-5">
+      <%= submit_tag '診断を行う', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

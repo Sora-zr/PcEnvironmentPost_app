@@ -20,8 +20,8 @@ class ItemsController < ApplicationController
                                           item_url: params[:item_url],
                                           price: params[:price],
                                           genre_name: params[:genre_name])
-    if current_user.post.items.count >= 8
-      redirect_to post_path(current_user.post), alert: '投稿には最大で8個までのアイテムしか登録できません。'
+    if current_user.post.items.count >= 10
+      redirect_to post_path(current_user.post), alert: '投稿には最大で10個までのアイテムしか登録できません。'
     else
       if @item.save
         redirect_to post_url(current_user.post), notice: 'アイテムを登録しました。'
