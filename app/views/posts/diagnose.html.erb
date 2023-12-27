@@ -1,7 +1,7 @@
 <div class="container post-body">
   <div class="row text-center">
     <div class="text-divider">
-      <h2>診断結果</h2>
+      <h2><%= current_user.name %>さんにおすすめの投稿はこちらです</h2>
     </div>
     <% if @diagnose_posts.present? %>
       <%= render @diagnose_posts %>
